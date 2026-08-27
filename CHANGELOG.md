@@ -1,3 +1,9 @@
 # @ankhorage/gh
 
+## 0.1.0
+
+### Minor Changes
+
+- 3b2e65c: Establish the standalone GitHub integration package boundary and canonical Ankhorage tooling.
+
 All notable changes to this package will be documented in this file by Changesets.
