@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/gh",
   "version": "0.0.0",
-  "description": "Focused, typed GitHub integration for Ankhorage, powered by the local gh and git CLIs.",
+  "description": "Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.",
   "type": "module",
   "license": "MIT",
   "sideEffects": false,
