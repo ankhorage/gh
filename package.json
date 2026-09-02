@@ -36,7 +36,18 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./cli": {
+      "types": "./dist/cli/index.d.ts",
+      "default": "./dist/cli/index.js"
+    },
     "./package.json": "./package.json"
+  },
+  "ankh": {
+    "category": "gh",
+    "provider": "./dist/cli/index.js",
+    "capabilities": [
+      "gh.connect"
+    ]
   },
   "publishConfig": {
     "access": "public"
@@ -62,5 +73,9 @@
     "@types/node": "^24.13.3",
     "typescript": "~6.0.3"
   },
-  "packageManager": "bun@1.4.0"
+  "packageManager": "bun@1.4.0",
+  "dependencies": {
+    "@ankhorage/contracts": "^8.1.0",
+    "ignore": "^7.0.8"
+  }
 }

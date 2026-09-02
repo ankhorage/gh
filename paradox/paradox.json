@@ -1,0 +1,1838 @@
+{
+  "packageName": "@ankhorage/gh",
+  "packageId": "@ankhorage/gh",
+  "description": "Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.",
+  "collaborators": null,
+  "donation": null,
+  "badges": [
+    {
+      "id": "license",
+      "label": "license",
+      "value": "MIT",
+      "color": "2563eb"
+    },
+    {
+      "id": "npm",
+      "label": "npm",
+      "value": "v0.1.0",
+      "color": "cb3837"
+    },
+    {
+      "id": "runtime",
+      "label": "runtime",
+      "value": "bun",
+      "color": "f59e0b"
+    },
+    {
+      "id": "typescript",
+      "label": "typescript",
+      "value": "strict",
+      "color": "2563eb"
+    },
+    {
+      "id": "eslint",
+      "label": "eslint",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "prettier",
+      "label": "prettier",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "build",
+      "label": "build",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "tests",
+      "label": "tests",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "docs",
+      "label": "docs",
+      "value": "paradox",
+      "color": "0f766e"
+    }
+  ],
+  "usage": null,
+  "readmeUsageDescription": null,
+  "readmeUsage": [],
+  "readmeCli": null,
+  "readmeConfig": null,
+  "config": null,
+  "entrypoints": ["src/index.ts"],
+  "modules": [
+    {
+      "path": "src/cli/commands/connect/definitions/ConnectCommandOptions.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/connection/definitions/GitHubRepositoryVisibility.ts"],
+      "exports": ["ConnectCommandOptions"]
+    },
+    {
+      "path": "src/cli/commands/connect/parseConnectCommandOptions.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/cli/commands/connect/definitions/ConnectCommandOptions.ts"],
+      "exports": ["parseConnectCommandOptions"]
+    },
+    {
+      "path": "src/cli/commands/connect/runConnectCommandAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/cli/commands/connect/parseConnectCommandOptions.ts",
+        "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "src/connection/services/connectGitHubRepositoryAsync.ts"
+      ],
+      "exports": ["ConnectCommandRequest", "runConnectCommandAsync"]
+    },
+    {
+      "path": "src/cli/index.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/cli/provider/createGhRuntimeProvider.ts"],
+      "exports": ["createGhRuntimeProvider", "default"]
+    },
+    {
+      "path": "src/cli/provider/createGhRuntimeProvider.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "src/metadata/ghPackageMetadata.ts"
+      ],
+      "exports": ["createGhRuntimeProvider", "GhRuntimeProvider"]
+    },
+    {
+      "path": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "src/connection/ports/RepositoryConfigStore.ts"
+      ],
+      "exports": ["createAppManifestRepositoryConfigStore"]
+    },
+    {
+      "path": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/adapters/ghCliJson.ts",
+        "src/connection/definitions/ProjectSnapshot.ts",
+        "src/connection/ports/GitHubRepositoryGateway.ts",
+        "src/connection/utils/getProjectSnapshotPaths.ts"
+      ],
+      "exports": ["createGhCliGitHubRepositoryGateway"]
+    },
+    {
+      "path": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/ProjectSnapshot.ts",
+        "src/connection/definitions/ProjectSnapshotEntry.ts",
+        "src/connection/ports/ProjectSnapshotReader.ts"
+      ],
+      "exports": ["createLocalProjectSnapshotReader"]
+    },
+    {
+      "path": "src/connection/adapters/ghCliJson.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "getGhNestedSha",
+        "GhJsonRunner",
+        "isGhNotFound",
+        "isRecord",
+        "isString",
+        "runGhJsonAsync",
+        "sanitizeGhError",
+        "tryGhJsonAsync"
+      ]
+    },
+    {
+      "path": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "src/connection/ports/GitHubRepositoryGateway.ts",
+        "src/connection/ports/ProjectSnapshotReader.ts",
+        "src/connection/ports/RepositoryConfigStore.ts"
+      ],
+      "exports": ["GitHubRepositoryConnectionDependencies", "GitHubRepositoryConnectionOptions"]
+    },
+    {
+      "path": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "GitHubRepositoryConnectionFailure",
+        "GitHubRepositoryConnectionIdentity",
+        "GitHubRepositoryConnectionResult",
+        "GitHubRepositoryConnectionStatus"
+      ]
+    },
+    {
+      "path": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["GitHubRepositoryVisibility"]
+    },
+    {
+      "path": "src/connection/definitions/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["GitHubRepositoryConnectionIdentity", "GitHubRepositoryConnectionOptions"]
+    },
+    {
+      "path": "src/connection/definitions/ProjectSnapshot.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/connection/definitions/ProjectSnapshotEntry.ts"],
+      "exports": ["ProjectSnapshot"]
+    },
+    {
+      "path": "src/connection/definitions/ProjectSnapshotEntry.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["ProjectSnapshotEntry"]
+    },
+    {
+      "path": "src/connection/ports/GitHubRepositoryGateway.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "src/connection/definitions/ProjectSnapshot.ts"
+      ],
+      "exports": [
+        "GitHubBootstrap",
+        "GitHubPublishedSnapshot",
+        "GitHubRemoteRepository",
+        "GitHubRepositoryGateway",
+        "GitHubRepositoryTarget"
+      ]
+    },
+    {
+      "path": "src/connection/ports/ProjectSnapshotReader.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/connection/definitions/ProjectSnapshot.ts"],
+      "exports": ["ProjectSnapshotReader"]
+    },
+    {
+      "path": "src/connection/ports/RepositoryConfigStore.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/connection/definitions/GitHubRepositoryConnectionResult.ts"],
+      "exports": ["RepositoryConfigStore"]
+    },
+    {
+      "path": "src/connection/services/connectGitHubRepositoryAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "src/connection/definitions/ProjectSnapshot.ts",
+        "src/connection/ports/GitHubRepositoryGateway.ts",
+        "src/connection/ports/RepositoryConfigStore.ts",
+        "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      ],
+      "exports": ["connectGitHubRepositoryAsync"]
+    },
+    {
+      "path": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/index.ts",
+        "src/connection/definitions/ProjectSnapshot.ts",
+        "src/connection/ports/GitHubRepositoryGateway.ts",
+        "src/connection/ports/ProjectSnapshotReader.ts",
+        "src/connection/ports/RepositoryConfigStore.ts"
+      ],
+      "exports": [
+        "GitHubRepositoryPreflight",
+        "inspectGitHubRepositoryPreflightAsync",
+        "PreflightError"
+      ]
+    },
+    {
+      "path": "src/connection/services/publishGitHubProjectSnapshotAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/ProjectSnapshot.ts",
+        "src/connection/ports/GitHubRepositoryGateway.ts"
+      ],
+      "exports": ["GitHubSnapshotPublication", "publishGitHubProjectSnapshotAsync"]
+    },
+    {
+      "path": "src/connection/utils/getProjectSnapshotPaths.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["getProjectSnapshotPaths"]
+    },
+    {
+      "path": "src/index.test.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/index.ts"],
+      "exports": []
+    },
+    {
+      "path": "src/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "connectGitHubRepositoryAsync",
+        "GitHubRepositoryConnectionFailure",
+        "GitHubRepositoryConnectionOptions",
+        "GitHubRepositoryConnectionResult",
+        "GitHubRepositoryConnectionStatus",
+        "GitHubRepositoryVisibility"
+      ]
+    },
+    {
+      "path": "src/metadata/ghPackageMetadata.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["ghPackageMetadata"]
+    }
+  ],
+  "exports": [
+    {
+      "name": "connectGitHubRepositoryAsync",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "line": 27,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["GitHubRepositoryConnectionOptions", "GitHubRepositoryConnectionResult"],
+      "signatures": [
+        {
+          "label": "(options?: GitHubRepositoryConnectionOptions, dependencies?: GitHubRepositoryConnectionDependencies) => Promise<GitHubRepositoryConnectionResult>",
+          "parameters": [
+            {
+              "name": "dependencies",
+              "type": "GitHubRepositoryConnectionDependencies",
+              "required": false,
+              "description": null
+            },
+            {
+              "name": "options",
+              "type": "GitHubRepositoryConnectionOptions",
+              "required": false,
+              "description": null
+            }
+          ],
+          "returnType": "Promise<GitHubRepositoryConnectionResult>",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GitHubRepositoryConnectionFailure",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "line": 18,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "code",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "message",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "repository",
+          "kind": "property",
+          "type": "GitHubRepositoryConnectionIdentity | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "stage",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "status",
+          "kind": "property",
+          "type": "GitHubRepositoryConnectionFailureKind",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "GitHubRepositoryConnectionOptions",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["GitHubRepositoryVisibility"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "name",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "owner",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "projectPath",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "visibility",
+          "kind": "property",
+          "type": "GitHubRepositoryVisibility | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "GitHubRepositoryConnectionResult",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "line": 26,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GitHubRepositoryConnectionStatus",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "line": 1,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "GitHubRepositoryVisibility",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "line": 1,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    }
+  ],
+  "components": [],
+  "sourceFunctions": [
+    {
+      "name": "parseConnectCommandOptions",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/cli/commands/connect/parseConnectCommandOptions.ts",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "runConnectCommandAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "writeResult",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "createGhRuntimeProvider",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "line": 28,
+        "column": 1
+      }
+    },
+    {
+      "name": "createAppManifestRepositoryConfigStore",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "readManifestAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
+      "name": "updateRepositoryAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
+      "name": "getErrorMessage",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "line": 68,
+        "column": 1
+      }
+    },
+    {
+      "name": "createGhCliGitHubRepositoryGateway",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
+      "name": "createGhRunner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 87,
+        "column": 1
+      }
+    },
+    {
+      "name": "assertSafeArguments",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 126,
+        "column": 1
+      }
+    },
+    {
+      "name": "inspectRepositoryAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 134,
+        "column": 1
+      }
+    },
+    {
+      "name": "initializeBootstrapAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 183,
+        "column": 1
+      }
+    },
+    {
+      "name": "publishSnapshotAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 203,
+        "column": 1
+      }
+    },
+    {
+      "name": "verifyPublishedSnapshotAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 255,
+        "column": 1
+      }
+    },
+    {
+      "name": "readRemoteManifestAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 287,
+        "column": 1
+      }
+    },
+    {
+      "name": "readRemoteTextFileAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "line": 307,
+        "column": 1
+      }
+    },
+    {
+      "name": "createLocalProjectSnapshotReader",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 29,
+        "column": 1
+      }
+    },
+    {
+      "name": "readAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 34,
+        "column": 1
+      }
+    },
+    {
+      "name": "readIgnoreMatcher",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 66,
+        "column": 1
+      }
+    },
+    {
+      "name": "visitDirectory",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 80,
+        "column": 1
+      }
+    },
+    {
+      "name": "isHardExcluded",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 117,
+        "column": 1
+      }
+    },
+    {
+      "name": "isSecretPath",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 123,
+        "column": 1
+      }
+    },
+    {
+      "name": "createEntry",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 129,
+        "column": 1
+      }
+    },
+    {
+      "name": "isMissingFile",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 140,
+        "column": 1
+      }
+    },
+    {
+      "name": "getErrorMessage",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "line": 145,
+        "column": 1
+      }
+    },
+    {
+      "name": "runGhJsonAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "tryGhJsonAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 24,
+        "column": 1
+      }
+    },
+    {
+      "name": "getGhNestedSha",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 37,
+        "column": 1
+      }
+    },
+    {
+      "name": "isGhNotFound",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 44,
+        "column": 1
+      }
+    },
+    {
+      "name": "sanitizeGhError",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 49,
+        "column": 1
+      }
+    },
+    {
+      "name": "isRecord",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 54,
+        "column": 1
+      }
+    },
+    {
+      "name": "isString",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/adapters/ghCliJson.ts",
+        "line": 59,
+        "column": 1
+      }
+    },
+    {
+      "name": "connectGitHubRepositoryAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "line": 27,
+        "column": 1
+      }
+    },
+    {
+      "name": "finishAlreadyConnectedAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "line": 64,
+        "column": 1
+      }
+    },
+    {
+      "name": "publishConnectionAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "line": 92,
+        "column": 1
+      }
+    },
+    {
+      "name": "toFailure",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "line": 113,
+        "column": 1
+      }
+    },
+    {
+      "name": "inspectGitHubRepositoryPreflightAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "line": 25,
+        "column": 1
+      }
+    },
+    {
+      "name": "validateName",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "line": 76,
+        "column": 1
+      }
+    },
+    {
+      "name": "matchesIdentity",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "line": 86,
+        "column": 1
+      }
+    },
+    {
+      "name": "validateRemoteState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "line": 99,
+        "column": 1
+      }
+    },
+    {
+      "name": "publishGitHubProjectSnapshotAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts",
+        "line": 13,
+        "column": 1
+      }
+    },
+    {
+      "name": "getProjectSnapshotPaths",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/connection/utils/getProjectSnapshotPaths.ts",
+        "line": 2,
+        "column": 1
+      }
+    }
+  ],
+  "sequenceScenarios": [
+    {
+      "kind": "export",
+      "name": "connectGitHubRepositoryAsync",
+      "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+      "symbolName": "connectGitHubRepositoryAsync",
+      "description": null,
+      "isReadme": false
+    }
+  ],
+  "graphs": {
+    "imports": [
+      {
+        "fromPath": "src/index.test.ts",
+        "toPath": "src/index.ts",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/cli/index.ts",
+        "toPath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "sourcePath": "src/cli/index.ts"
+      },
+      {
+        "fromPath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "toPath": "src/metadata/ghPackageMetadata.ts",
+        "sourcePath": "src/cli/provider/createGhRuntimeProvider.ts"
+      },
+      {
+        "fromPath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "toPath": "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "sourcePath": "src/cli/provider/createGhRuntimeProvider.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toPath": "src/connection/utils/getProjectSnapshotPaths.ts",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toPath": "src/connection/adapters/ghCliJson.ts",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshotEntry.ts",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromPath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "toPath": "src/connection/ports/ProjectSnapshotReader.ts",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "toPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "toPath": "src/connection/ports/ProjectSnapshotReader.ts",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "sourcePath": "src/connection/definitions/index.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/connection/definitions/index.ts"
+      },
+      {
+        "fromPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshotEntry.ts",
+        "sourcePath": "src/connection/definitions/ProjectSnapshot.ts"
+      },
+      {
+        "fromPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "sourcePath": "src/connection/ports/GitHubRepositoryGateway.ts"
+      },
+      {
+        "fromPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/ports/GitHubRepositoryGateway.ts"
+      },
+      {
+        "fromPath": "src/connection/ports/ProjectSnapshotReader.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/ports/ProjectSnapshotReader.ts"
+      },
+      {
+        "fromPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/connection/ports/RepositoryConfigStore.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "toPath": "src/connection/definitions/index.ts",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "toPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "toPath": "src/connection/ports/ProjectSnapshotReader.ts",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
+        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts",
+        "toPath": "src/connection/definitions/ProjectSnapshot.ts",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts",
+        "toPath": "src/connection/ports/GitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromPath": "src/cli/commands/connect/parseConnectCommandOptions.ts",
+        "toPath": "src/cli/commands/connect/definitions/ConnectCommandOptions.ts",
+        "sourcePath": "src/cli/commands/connect/parseConnectCommandOptions.ts"
+      },
+      {
+        "fromPath": "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromPath": "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromPath": "src/cli/commands/connect/runConnectCommandAsync.ts",
+        "toPath": "src/cli/commands/connect/parseConnectCommandOptions.ts",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromPath": "src/cli/commands/connect/definitions/ConnectCommandOptions.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "sourcePath": "src/cli/commands/connect/definitions/ConnectCommandOptions.ts"
+      }
+    ],
+    "calls": [
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/cli/index.ts",
+        "toSymbol": "createGhRuntimeProvider",
+        "callExpression": "createGhRuntimeProvider",
+        "sourcePath": "src/cli/index.ts"
+      },
+      {
+        "fromSymbol": "readManifestAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "readManifestAsync",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "readManifestAsync",
+        "toSymbol": "getErrorMessage",
+        "callExpression": "getErrorMessage",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "readManifestAsync",
+        "toSymbol": "parseAppManifest",
+        "callExpression": "parseAppManifest",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "updateRepositoryAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "updateRepositoryAsync",
+        "toSymbol": "readManifestAsync",
+        "callExpression": "readManifestAsync",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "updateRepositoryAsync",
+        "toSymbol": "writeFile",
+        "callExpression": "writeFile",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "updateRepositoryAsync",
+        "toSymbol": "rename",
+        "callExpression": "rename",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "updateRepositoryAsync",
+        "toSymbol": "getErrorMessage",
+        "callExpression": "getErrorMessage",
+        "sourcePath": "src/connection/adapters/createAppManifestRepositoryConfigStore.ts"
+      },
+      {
+        "fromSymbol": "createGhCliGitHubRepositoryGateway",
+        "toSymbol": "createGhRunner",
+        "callExpression": "createGhRunner",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "assertAvailableAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "assertAuthenticatedAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "getAuthenticatedOwnerAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "getAuthenticatedOwnerAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "inspectRepositoryAsync",
+        "callExpression": "inspectRepositoryAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "createRepositoryAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "initializeBootstrapAsync",
+        "toSymbol": "initializeBootstrapAsync",
+        "callExpression": "initializeBootstrapAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "publishSnapshotAsync",
+        "toSymbol": "publishSnapshotAsync",
+        "callExpression": "publishSnapshotAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "verifyPublishedSnapshotAsync",
+        "toSymbol": "verifyPublishedSnapshotAsync",
+        "callExpression": "verifyPublishedSnapshotAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "setDefaultBranchAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "deleteBootstrapAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "deleteBootstrapAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "deleteBootstrapAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "assertSafeArguments",
+        "callExpression": "assertSafeArguments",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "spawn",
+        "callExpression": "spawn",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "reject",
+        "callExpression": "reject",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "sanitizeGhError",
+        "callExpression": "sanitizeGhError",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "isGhNotFound",
+        "callExpression": "isGhNotFound",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "tryGhJsonAsync",
+        "callExpression": "tryGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "getGhNestedSha",
+        "callExpression": "getGhNestedSha",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "readRemoteManifestAsync",
+        "callExpression": "readRemoteManifestAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "inspectRepositoryAsync",
+        "toSymbol": "readRemoteTextFileAsync",
+        "callExpression": "readRemoteTextFileAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "initializeBootstrapAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "initializeBootstrapAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "initializeBootstrapAsync",
+        "toSymbol": "getGhNestedSha",
+        "callExpression": "getGhNestedSha",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "publishSnapshotAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "publishSnapshotAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "publishSnapshotAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "verifyPublishedSnapshotAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "verifyPublishedSnapshotAsync",
+        "toSymbol": "getGhNestedSha",
+        "callExpression": "getGhNestedSha",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "verifyPublishedSnapshotAsync",
+        "toSymbol": "readRemoteManifestAsync",
+        "callExpression": "readRemoteManifestAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "verifyPublishedSnapshotAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "verifyPublishedSnapshotAsync",
+        "toSymbol": "getProjectSnapshotPaths",
+        "callExpression": "getProjectSnapshotPaths",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "readRemoteManifestAsync",
+        "toSymbol": "tryGhJsonAsync",
+        "callExpression": "tryGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "readRemoteManifestAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "readRemoteTextFileAsync",
+        "toSymbol": "tryGhJsonAsync",
+        "callExpression": "tryGhJsonAsync",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "readRemoteTextFileAsync",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+      },
+      {
+        "fromSymbol": "readAsync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readAsync",
+        "toSymbol": "lstat",
+        "callExpression": "lstat",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readAsync",
+        "toSymbol": "readIgnoreMatcher",
+        "callExpression": "readIgnoreMatcher",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readAsync",
+        "toSymbol": "visitDirectory",
+        "callExpression": "visitDirectory",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readIgnoreMatcher",
+        "toSymbol": "ignore",
+        "callExpression": "ignore",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readIgnoreMatcher",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readIgnoreMatcher",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readIgnoreMatcher",
+        "toSymbol": "isMissingFile",
+        "callExpression": "isMissingFile",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "readIgnoreMatcher",
+        "toSymbol": "getErrorMessage",
+        "callExpression": "getErrorMessage",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "readdir",
+        "callExpression": "readdir",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "relative",
+        "callExpression": "relative",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "lstat",
+        "callExpression": "lstat",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "isSecretPath",
+        "callExpression": "isSecretPath",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "isHardExcluded",
+        "callExpression": "isHardExcluded",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "visitDirectory",
+        "callExpression": "visitDirectory",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "visitDirectory",
+        "toSymbol": "createEntry",
+        "callExpression": "createEntry",
+        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+      },
+      {
+        "fromSymbol": "runGhJsonAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "runner.runAsync",
+        "sourcePath": "src/connection/adapters/ghCliJson.ts"
+      },
+      {
+        "fromSymbol": "tryGhJsonAsync",
+        "toSymbol": "runGhJsonAsync",
+        "callExpression": "runGhJsonAsync",
+        "sourcePath": "src/connection/adapters/ghCliJson.ts"
+      },
+      {
+        "fromSymbol": "tryGhJsonAsync",
+        "toSymbol": "isGhNotFound",
+        "callExpression": "isGhNotFound",
+        "sourcePath": "src/connection/adapters/ghCliJson.ts"
+      },
+      {
+        "fromSymbol": "getGhNestedSha",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/connection/adapters/ghCliJson.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "createGhCliGitHubRepositoryGateway",
+        "callExpression": "createGhCliGitHubRepositoryGateway",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "createLocalProjectSnapshotReader",
+        "callExpression": "createLocalProjectSnapshotReader",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "createAppManifestRepositoryConfigStore",
+        "callExpression": "createAppManifestRepositoryConfigStore",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "callExpression": "inspectGitHubRepositoryPreflightAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "toFailure",
+        "callExpression": "toFailure",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "finishAlreadyConnectedAsync",
+        "callExpression": "finishAlreadyConnectedAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toSymbol": "publishConnectionAsync",
+        "callExpression": "publishConnectionAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "finishAlreadyConnectedAsync",
+        "toSymbol": "deleteBootstrapAsync",
+        "callExpression": "gateway.deleteBootstrapAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "publishConnectionAsync",
+        "toSymbol": "updateRepositoryAsync",
+        "callExpression": "configStore.updateRepositoryAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "publishConnectionAsync",
+        "toSymbol": "createRepositoryAsync",
+        "callExpression": "gateway.createRepositoryAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "publishConnectionAsync",
+        "toSymbol": "publishGitHubProjectSnapshotAsync",
+        "callExpression": "publishGitHubProjectSnapshotAsync",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "assertAvailableAsync",
+        "callExpression": "gateway.assertAvailableAsync",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "assertAuthenticatedAsync",
+        "callExpression": "gateway.assertAuthenticatedAsync",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "readManifestAsync",
+        "callExpression": "configStore.readManifestAsync",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "getAuthenticatedOwnerAsync",
+        "callExpression": "gateway.getAuthenticatedOwnerAsync",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "validateName",
+        "callExpression": "validateName",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "matchesIdentity",
+        "callExpression": "matchesIdentity",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "readAsync",
+        "callExpression": "snapshotReader.readAsync",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "inspectRepositoryAsync",
+        "callExpression": "gateway.inspectRepositoryAsync",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
+        "toSymbol": "validateRemoteState",
+        "callExpression": "validateRemoteState",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "validateRemoteState",
+        "toSymbol": "matchesIdentity",
+        "callExpression": "matchesIdentity",
+        "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
+      },
+      {
+        "fromSymbol": "publishGitHubProjectSnapshotAsync",
+        "toSymbol": "initializeBootstrapAsync",
+        "callExpression": "gateway.initializeBootstrapAsync",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromSymbol": "publishGitHubProjectSnapshotAsync",
+        "toSymbol": "publishSnapshotAsync",
+        "callExpression": "gateway.publishSnapshotAsync",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromSymbol": "publishGitHubProjectSnapshotAsync",
+        "toSymbol": "verifyPublishedSnapshotAsync",
+        "callExpression": "gateway.verifyPublishedSnapshotAsync",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromSymbol": "publishGitHubProjectSnapshotAsync",
+        "toSymbol": "setDefaultBranchAsync",
+        "callExpression": "gateway.setDefaultBranchAsync",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromSymbol": "publishGitHubProjectSnapshotAsync",
+        "toSymbol": "deleteBootstrapAsync",
+        "callExpression": "gateway.deleteBootstrapAsync",
+        "sourcePath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
+      },
+      {
+        "fromSymbol": "runConnectCommandAsync",
+        "toSymbol": "parseConnectCommandOptions",
+        "callExpression": "parseConnectCommandOptions",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromSymbol": "runConnectCommandAsync",
+        "toSymbol": "stderr",
+        "callExpression": "stderr",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromSymbol": "runConnectCommandAsync",
+        "toSymbol": "connectGitHubRepositoryAsync",
+        "callExpression": "connectGitHubRepositoryAsync",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromSymbol": "runConnectCommandAsync",
+        "toSymbol": "writeResult",
+        "callExpression": "writeResult",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromSymbol": "writeResult",
+        "toSymbol": "stdout",
+        "callExpression": "stdout",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      },
+      {
+        "fromSymbol": "writeResult",
+        "toSymbol": "stderr",
+        "callExpression": "stderr",
+        "sourcePath": "src/cli/commands/connect/runConnectCommandAsync.ts"
+      }
+    ],
+    "typeReferences": [
+      {
+        "fromSymbol": "GitHubRepositoryConnectionOptions",
+        "toType": "GitHubRepositoryVisibility",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts"
+      },
+      {
+        "fromSymbol": "GitHubRepositoryConnectionFailure",
+        "toType": "GitHubRepositoryConnectionFailureKind",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts"
+      },
+      {
+        "fromSymbol": "GitHubRepositoryConnectionFailure",
+        "toType": "GitHubRepositoryConnectionIdentity",
+        "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toType": "GitHubRepositoryConnectionDependencies",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toType": "GitHubRepositoryConnectionOptions",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectGitHubRepositoryAsync",
+        "toType": "GitHubRepositoryConnectionResult",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      }
+    ],
+    "componentComposition": []
+  }
+}

@@ -2,6 +2,6 @@ import { expect, test } from 'bun:test';
 
 import * as packageApi from './index.js';
 
-test('keeps the bootstrap public API intentionally empty', () => {
-  expect(Object.keys(packageApi)).toEqual([]);
+test('exports only the intentional public API', () => {
+  expect(Object.keys(packageApi).sort()).toEqual(['connectGitHubRepositoryAsync']);
 });

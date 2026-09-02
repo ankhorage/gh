@@ -1,0 +1,195 @@
+[
+  {
+    "name": "connectGitHubRepositoryAsync",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+    "sourceLocation": {
+      "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+      "line": 27,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["GitHubRepositoryConnectionOptions", "GitHubRepositoryConnectionResult"],
+    "signatures": [
+      {
+        "label": "(options?: GitHubRepositoryConnectionOptions, dependencies?: GitHubRepositoryConnectionDependencies) => Promise<GitHubRepositoryConnectionResult>",
+        "parameters": [
+          {
+            "name": "dependencies",
+            "type": "GitHubRepositoryConnectionDependencies",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "options",
+            "type": "GitHubRepositoryConnectionOptions",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "Promise<GitHubRepositoryConnectionResult>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GitHubRepositoryConnectionFailure",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+    "sourceLocation": {
+      "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "line": 18,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "code",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "message",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "repository",
+        "kind": "property",
+        "type": "GitHubRepositoryConnectionIdentity | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "stage",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "GitHubRepositoryConnectionFailureKind",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GitHubRepositoryConnectionOptions",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+    "sourceLocation": {
+      "filePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["GitHubRepositoryVisibility"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "owner",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "projectPath",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "visibility",
+        "kind": "property",
+        "type": "GitHubRepositoryVisibility | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GitHubRepositoryConnectionResult",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+    "sourceLocation": {
+      "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GitHubRepositoryConnectionStatus",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+    "sourceLocation": {
+      "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "line": 1,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GitHubRepositoryVisibility",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+    "sourceLocation": {
+      "filePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+      "line": 1,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  }
+]
