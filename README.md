@@ -3,9 +3,40 @@
 
 # @ankhorage/gh
 
-![license: MIT](./paradox/badges/license.svg) ![npm: v0.1.0](./paradox/badges/npm.svg) ![runtime: bun](./paradox/badges/runtime.svg) ![typescript: strict](./paradox/badges/typescript.svg) ![eslint: checked](./paradox/badges/eslint.svg) ![prettier: checked](./paradox/badges/prettier.svg) ![build: checked](./paradox/badges/build.svg) ![tests: checked](./paradox/badges/tests.svg) ![docs: paradox](./paradox/badges/docs.svg)
+![license: MIT](./paradox/badges/license.svg) ![npm: v0.2.0](./paradox/badges/npm.svg) ![runtime: bun](./paradox/badges/runtime.svg) ![typescript: strict](./paradox/badges/typescript.svg) ![eslint: checked](./paradox/badges/eslint.svg) ![prettier: checked](./paradox/badges/prettier.svg) ![build: checked](./paradox/badges/build.svg) ![tests: checked](./paradox/badges/tests.svg) ![docs: paradox](./paradox/badges/docs.svg)
 
 Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.
+
+## Usage
+
+### Connect a project folder to GitHub
+
+`@ankhorage/gh` connects a project directory to GitHub using the local,
+authenticated `gh` CLI. It creates a missing repository, publishes the
+project snapshot to `main`, and refuses unrelated existing repositories.
+
+See [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete
+programmatic example.
+
+Source: `src/readme-usage.ts`
+
+```ts
+import { connectGitHubRepositoryAsync } from './index.js';
+
+const result = await connectGitHubRepositoryAsync({
+  projectPath: './my-project',
+  owner: 'ankhorage',
+  name: 'my-project',
+  visibility: 'private',
+});
+
+if (result.status === 'conflict' || result.status === 'recoverable-failure') {
+  console.error(`${result.status}: ${result.message}`);
+  process.exitCode = 1;
+} else {
+  console.log(JSON.stringify(result));
+}
+```
 
 ## Generated documentation
 
