@@ -1,14 +1,14 @@
 import { lstat, readdir, readFile } from 'node:fs/promises';
 import { join, relative, resolve, sep } from 'node:path';
 
-import type { AppManifest } from '@ankhorage/contracts';
 import ignore, { type Ignore } from 'ignore';
 
+import type { GitHubRepositoryConfig } from '../definitions/GitHubRepositoryConfig.js';
 import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type { ProjectSnapshotEntry } from '../definitions/ProjectSnapshotEntry.js';
 import type { ProjectSnapshotReader } from '../ports/ProjectSnapshotReader.js';
 
-const CONFIG_FILE_NAME = 'ankh.config.json';
+const CONFIG_FILE_PATH = '.ankhorage/gh.json';
 const HARD_EXCLUDED_DIRECTORIES = new Set([
   '.git',
   'node_modules',
@@ -33,7 +33,7 @@ export function createLocalProjectSnapshotReader(): ProjectSnapshotReader {
 /** Read a complete safe project snapshot rooted only at the supplied project directory. */
 async function readAsync(
   projectPath: string,
-  manifestOverride: AppManifest,
+  configOverride: GitHubRepositoryConfig,
 ): Promise<ProjectSnapshot> {
   const root = resolve(projectPath);
   const rootStat = await lstat(root);
@@ -43,21 +43,21 @@ async function readAsync(
   const matcher = await readIgnoreMatcher(root);
   const entries: ProjectSnapshotEntry[] = [];
   await visitDirectory(root, root, matcher, entries);
-  const manifestPath = entries.find((entry) => entry.path === CONFIG_FILE_NAME);
-  const serializedManifest = `${JSON.stringify(manifestOverride, null, 2)}\n`;
-  const manifestEntry: ProjectSnapshotEntry = {
-    path: CONFIG_FILE_NAME,
-    mode: manifestPath?.mode ?? '100644',
-    content: serializedManifest,
+  const configPath = entries.find((entry) => entry.path === CONFIG_FILE_PATH);
+  const serializedConfig = `${JSON.stringify(configOverride, null, 2)}\n`;
+  const configEntry: ProjectSnapshotEntry = {
+    path: CONFIG_FILE_PATH,
+    mode: configPath?.mode ?? '100644',
+    content: serializedConfig,
     encoding: 'utf-8',
   };
-  const withoutManifest = entries.filter((entry) => entry.path !== CONFIG_FILE_NAME);
-  const allEntries = [...withoutManifest, manifestEntry].sort((left, right) =>
+  const withoutConfig = entries.filter((entry) => entry.path !== CONFIG_FILE_PATH);
+  const allEntries = [...withoutConfig, configEntry].sort((left, right) =>
     left.path.localeCompare(right.path),
   );
   return Object.freeze({
     projectPath: root,
-    manifest: manifestOverride,
+    config: configOverride,
     entries: Object.freeze(allEntries),
   });
 }

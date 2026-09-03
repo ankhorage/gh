@@ -1,5 +1,4 @@
-import type { AppManifest } from '@ankhorage/contracts';
-
+import type { GitHubRepositoryConfig } from '../definitions/GitHubRepositoryConfig.js';
 import type { GitHubRepositoryVisibility } from '../definitions/GitHubRepositoryVisibility.js';
 import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 
@@ -19,7 +18,7 @@ export interface GitHubRemoteRepository {
   readonly visibility?: GitHubRepositoryVisibility;
   readonly defaultBranch?: string;
   readonly mainCommitSha?: string;
-  readonly mainManifest?: AppManifest;
+  readonly mainConfig?: GitHubRepositoryConfig;
   readonly bootstrapCommitSha?: string;
   readonly bootstrapMarker?: string;
 }

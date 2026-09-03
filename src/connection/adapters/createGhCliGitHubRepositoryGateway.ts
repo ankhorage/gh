@@ -1,7 +1,6 @@
 import { spawn } from 'node:child_process';
 
-import type { AppManifest } from '@ankhorage/contracts';
-
+import type { GitHubRepositoryConfig } from '../definitions/GitHubRepositoryConfig.js';
 import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type {
   GitHubBootstrap,
@@ -158,8 +157,8 @@ async function inspectRepositoryAsync(
   ]);
   const mainCommitSha = getGhNestedSha(mainRef);
   const bootstrapCommitSha = getGhNestedSha(bootstrapRef);
-  const mainManifest = mainCommitSha
-    ? await readRemoteManifestAsync(runner, prefix, mainCommitSha)
+  const mainConfig = mainCommitSha
+    ? await readRemoteConfigAsync(runner, prefix, mainCommitSha)
     : undefined;
   const bootstrapMarkerValue = bootstrapCommitSha
     ? await readRemoteTextFileAsync(runner, prefix, '.ankhorage-bootstrap', bootstrapBranch)
@@ -173,7 +172,7 @@ async function inspectRepositoryAsync(
     defaultBranch:
       typeof repository.default_branch === 'string' ? repository.default_branch : undefined,
     mainCommitSha,
-    mainManifest,
+    mainConfig,
     bootstrapCommitSha,
     bootstrapMarker: bootstrapMarkerValue,
   };
@@ -262,9 +261,9 @@ async function verifyPublishedSnapshotAsync(
   const ref = await runGhJsonAsync(runner, ['api', `${prefix}/git/ref/heads/main`]);
   if (getGhNestedSha(ref) !== commitSha)
     throw new Error('Published main ref does not match the app commit.');
-  const manifest = await readRemoteManifestAsync(runner, prefix, commitSha);
-  if (JSON.stringify(manifest) !== JSON.stringify(snapshot.manifest)) {
-    throw new Error('Published manifest does not match the prospective manifest.');
+  const config = await readRemoteConfigAsync(runner, prefix, commitSha);
+  if (JSON.stringify(config) !== JSON.stringify(snapshot.config)) {
+    throw new Error('Published gh config does not match the prospective config.');
   }
   const tree = await runGhJsonAsync(runner, [
     'api',
@@ -283,21 +282,21 @@ async function verifyPublishedSnapshotAsync(
   }
 }
 
-/** Read and validate the remote canonical manifest from a commit. */
-async function readRemoteManifestAsync(
+/** Read the remote gh configuration from a commit. */
+async function readRemoteConfigAsync(
   runner: GhRunner,
   prefix: string,
   ref: string,
-): Promise<AppManifest | undefined> {
+): Promise<GitHubRepositoryConfig | undefined> {
   const value = await tryGhJsonAsync(runner, [
     'api',
-    `${prefix}/contents/ankh.config.json?ref=${ref}`,
+    `${prefix}/contents/.ankhorage/gh.json?ref=${ref}`,
   ]);
   if (!isRecord(value) || typeof value.content !== 'string') return undefined;
   try {
     return JSON.parse(
       Buffer.from(value.content.replaceAll('\n', ''), 'base64').toString('utf8'),
-    ) as AppManifest;
+    ) as GitHubRepositoryConfig;
   } catch {
     return undefined;
   }

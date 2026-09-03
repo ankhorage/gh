@@ -13,7 +13,8 @@ Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI
 
 `@ankhorage/gh` connects a project directory to GitHub using the local,
 authenticated `gh` CLI. It creates a missing repository, publishes the
-project snapshot to `main`, and refuses unrelated existing repositories.
+project snapshot to `main`, stores only its repository slice in
+`.ankhorage/gh.json`, and refuses unrelated existing repositories.
 
 See [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete
 programmatic example.
@@ -21,7 +22,7 @@ programmatic example.
 Source: `src/readme-usage.ts`
 
 ```ts
-import { connectGitHubRepositoryAsync } from './index.js';
+import { connectGitHubRepositoryAsync } from '@ankhorage/gh';
 
 const result = await connectGitHubRepositoryAsync({
   projectPath: './my-project',

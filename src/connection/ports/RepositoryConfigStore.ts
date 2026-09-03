@@ -1,9 +1,8 @@
-import type { AppManifest } from '@ankhorage/contracts';
-
+import type { GitHubRepositoryConfig } from '../definitions/GitHubRepositoryConfig.js';
 import type { GitHubRepositoryConnectionIdentity } from '../definitions/GitHubRepositoryConnectionResult.js';
 
 export interface RepositoryConfigStore {
-  readManifestAsync(projectPath: string): Promise<AppManifest>;
+  readConfigAsync(projectPath: string): Promise<GitHubRepositoryConfig>;
   updateRepositoryAsync(
     projectPath: string,
     repository: GitHubRepositoryConnectionIdentity,
