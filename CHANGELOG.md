@@ -1,5 +1,11 @@
 # @ankhorage/gh
 
+## 0.3.0
+
+### Minor Changes
+
+- 554bdf3: Make GitHub connection configuration standalone by using the shared `RepositoryConfig` contract in `.ankhorage/gh.json` instead of requiring a complete `ankh.config.json`.
+
 ## 0.2.1
 
 ### Patch Changes
