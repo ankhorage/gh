@@ -1,9 +1,8 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import type { AppRepositoryConfig } from '@ankhorage/contracts';
+import type { RepositoryConfig } from '@ankhorage/contracts/repository';
 
-import type { GitHubRepositoryConfig } from '../definitions/GitHubRepositoryConfig.js';
 import type { GitHubRepositoryConnectionIdentity } from '../definitions/GitHubRepositoryConnectionResult.js';
 import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
 
@@ -16,14 +15,14 @@ export function createGitHubRepositoryConfigStore(): RepositoryConfigStore {
 }
 
 /** Read gh configuration, treating an absent file as an unconfigured project. */
-async function readConfigAsync(projectPath: string): Promise<GitHubRepositoryConfig> {
+async function readConfigAsync(projectPath: string): Promise<RepositoryConfig | undefined> {
   const configPath = getConfigPath(projectPath);
   try {
     const parsed: unknown = JSON.parse(await readFile(configPath, 'utf8'));
     if (!isConfig(parsed)) throw new Error(`Invalid ${getRelativeConfigPath()}.`);
     return parsed;
   } catch (error) {
-    if (isMissingFile(error)) return {};
+    if (isMissingFile(error)) return undefined;
     if (error instanceof SyntaxError) {
       throw new Error(`Invalid ${getRelativeConfigPath()}: invalid JSON.`, { cause: error });
     }
@@ -42,7 +41,7 @@ async function updateRepositoryAsync(
   const configPath = getConfigPath(projectPath);
   const tempPath = `${configPath}.tmp`;
   await mkdir(directory, { recursive: true, mode: 0o700 });
-  await writeFile(tempPath, `${JSON.stringify({ repository }, null, 2)}\n`, {
+  await writeFile(tempPath, `${JSON.stringify(repository, null, 2)}\n`, {
     encoding: 'utf8',
     mode: 0o600,
   });
@@ -66,12 +65,9 @@ function getRelativeConfigPath(): string {
 }
 
 /** Validate the intentionally small gh-owned configuration shape. */
-function isConfig(value: unknown): value is GitHubRepositoryConfig {
+function isConfig(value: unknown): value is RepositoryConfig {
   if (typeof value !== 'object' || value === null) return false;
-  const { repository } = value as { repository?: unknown };
-  if (repository === undefined) return true;
-  if (typeof repository !== 'object' || repository === null) return false;
-  const candidate = repository as Partial<AppRepositoryConfig>;
+  const candidate = value as Partial<RepositoryConfig>;
   return (
     candidate.provider === 'github' &&
     typeof candidate.owner === 'string' &&

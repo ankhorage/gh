@@ -68,10 +68,10 @@ async function finishAlreadyConnectedAsync(
   remote: GitHubRemoteRepository,
 ): Promise<GitHubRepositoryConnectionResult | undefined> {
   if (
-    !remote.mainConfig?.repository ||
+    !remote.mainConfig ||
     !remote.mainCommitSha ||
-    remote.mainConfig.repository.owner !== identity.owner ||
-    remote.mainConfig.repository.name !== identity.name
+    remote.mainConfig.owner !== identity.owner ||
+    remote.mainConfig.name !== identity.name
   ) {
     return undefined;
   }

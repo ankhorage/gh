@@ -1,7 +1,8 @@
 import { basename, resolve } from 'node:path';
 
+import type { RepositoryConfig } from '@ankhorage/contracts/repository';
+
 import type {
-  GitHubRepositoryConfig,
   GitHubRepositoryConnectionIdentity,
   GitHubRepositoryConnectionOptions,
 } from '../definitions/index.js';
@@ -17,7 +18,7 @@ import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
 export interface GitHubRepositoryPreflight {
   readonly target: GitHubRepositoryTarget;
   readonly identity: GitHubRepositoryConnectionIdentity;
-  readonly config: GitHubRepositoryConfig;
+  readonly config?: RepositoryConfig;
   readonly snapshot: ProjectSnapshot;
   readonly remote: GitHubRemoteRepository;
 }
@@ -34,7 +35,7 @@ export async function inspectGitHubRepositoryPreflightAsync(
   await gateway.assertAuthenticatedAsync();
   const config = await configStore.readConfigAsync(projectPath);
   const owner = options.owner ?? (await gateway.getAuthenticatedOwnerAsync());
-  const name = options.name ?? config.repository?.name ?? getDefaultRepositoryName(projectPath);
+  const name = options.name ?? config?.name ?? getDefaultRepositoryName(projectPath);
   validateName(owner, name);
   const visibility = options.visibility ?? 'private';
   const identity = {
@@ -43,16 +44,14 @@ export async function inspectGitHubRepositoryPreflightAsync(
     url: `https://github.com/${owner}/${name}`,
     defaultBranch: 'main' as const,
   };
-  if (config.repository && !matchesIdentity(config.repository, identity)) {
+  if (config && !matchesIdentity(config, identity)) {
     throw new PreflightError(
       'conflict',
       'repository-mismatch',
       'Local repository config does not match the requested target.',
     );
   }
-  const prospectiveConfig: GitHubRepositoryConfig = {
-    repository: { provider: 'github', ...identity },
-  };
+  const prospectiveConfig: RepositoryConfig = { provider: 'github', ...identity };
   const snapshot = await snapshotReader.readAsync(projectPath, prospectiveConfig);
   const target: GitHubRepositoryTarget = { ...identity, visibility };
   const remote = await gateway.inspectRepositoryAsync(target);
@@ -84,7 +83,7 @@ function validateName(owner: string, name: string): void {
 
 /** Compare only the canonical identity fields persisted in gh config. */
 function matchesIdentity(
-  repository: GitHubRepositoryConfig['repository'],
+  repository: RepositoryConfig | undefined,
   identity: GitHubRepositoryConnectionIdentity,
 ): boolean {
   return (
@@ -98,11 +97,11 @@ function matchesIdentity(
 /** Reject remote state that cannot be safely resumed or connected. */
 function validateRemoteState(
   remote: GitHubRemoteRepository,
-  config: GitHubRepositoryConfig,
+  config: RepositoryConfig | undefined,
   identity: GitHubRepositoryConnectionIdentity,
   visibility: GitHubRepositoryTarget['visibility'],
 ): void {
-  if (remote.exists && !config.repository) {
+  if (remote.exists && !config) {
     throw new PreflightError(
       'conflict',
       'local-config-missing',
@@ -117,7 +116,7 @@ function validateRemoteState(
     );
   }
   if (remote.exists && remote.mainConfig !== undefined) {
-    if (!matchesIdentity(remote.mainConfig.repository, identity)) {
+    if (!matchesIdentity(remote.mainConfig, identity)) {
       throw new PreflightError(
         'conflict',
         'remote-config-mismatch',
