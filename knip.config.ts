@@ -5,7 +5,9 @@ export default createKnipConfig({
     '.prettierrc.js',
     'eslint.config.mjs',
     'eslint.local.config.mjs',
+    'examples/basic-usage.ts',
     'paradox.config.ts',
     'prettier.local.config.js',
+    'src/readme-usage.ts',
   ],
 });

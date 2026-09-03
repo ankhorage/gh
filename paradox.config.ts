@@ -6,6 +6,9 @@ export default defineParadoxConfig({
     title: '@ankhorage/gh',
     description:
       'Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.',
+    usage: {
+      entrypoints: ['src/readme-usage.ts'],
+    },
   },
   package: {
     entrypoints: ['src/index.ts'],

@@ -62,7 +62,15 @@
   ],
   "usage": null,
   "readmeUsageDescription": null,
-  "readmeUsage": [],
+  "readmeUsage": [
+    {
+      "title": "Connect a project folder to GitHub",
+      "description": "Connect a project folder to GitHub\n\n`@ankhorage/gh` connects a standalone project directory to a GitHub\nrepository using the local, authenticated `gh` CLI. It creates a missing\nrepository, publishes the complete project snapshot to `main`, and safely\nrefuses unrelated existing repositories.\n\nSee [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete\nprogrammatic example.",
+      "language": "ts",
+      "code": "import { connectGitHubRepositoryAsync } from './index.js';\n\nconst result = await connectGitHubRepositoryAsync({\n  projectPath: './my-project',\n  owner: 'ankhorage',\n  name: 'my-project',\n  visibility: 'private',\n});\n\nif (result.status === 'conflict' || result.status === 'recoverable-failure') {\n  console.error(`${result.status}: ${result.message}`);\n  process.exitCode = 1;\n} else {\n  console.log(JSON.stringify(result));\n}",
+      "sourcePath": "src/readme-usage.ts"
+    }
+  ],
   "readmeCli": null,
   "readmeConfig": null,
   "config": null,
@@ -920,6 +928,11 @@
         "sourcePath": "src/index.ts"
       },
       {
+        "fromPath": "src/readme-usage.ts",
+        "toPath": "src/index.ts",
+        "sourcePath": "src/readme-usage.ts"
+      },
+      {
         "fromPath": "src/cli/index.ts",
         "toPath": "src/cli/provider/createGhRuntimeProvider.ts",
         "sourcePath": "src/cli/index.ts"
@@ -1157,6 +1170,12 @@
         "toSymbol": "expect",
         "callExpression": "expect",
         "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/readme-usage.ts",
+        "toSymbol": "connectGitHubRepositoryAsync",
+        "callExpression": "connectGitHubRepositoryAsync",
+        "sourcePath": "src/readme-usage.ts"
       },
       {
         "fromSymbol": "src/cli/index.ts",
