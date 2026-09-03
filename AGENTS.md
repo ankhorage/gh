@@ -6,7 +6,7 @@
 
 Package: `@ankhorage/gh`
 
-Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.
+Standalone typed GitHub integration for connecting any project, powered by the local gh CLI.
 
 ## Current architecture only
 
