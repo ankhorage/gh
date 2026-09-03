@@ -1,5 +1,5 @@
-import { createAppManifestRepositoryConfigStore } from '../adapters/createAppManifestRepositoryConfigStore.js';
 import { createGhCliGitHubRepositoryGateway } from '../adapters/createGhCliGitHubRepositoryGateway.js';
+import { createGitHubRepositoryConfigStore } from '../adapters/createGitHubRepositoryConfigStore.js';
 import { createLocalProjectSnapshotReader } from '../adapters/createLocalProjectSnapshotReader.js';
 import type {
   GitHubRepositoryConnectionDependencies,
@@ -30,7 +30,7 @@ export async function connectGitHubRepositoryAsync(
 ): Promise<GitHubRepositoryConnectionResult> {
   const gateway = dependencies.gateway ?? createGhCliGitHubRepositoryGateway();
   const snapshotReader = dependencies.snapshotReader ?? createLocalProjectSnapshotReader();
-  const configStore = dependencies.configStore ?? createAppManifestRepositoryConfigStore();
+  const configStore = dependencies.configStore ?? createGitHubRepositoryConfigStore();
   let preflight;
   try {
     preflight = await inspectGitHubRepositoryPreflightAsync(
@@ -68,10 +68,10 @@ async function finishAlreadyConnectedAsync(
   remote: GitHubRemoteRepository,
 ): Promise<GitHubRepositoryConnectionResult | undefined> {
   if (
-    !remote.mainManifest?.repository ||
+    !remote.mainConfig ||
     !remote.mainCommitSha ||
-    remote.mainManifest.repository.owner !== identity.owner ||
-    remote.mainManifest.repository.name !== identity.name
+    remote.mainConfig.owner !== identity.owner ||
+    remote.mainConfig.name !== identity.name
   ) {
     return undefined;
   }

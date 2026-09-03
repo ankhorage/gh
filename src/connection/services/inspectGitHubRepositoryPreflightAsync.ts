@@ -1,4 +1,6 @@
-import type { AppManifest } from '@ankhorage/contracts';
+import { basename, resolve } from 'node:path';
+
+import type { RepositoryConfig } from '@ankhorage/contracts/repository';
 
 import type {
   GitHubRepositoryConnectionIdentity,
@@ -16,7 +18,7 @@ import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
 export interface GitHubRepositoryPreflight {
   readonly target: GitHubRepositoryTarget;
   readonly identity: GitHubRepositoryConnectionIdentity;
-  readonly manifest: AppManifest;
+  readonly config?: RepositoryConfig;
   readonly snapshot: ProjectSnapshot;
   readonly remote: GitHubRemoteRepository;
 }
@@ -31,9 +33,9 @@ export async function inspectGitHubRepositoryPreflightAsync(
   const projectPath = options.projectPath ?? process.cwd();
   await gateway.assertAvailableAsync();
   await gateway.assertAuthenticatedAsync();
-  const manifest = await configStore.readManifestAsync(projectPath);
+  const config = await configStore.readConfigAsync(projectPath);
   const owner = options.owner ?? (await gateway.getAuthenticatedOwnerAsync());
-  const name = options.name ?? manifest.metadata.slug;
+  const name = options.name ?? config?.name ?? getDefaultRepositoryName(projectPath);
   validateName(owner, name);
   const visibility = options.visibility ?? 'private';
   const identity = {
@@ -42,22 +44,19 @@ export async function inspectGitHubRepositoryPreflightAsync(
     url: `https://github.com/${owner}/${name}`,
     defaultBranch: 'main' as const,
   };
-  if (manifest.repository && !matchesIdentity(manifest.repository, identity)) {
+  if (config && !matchesIdentity(config, identity)) {
     throw new PreflightError(
       'conflict',
       'repository-mismatch',
       'Local repository config does not match the requested target.',
     );
   }
-  const prospectiveManifest: AppManifest = {
-    ...manifest,
-    repository: { provider: 'github', ...identity },
-  };
-  const snapshot = await snapshotReader.readAsync(projectPath, prospectiveManifest);
+  const prospectiveConfig: RepositoryConfig = { provider: 'github', ...identity };
+  const snapshot = await snapshotReader.readAsync(projectPath, prospectiveConfig);
   const target: GitHubRepositoryTarget = { ...identity, visibility };
   const remote = await gateway.inspectRepositoryAsync(target);
-  validateRemoteState(remote, manifest, identity, visibility);
-  return { target, identity, manifest, snapshot, remote };
+  validateRemoteState(remote, config, identity, visibility);
+  return { target, identity, config, snapshot, remote };
 }
 
 export class PreflightError extends Error {
@@ -82,9 +81,9 @@ function validateName(owner: string, name: string): void {
   }
 }
 
-/** Compare only the canonical identity fields persisted in the manifest. */
+/** Compare only the canonical identity fields persisted in gh config. */
 function matchesIdentity(
-  repository: AppManifest['repository'] | undefined,
+  repository: RepositoryConfig | undefined,
   identity: GitHubRepositoryConnectionIdentity,
 ): boolean {
   return (
@@ -98,11 +97,11 @@ function matchesIdentity(
 /** Reject remote state that cannot be safely resumed or connected. */
 function validateRemoteState(
   remote: GitHubRemoteRepository,
-  manifest: AppManifest,
+  config: RepositoryConfig | undefined,
   identity: GitHubRepositoryConnectionIdentity,
   visibility: GitHubRepositoryTarget['visibility'],
 ): void {
-  if (remote.exists && !manifest.repository) {
+  if (remote.exists && !config) {
     throw new PreflightError(
       'conflict',
       'local-config-missing',
@@ -116,13 +115,18 @@ function validateRemoteState(
       'The existing repository has different visibility.',
     );
   }
-  if (remote.exists && remote.mainManifest !== undefined) {
-    if (!matchesIdentity(remote.mainManifest.repository, identity)) {
+  if (remote.exists && remote.mainConfig !== undefined) {
+    if (!matchesIdentity(remote.mainConfig, identity)) {
       throw new PreflightError(
         'conflict',
-        'remote-manifest-mismatch',
-        'The remote main manifest points to another repository.',
+        'remote-config-mismatch',
+        'The remote gh config points to another repository.',
       );
     }
   }
+}
+
+/** Derive a stable repository name for projects without gh configuration. */
+function getDefaultRepositoryName(projectPath: string): string {
+  return basename(resolve(projectPath));
 }
