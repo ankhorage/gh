@@ -1,5 +1,11 @@
 # @ankhorage/gh
 
+## 0.2.1
+
+### Patch Changes
+
+- f246d47: Add a root usage example and Paradox-generated usage documentation.
+
 ## 0.2.0
 
 ### Minor Changes

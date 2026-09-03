@@ -1,6 +1,6 @@
 {
   "name": "@ankhorage/gh",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Standalone typed GitHub integration for connecting any project, powered by the local gh CLI.",
   "type": "module",
   "license": "MIT",
