@@ -3,18 +3,15 @@
 
 # @ankhorage/gh
 
-Focused, typed GitHub integration for Ankhorage, powered by the local `gh` and `git` CLIs.
+![license: MIT](./paradox/badges/license.svg) ![npm: v0.1.0](./paradox/badges/npm.svg) ![runtime: bun](./paradox/badges/runtime.svg) ![typescript: strict](./paradox/badges/typescript.svg) ![eslint: checked](./paradox/badges/eslint.svg) ![prettier: checked](./paradox/badges/prettier.svg) ![build: checked](./paradox/badges/build.svg) ![tests: checked](./paradox/badges/tests.svg) ![docs: paradox](./paradox/badges/docs.svg)
 
-## Package status
-
-The standalone package and repository boundary are established. The public API and the first GitHub command provider capability will be introduced by the Git Connect implementation issue.
-
-## Ownership
-
-`@ankhorage/gh` owns GitHub-specific repository connection workflows and their typed public contracts.
-
-It does not own generic Git abstractions, Studio UI, the canonical `ankh.config.json` schema, EAS deployment, or store administration.
+Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.
 
 ## Generated documentation
 
-Run `bun run docs` to generate the Paradox documentation bundle.
+- [Interactive documentation app](./paradox/index.html)
+- [Public API reference](./paradox/exports.md)
+- [Component registry](./paradox/components.md)
+- [Architecture overview](./paradox/diagrams/architecture-overview.mmd)
+- [Module relationships](./paradox/diagrams/module-relationships.mmd)
+- [Export graph](./paradox/diagrams/export-graph.mmd)
