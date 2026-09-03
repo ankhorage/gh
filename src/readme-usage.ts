@@ -10,7 +10,7 @@
  *
  * @usage
  */
-import { connectGitHubRepositoryAsync } from './index.js';
+import { connectGitHubRepositoryAsync } from '@ankhorage/gh';
 
 const result = await connectGitHubRepositoryAsync({
   projectPath: './my-project',
