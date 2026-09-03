@@ -1,5 +1,11 @@
 # @ankhorage/gh
 
+## 0.3.1
+
+### Patch Changes
+
+- f548067: Correct the generated usage documentation to import the public package entrypoint.
+
 ## 0.3.0
 
 ### Minor Changes
