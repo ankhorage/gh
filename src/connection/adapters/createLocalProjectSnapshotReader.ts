@@ -8,7 +8,7 @@ import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type { ProjectSnapshotEntry } from '../definitions/ProjectSnapshotEntry.js';
 import type { ProjectSnapshotReader } from '../ports/ProjectSnapshotReader.js';
 
-const CONFIG_FILE_PATH = '.ankhorage/gh.json';
+const CONFIG_FILE_PATH = '.ankhorage/repository.json';
 const HARD_EXCLUDED_DIRECTORIES = new Set([
   '.git',
   'node_modules',

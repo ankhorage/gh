@@ -291,7 +291,7 @@ async function readRemoteConfigAsync(
 ): Promise<RepositoryManifest | undefined> {
   const value = await tryGhJsonAsync(runner, [
     'api',
-    `${prefix}/contents/.ankhorage/gh.json?ref=${ref}`,
+    `${prefix}/contents/.ankhorage/repository.json?ref=${ref}`,
   ]);
   if (!isRecord(value) || typeof value.content !== 'string') return undefined;
   try {
