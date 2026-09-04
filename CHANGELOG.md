@@ -1,4 +1,4 @@
-# @ankhorage/gh
+# @ankhorage/repository
 
 ## 0.4.0
 
