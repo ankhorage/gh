@@ -6,7 +6,7 @@ import {
 
 export interface GhRuntimeProvider {
   readonly id: 'gh';
-  readonly category: 'gh';
+  readonly category: 'repository';
   readonly version: string;
   readonly capabilities: readonly ['gh.connect'];
   readonly commands: readonly [
