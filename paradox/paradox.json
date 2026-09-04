@@ -65,9 +65,9 @@
   "readmeUsage": [
     {
       "title": "Connect a project folder to GitHub",
-      "description": "Connect a project folder to GitHub\n\n`@ankhorage/gh` connects a project directory to GitHub using the local,\nauthenticated `gh` CLI. It creates a missing repository, publishes the\nproject snapshot to `main`, stores only its repository slice in\n`.ankhorage/gh.json`, and refuses unrelated existing repositories.\n\nSee [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete\nprogrammatic example.",
+      "description": "Connect a project folder to GitHub\n\n`@ankhorage/repository` connects a project directory to GitHub using the local,\nauthenticated `gh` CLI. It creates a missing repository, publishes the\nproject snapshot to `main`, stores only its repository slice in\n`.ankhorage/repository.json`, and refuses unrelated existing repositories.\n\nSee [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete\nprogrammatic example.",
       "language": "ts",
-      "code": "import { connectGitHubRepositoryAsync } from '@ankhorage/gh';\n\nconst result = await connectGitHubRepositoryAsync({\n  projectPath: './my-project',\n  owner: 'ankhorage',\n  name: 'my-project',\n  visibility: 'private',\n});\n\nif (result.status === 'conflict' || result.status === 'recoverable-failure') {\n  console.error(`${result.status}: ${result.message}`);\n  process.exitCode = 1;\n} else {\n  console.log(JSON.stringify(result));\n}",
+      "code": "import { connectGitHubRepositoryAsync } from '@ankhorage/repository';\n\nconst result = await connectGitHubRepositoryAsync({\n  projectPath: './my-project',\n  owner: 'ankhorage',\n  name: 'my-project',\n  visibility: 'private',\n});\n\nif (result.status === 'conflict' || result.status === 'recoverable-failure') {\n  console.error(`${result.status}: ${result.message}`);\n  process.exitCode = 1;\n} else {\n  console.log(JSON.stringify(result));\n}",
       "sourcePath": "src/readme-usage.ts"
     }
   ],
@@ -971,6 +971,11 @@
         "fromPath": "src/index.ts",
         "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
         "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/readme-usage.ts",
+        "toPath": "src/index.ts",
+        "sourcePath": "src/readme-usage.ts"
       },
       {
         "fromPath": "src/cli/index.ts",

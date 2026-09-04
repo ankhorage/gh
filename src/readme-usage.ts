@@ -1,17 +1,17 @@
 /***
  * Connect a project folder to GitHub
  *
- * `@ankhorage/gh` connects a project directory to GitHub using the local,
+ * `@ankhorage/repository` connects a project directory to GitHub using the local,
  * authenticated `gh` CLI. It creates a missing repository, publishes the
  * project snapshot to `main`, stores only its repository slice in
- * `.ankhorage/gh.json`, and refuses unrelated existing repositories.
+ * `.ankhorage/repository.json`, and refuses unrelated existing repositories.
  *
  * See [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete
  * programmatic example.
  *
  * @usage
  */
-import { connectGitHubRepositoryAsync } from '@ankhorage/gh';
+import { connectGitHubRepositoryAsync } from '@ankhorage/repository';
 
 const result = await connectGitHubRepositoryAsync({
   projectPath: './my-project',
