@@ -1,0 +1,75 @@
+name: Repository Sync
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+      - name: Apply canonical repository naming
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const targets = ['src', 'examples'];
+          const replacements = [
+            ['RepositoryConfigStore', 'RepositoryManifestStore'],
+            ['createGitHubRepositoryConfigStore', 'createGitHubRepositoryManifestStore'],
+            ['RepositoryConfig', 'RepositoryManifest'],
+            ['createGhRuntimeProvider', 'createRepositoryRuntimeProvider'],
+            ['GhRuntimeProvider', 'RepositoryRuntimeProvider'],
+            ['ghPackageMetadata', 'repositoryPackageMetadata'],
+            ['@ankhorage/gh', '@ankhorage/repository'],
+            ['gh.connect', 'repository.connect'],
+            ['ankh gh connect', 'ankh repository connect'],
+          ];
+          function visit(root) {
+            if (!fs.existsSync(root)) return;
+            for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+              const full = path.join(root, entry.name);
+              if (entry.isDirectory()) visit(full);
+              else if (/\.(ts|tsx|md)$/.test(entry.name)) {
+                const before = fs.readFileSync(full, 'utf8');
+                const after = replacements.reduce(
+                  (value, [from, to]) => value.replaceAll(from, to),
+                  before,
+                );
+                if (after !== before) fs.writeFileSync(full, after);
+              }
+            }
+          }
+          targets.forEach(visit);
+          NODE
+          if [ -f src/connection/ports/RepositoryConfigStore.ts ]; then
+            mv src/connection/ports/RepositoryConfigStore.ts src/connection/ports/RepositoryManifestStore.ts
+          fi
+          if [ -f src/connection/adapters/createGitHubRepositoryConfigStore.ts ]; then
+            mv src/connection/adapters/createGitHubRepositoryConfigStore.ts src/connection/adapters/createGitHubRepositoryManifestStore.ts
+          fi
+          bun install
+          bunx @ankhorage/ankh devtools sync .
+          bun install
+          bun run lint:fix
+          bun run format
+          bun run docs
+      - name: Commit synchronized output
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore: sync standalone repository package'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
