@@ -35,6 +35,7 @@ jobs:
             ['@ankhorage/gh', '@ankhorage/repository'],
             ['gh.connect', 'repository.connect'],
             ['ankh gh connect', 'ankh repository connect'],
+            ['.ankhorage/gh.json', '.ankhorage/repository.json'],
           ];
           function visit(root) {
             if (!fs.existsSync(root)) return;
