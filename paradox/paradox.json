@@ -757,7 +757,7 @@
   "sourceFunctions": [
     {
       "name": "parseConnectCommandOptions",
-      "description": null,
+      "description": "Parse the deterministic `ankh repository connect` positional argument and flags.",
       "sourceLocation": {
         "filePath": "src/cli/commands/connect/parseConnectCommandOptions.ts",
         "line": 4,
