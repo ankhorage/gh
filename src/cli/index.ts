@@ -1,6 +1,6 @@
-import { createGhRuntimeProvider } from './provider/createGhRuntimeProvider.js';
+import { createRepositoryRuntimeProvider } from './provider/createRepositoryRuntimeProvider.js';
 
-const provider = createGhRuntimeProvider();
+const provider = createRepositoryRuntimeProvider();
 
-export { createGhRuntimeProvider };
+export { createRepositoryRuntimeProvider };
 export default provider;
