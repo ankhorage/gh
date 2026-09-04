@@ -5,9 +5,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "function",
-    "modulePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+    "modulePath": "src/providers/github/services/connectGitHubRepositoryAsync.ts",
     "sourceLocation": {
-      "filePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+      "filePath": "src/providers/github/services/connectGitHubRepositoryAsync.ts",
       "line": 27,
       "column": 1
     },
@@ -75,9 +75,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+    "modulePath": "src/providers/github/definitions/GitHubRepositoryConnectionResult.ts",
     "sourceLocation": {
-      "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "filePath": "src/providers/github/definitions/GitHubRepositoryConnectionResult.ts",
       "line": 18,
       "column": 1
     },
@@ -129,9 +129,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "type",
-    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+    "modulePath": "src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts",
     "sourceLocation": {
-      "filePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+      "filePath": "src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts",
       "line": 6,
       "column": 1
     },
@@ -176,9 +176,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+    "modulePath": "src/providers/github/definitions/GitHubRepositoryConnectionResult.ts",
     "sourceLocation": {
-      "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "filePath": "src/providers/github/definitions/GitHubRepositoryConnectionResult.ts",
       "line": 26,
       "column": 1
     },
@@ -194,9 +194,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+    "modulePath": "src/providers/github/definitions/GitHubRepositoryConnectionResult.ts",
     "sourceLocation": {
-      "filePath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+      "filePath": "src/providers/github/definitions/GitHubRepositoryConnectionResult.ts",
       "line": 1,
       "column": 1
     },
@@ -212,9 +212,9 @@
     "isReadme": false,
     "examples": [],
     "kind": "unknown",
-    "modulePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+    "modulePath": "src/providers/github/definitions/GitHubRepositoryVisibility.ts",
     "sourceLocation": {
-      "filePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+      "filePath": "src/providers/github/definitions/GitHubRepositoryVisibility.ts",
       "line": 1,
       "column": 1
     },

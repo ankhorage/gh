@@ -3,13 +3,13 @@ import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 import type {
   GitHubRepositoryConnectionFailure,
   GitHubRepositoryConnectionResult,
-} from '../definitions/GitHubRepositoryConnectionResult.js';
+} from '../../providers/github/definitions/GitHubRepositoryConnectionResult.js';
+import { connectGitHubRepositoryAsync } from '../../providers/github/services/connectGitHubRepositoryAsync.js';
 import type { RepositoryConnectionOptions } from '../definitions/RepositoryConnectionOptions.js';
 import type {
   RepositoryConnectionFailure,
   RepositoryConnectionResult,
 } from '../definitions/RepositoryConnectionResult.js';
-import { connectGitHubRepositoryAsync } from './connectGitHubRepositoryAsync.js';
 
 /*** Add the provider discriminant to the canonical repository identity returned by GitHub. */
 function toRepositoryManifest(repository: {

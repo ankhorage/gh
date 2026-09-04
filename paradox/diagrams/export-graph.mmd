@@ -4,34 +4,35 @@ graph LR
   module_src_cli_commands_connect_runConnectCommandAsync_ts["src/cli/commands/connect/runConnectCommandAsync.ts"]
   module_src_cli_index_ts["src/cli/index.ts"]
   module_src_cli_provider_createRepositoryRuntimeProvider_ts["src/cli/provider/createRepositoryRuntimeProvider.ts"]
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts["src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"]
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts["src/connection/adapters/createGitHubRepositoryManifestStore.ts"]
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts["src/connection/adapters/createLocalProjectSnapshotReader.ts"]
-  module_src_connection_adapters_ghCliJson_ts["src/connection/adapters/ghCliJson.ts"]
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts["src/connection/definitions/GitHubRepositoryConnectionOptions.ts"]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts["src/connection/definitions/GitHubRepositoryConnectionResult.ts"]
-  module_src_connection_definitions_GitHubRepositoryVisibility_ts["src/connection/definitions/GitHubRepositoryVisibility.ts"]
-  module_src_connection_definitions_index_ts["src/connection/definitions/index.ts"]
+  module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts["src/connection/adapters/createLocalRepositoryManifestStore.test.ts"]
+  module_src_connection_adapters_createLocalRepositoryManifestStore_ts["src/connection/adapters/createLocalRepositoryManifestStore.ts"]
   module_src_connection_definitions_ProjectSnapshot_ts["src/connection/definitions/ProjectSnapshot.ts"]
   module_src_connection_definitions_ProjectSnapshotEntry_ts["src/connection/definitions/ProjectSnapshotEntry.ts"]
   module_src_connection_definitions_RepositoryConnectionOptions_ts["src/connection/definitions/RepositoryConnectionOptions.ts"]
   module_src_connection_definitions_RepositoryConnectionResult_ts["src/connection/definitions/RepositoryConnectionResult.ts"]
-  module_src_connection_ports_GitHubRepositoryGateway_ts["src/connection/ports/GitHubRepositoryGateway.ts"]
   module_src_connection_ports_ProjectSnapshotReader_ts["src/connection/ports/ProjectSnapshotReader.ts"]
   module_src_connection_ports_RepositoryManifestStore_ts["src/connection/ports/RepositoryManifestStore.ts"]
-  module_src_connection_services_connectGitHubRepositoryAsync_ts["src/connection/services/connectGitHubRepositoryAsync.ts"]
   module_src_connection_services_connectRepositoryAsync_test_ts["src/connection/services/connectRepositoryAsync.test.ts"]
   module_src_connection_services_connectRepositoryAsync_ts["src/connection/services/connectRepositoryAsync.ts"]
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts["src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"]
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts["src/connection/services/publishGitHubProjectSnapshotAsync.ts"]
   module_src_connection_utils_getProjectSnapshotPaths_ts["src/connection/utils/getProjectSnapshotPaths.ts"]
   module_src_github_index_ts["src/github/index.ts"]
   module_src_index_test_ts["src/index.test.ts"]
   module_src_index_ts["src/index.ts"]
   module_src_metadata_index_ts["src/metadata/index.ts"]
   module_src_metadata_repositoryPackageMetadata_ts["src/metadata/repositoryPackageMetadata.ts"]
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts["src/providers/github/adapters/createGhCliRepositoryGateway.ts"]
+  module_src_providers_github_adapters_ghCliJson_ts["src/providers/github/adapters/ghCliJson.ts"]
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts["src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts"]
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts["src/providers/github/definitions/GitHubRepositoryConnectionResult.ts"]
+  module_src_providers_github_definitions_GitHubRepositoryVisibility_ts["src/providers/github/definitions/GitHubRepositoryVisibility.ts"]
+  module_src_providers_github_definitions_index_ts["src/providers/github/definitions/index.ts"]
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts["src/providers/github/ports/GitHubRepositoryGateway.ts"]
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts["src/providers/github/services/connectGitHubRepositoryAsync.ts"]
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts["src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts"]
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts["src/providers/github/services/publishGitHubProjectSnapshotAsync.ts"]
   export_connectGitHubRepositoryAsync["connectGitHubRepositoryAsync"]
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --> export_connectGitHubRepositoryAsync
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --> export_connectGitHubRepositoryAsync
   export_connectGitHubRepositoryAsync -.-> export_GitHubRepositoryConnectionOptions
   export_connectGitHubRepositoryAsync -.-> export_GitHubRepositoryConnectionResult
   export_connectRepositoryAsync["connectRepositoryAsync"]
@@ -39,16 +40,16 @@ graph LR
   export_connectRepositoryAsync -.-> export_RepositoryConnectionOptions
   export_connectRepositoryAsync -.-> export_RepositoryConnectionResult
   export_GitHubRepositoryConnectionFailure["GitHubRepositoryConnectionFailure"]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --> export_GitHubRepositoryConnectionFailure
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --> export_GitHubRepositoryConnectionFailure
   export_GitHubRepositoryConnectionOptions["GitHubRepositoryConnectionOptions"]
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --> export_GitHubRepositoryConnectionOptions
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --> export_GitHubRepositoryConnectionOptions
   export_GitHubRepositoryConnectionOptions -.-> export_GitHubRepositoryVisibility
   export_GitHubRepositoryConnectionResult["GitHubRepositoryConnectionResult"]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --> export_GitHubRepositoryConnectionResult
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --> export_GitHubRepositoryConnectionResult
   export_GitHubRepositoryConnectionStatus["GitHubRepositoryConnectionStatus"]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --> export_GitHubRepositoryConnectionStatus
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --> export_GitHubRepositoryConnectionStatus
   export_GitHubRepositoryVisibility["GitHubRepositoryVisibility"]
-  module_src_connection_definitions_GitHubRepositoryVisibility_ts --> export_GitHubRepositoryVisibility
+  module_src_providers_github_definitions_GitHubRepositoryVisibility_ts --> export_GitHubRepositoryVisibility
   export_REPOSITORY_PACKAGE_METADATA["REPOSITORY_PACKAGE_METADATA"]
   module_src_metadata_index_ts --> export_REPOSITORY_PACKAGE_METADATA
   export_RepositoryConnectionFailure["RepositoryConnectionFailure"]

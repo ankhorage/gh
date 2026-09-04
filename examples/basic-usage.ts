@@ -1,9 +1,14 @@
-import { connectGitHubRepositoryAsync } from '@ankhorage/repository';
+import { connectRepositoryAsync } from '@ankhorage/repository';
 
-const result = await connectGitHubRepositoryAsync({
+const result = await connectRepositoryAsync({
   projectPath: './my-project',
-  owner: 'ankhorage',
-  name: 'my-project',
+  repository: {
+    provider: 'github',
+    owner: 'ankhorage',
+    name: 'my-project',
+    url: 'https://github.com/ankhorage/my-project',
+    defaultBranch: 'main',
+  },
   visibility: 'private',
 });
 

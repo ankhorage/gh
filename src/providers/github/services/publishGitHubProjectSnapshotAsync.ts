@@ -1,4 +1,4 @@
-import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
+import type { ProjectSnapshot } from '../../../connection/definitions/ProjectSnapshot.js';
 import type {
   GitHubBootstrap,
   GitHubRepositoryGateway,

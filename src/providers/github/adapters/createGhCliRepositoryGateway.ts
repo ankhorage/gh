@@ -2,7 +2,8 @@ import { spawn } from 'node:child_process';
 
 import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 
-import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
+import type { ProjectSnapshot } from '../../../connection/definitions/ProjectSnapshot.js';
+import { getProjectSnapshotPaths } from '../../../connection/utils/getProjectSnapshotPaths.js';
 import type {
   GitHubBootstrap,
   GitHubPublishedSnapshot,
@@ -10,7 +11,6 @@ import type {
   GitHubRepositoryGateway,
   GitHubRepositoryTarget,
 } from '../ports/GitHubRepositoryGateway.js';
-import { getProjectSnapshotPaths } from '../utils/getProjectSnapshotPaths.js';
 import {
   getGhNestedSha,
   type GhJsonRunner,
@@ -35,7 +35,7 @@ const bootstrapBranch = 'ankh-bootstrap' as const;
 const bootstrapMarker = 'ankhorage bootstrap marker';
 
 /** Create the GitHub gateway backed exclusively by the local `gh` executable. */
-export function createGhCliGitHubRepositoryGateway(
+export function createGhCliRepositoryGateway(
   runner: GhRunner = createGhRunner(),
 ): GitHubRepositoryGateway {
   return {
@@ -158,8 +158,8 @@ async function inspectRepositoryAsync(
   ]);
   const mainCommitSha = getGhNestedSha(mainRef);
   const bootstrapCommitSha = getGhNestedSha(bootstrapRef);
-  const mainConfig = mainCommitSha
-    ? await readRemoteConfigAsync(runner, prefix, mainCommitSha)
+  const mainManifest = mainCommitSha
+    ? await readRemoteRepositoryManifestAsync(runner, prefix, mainCommitSha)
     : undefined;
   const bootstrapMarkerValue = bootstrapCommitSha
     ? await readRemoteTextFileAsync(runner, prefix, '.ankhorage-bootstrap', bootstrapBranch)
@@ -173,7 +173,7 @@ async function inspectRepositoryAsync(
     defaultBranch:
       typeof repository.default_branch === 'string' ? repository.default_branch : undefined,
     mainCommitSha,
-    mainConfig,
+    mainManifest,
     bootstrapCommitSha,
     bootstrapMarker: bootstrapMarkerValue,
   };
@@ -262,9 +262,9 @@ async function verifyPublishedSnapshotAsync(
   const ref = await runGhJsonAsync(runner, ['api', `${prefix}/git/ref/heads/main`]);
   if (getGhNestedSha(ref) !== commitSha)
     throw new Error('Published main ref does not match the app commit.');
-  const config = await readRemoteConfigAsync(runner, prefix, commitSha);
-  if (JSON.stringify(config) !== JSON.stringify(snapshot.config)) {
-    throw new Error('Published gh config does not match the prospective config.');
+  const repository = await readRemoteRepositoryManifestAsync(runner, prefix, commitSha);
+  if (JSON.stringify(repository) !== JSON.stringify(snapshot.repository)) {
+    throw new Error('Published repository manifest does not match the prospective manifest.');
   }
   const tree = await runGhJsonAsync(runner, [
     'api',
@@ -283,8 +283,8 @@ async function verifyPublishedSnapshotAsync(
   }
 }
 
-/** Read the remote gh configuration from a commit. */
-async function readRemoteConfigAsync(
+/** Read the remote repository manifest from a commit. */
+async function readRemoteRepositoryManifestAsync(
   runner: GhRunner,
   prefix: string,
   ref: string,

@@ -232,26 +232,6 @@
               <button
                 class="nav-button"
                 type="button"
-                data-target="src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
-              >
-                src/connection/adapters/createGhCliGitHubRepositoryGateway.ts
-                <small>9 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/connection/adapters/createGitHubRepositoryManifestStore.ts"
-              >
-                src/connection/adapters/createGitHubRepositoryManifestStore.ts
-                <small>8 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
                 data-target="src/connection/adapters/createLocalProjectSnapshotReader.ts"
               >
                 src/connection/adapters/createLocalProjectSnapshotReader.ts
@@ -262,20 +242,10 @@
               <button
                 class="nav-button"
                 type="button"
-                data-target="src/connection/adapters/ghCliJson.ts"
+                data-target="src/connection/adapters/createLocalRepositoryManifestStore.ts"
               >
-                src/connection/adapters/ghCliJson.ts
-                <small>7 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/connection/services/connectGitHubRepositoryAsync.ts"
-              >
-                src/connection/services/connectGitHubRepositoryAsync.ts
-                <small>4 functions</small>
+                src/connection/adapters/createLocalRepositoryManifestStore.ts
+                <small>8 functions</small>
               </button>
             </li>
             <li>
@@ -286,26 +256,6 @@
               >
                 src/connection/services/connectRepositoryAsync.ts
                 <small>5 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
-              >
-                src/connection/services/inspectGitHubRepositoryPreflightAsync.ts
-                <small>5 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/connection/services/publishGitHubProjectSnapshotAsync.ts"
-              >
-                src/connection/services/publishGitHubProjectSnapshotAsync.ts
-                <small>1 function</small>
               </button>
             </li>
             <li>
@@ -324,6 +274,56 @@
                 <small>1 function</small>
               </button>
             </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/providers/github/adapters/createGhCliRepositoryGateway.ts"
+              >
+                src/providers/github/adapters/createGhCliRepositoryGateway.ts
+                <small>9 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/providers/github/adapters/ghCliJson.ts"
+              >
+                src/providers/github/adapters/ghCliJson.ts
+                <small>7 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/providers/github/services/connectGitHubRepositoryAsync.ts"
+              >
+                src/providers/github/services/connectGitHubRepositoryAsync.ts
+                <small>4 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts"
+              >
+                src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts
+                <small>5 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/providers/github/services/publishGitHubProjectSnapshotAsync.ts"
+              >
+                src/providers/github/services/publishGitHubProjectSnapshotAsync.ts
+                <small>1 function</small>
+              </button>
+            </li>
           </ul>
         </nav>
       </aside>
@@ -334,7 +334,7 @@
             <div class="summary">
               <div><strong>13</strong><span class="muted">public exports</span></div>
               <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>31</strong><span class="muted">modules</span></div>
+              <div><strong>32</strong><span class="muted">modules</span></div>
               <div><strong>3</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -349,13 +349,13 @@
             <h2>Modules</h2>
             <article
               class="item"
-              data-search="src/cli/commands/connect/definitions/ConnectCommandOptions.ts src/connection/definitions/GitHubRepositoryVisibility.ts ConnectCommandOptions"
+              data-search="src/cli/commands/connect/definitions/ConnectCommandOptions.ts src/providers/github/definitions/GitHubRepositoryVisibility.ts ConnectCommandOptions"
             >
               <h3>src/cli/commands/connect/definitions/ConnectCommandOptions.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
-                <code>src/connection/definitions/GitHubRepositoryVisibility.ts</code>
+                <code>src/providers/github/definitions/GitHubRepositoryVisibility.ts</code>
               </p>
               <p><strong>Exports:</strong> <code>ConnectCommandOptions</code></p>
             </article>
@@ -373,15 +373,15 @@
             </article>
             <article
               class="item"
-              data-search="src/cli/commands/connect/runConnectCommandAsync.ts src/cli/commands/connect/parseConnectCommandOptions.ts src/connection/definitions/GitHubRepositoryConnectionResult.ts src/connection/services/connectGitHubRepositoryAsync.ts ConnectCommandRequest runConnectCommandAsync"
+              data-search="src/cli/commands/connect/runConnectCommandAsync.ts src/cli/commands/connect/parseConnectCommandOptions.ts src/providers/github/definitions/GitHubRepositoryConnectionResult.ts src/providers/github/services/connectGitHubRepositoryAsync.ts ConnectCommandRequest runConnectCommandAsync"
             >
               <h3>src/cli/commands/connect/runConnectCommandAsync.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
                 <code>src/cli/commands/connect/parseConnectCommandOptions.ts</code>,
-                <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts</code>,
-                <code>src/connection/services/connectGitHubRepositoryAsync.ts</code>
+                <code>src/providers/github/definitions/GitHubRepositoryConnectionResult.ts</code>,
+                <code>src/providers/github/services/connectGitHubRepositoryAsync.ts</code>
               </p>
               <p>
                 <strong>Exports:</strong> <code>ConnectCommandRequest</code>,
@@ -421,33 +421,6 @@
             </article>
             <article
               class="item"
-              data-search="src/connection/adapters/createGhCliGitHubRepositoryGateway.ts src/connection/adapters/ghCliJson.ts src/connection/definitions/ProjectSnapshot.ts src/connection/ports/GitHubRepositoryGateway.ts src/connection/utils/getProjectSnapshotPaths.ts createGhCliGitHubRepositoryGateway"
-            >
-              <h3>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/connection/adapters/ghCliJson.ts</code>,
-                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
-                <code>src/connection/ports/GitHubRepositoryGateway.ts</code>,
-                <code>src/connection/utils/getProjectSnapshotPaths.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>createGhCliGitHubRepositoryGateway</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/adapters/createGitHubRepositoryManifestStore.ts src/connection/definitions/GitHubRepositoryConnectionResult.ts src/connection/ports/RepositoryManifestStore.ts createGitHubRepositoryManifestStore"
-            >
-              <h3>src/connection/adapters/createGitHubRepositoryManifestStore.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts</code>,
-                <code>src/connection/ports/RepositoryManifestStore.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>createGitHubRepositoryManifestStore</code></p>
-            </article>
-            <article
-              class="item"
               data-search="src/connection/adapters/createLocalProjectSnapshotReader.ts src/connection/definitions/ProjectSnapshot.ts src/connection/definitions/ProjectSnapshotEntry.ts src/connection/ports/ProjectSnapshotReader.ts createLocalProjectSnapshotReader"
             >
               <h3>src/connection/adapters/createLocalProjectSnapshotReader.ts</h3>
@@ -462,70 +435,27 @@
             </article>
             <article
               class="item"
-              data-search="src/connection/adapters/ghCliJson.ts getGhNestedSha GhJsonRunner isGhNotFound isRecord isString runGhJsonAsync sanitizeGhError tryGhJsonAsync"
+              data-search="src/connection/adapters/createLocalRepositoryManifestStore.test.ts src/connection/adapters/createLocalRepositoryManifestStore.ts"
             >
-              <h3>src/connection/adapters/ghCliJson.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>getGhNestedSha</code>, <code>GhJsonRunner</code>,
-                <code>isGhNotFound</code>, <code>isRecord</code>, <code>isString</code>,
-                <code>runGhJsonAsync</code>, <code>sanitizeGhError</code>,
-                <code>tryGhJsonAsync</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/definitions/GitHubRepositoryConnectionOptions.ts src/connection/definitions/GitHubRepositoryVisibility.ts src/connection/ports/GitHubRepositoryGateway.ts src/connection/ports/ProjectSnapshotReader.ts src/connection/ports/RepositoryManifestStore.ts GitHubRepositoryConnectionDependencies GitHubRepositoryConnectionOptions"
-            >
-              <h3>src/connection/definitions/GitHubRepositoryConnectionOptions.ts</h3>
+              <h3>src/connection/adapters/createLocalRepositoryManifestStore.test.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
-                <code>src/connection/definitions/GitHubRepositoryVisibility.ts</code>,
-                <code>src/connection/ports/GitHubRepositoryGateway.ts</code>,
-                <code>src/connection/ports/ProjectSnapshotReader.ts</code>,
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/connection/adapters/createLocalRepositoryManifestStore.ts src/connection/ports/RepositoryManifestStore.ts createLocalRepositoryManifestStore"
+            >
+              <h3>src/connection/adapters/createLocalRepositoryManifestStore.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
                 <code>src/connection/ports/RepositoryManifestStore.ts</code>
               </p>
-              <p>
-                <strong>Exports:</strong> <code>GitHubRepositoryConnectionDependencies</code>,
-                <code>GitHubRepositoryConnectionOptions</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/definitions/GitHubRepositoryConnectionResult.ts GitHubRepositoryConnectionFailure GitHubRepositoryConnectionIdentity GitHubRepositoryConnectionResult GitHubRepositoryConnectionStatus"
-            >
-              <h3>src/connection/definitions/GitHubRepositoryConnectionResult.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>GitHubRepositoryConnectionFailure</code>,
-                <code>GitHubRepositoryConnectionIdentity</code>,
-                <code>GitHubRepositoryConnectionResult</code>,
-                <code>GitHubRepositoryConnectionStatus</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/definitions/GitHubRepositoryVisibility.ts GitHubRepositoryVisibility"
-            >
-              <h3>src/connection/definitions/GitHubRepositoryVisibility.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p><strong>Exports:</strong> <code>GitHubRepositoryVisibility</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/definitions/index.ts GitHubRepositoryConnectionIdentity GitHubRepositoryConnectionOptions"
-            >
-              <h3>src/connection/definitions/index.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>GitHubRepositoryConnectionIdentity</code>,
-                <code>GitHubRepositoryConnectionOptions</code>
-              </p>
+              <p><strong>Exports:</strong> <code>createLocalRepositoryManifestStore</code></p>
             </article>
             <article
               class="item"
@@ -574,23 +504,6 @@
             </article>
             <article
               class="item"
-              data-search="src/connection/ports/GitHubRepositoryGateway.ts src/connection/definitions/GitHubRepositoryVisibility.ts src/connection/definitions/ProjectSnapshot.ts GitHubBootstrap GitHubPublishedSnapshot GitHubRemoteRepository GitHubRepositoryGateway GitHubRepositoryTarget"
-            >
-              <h3>src/connection/ports/GitHubRepositoryGateway.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code>src/connection/definitions/GitHubRepositoryVisibility.ts</code>,
-                <code>src/connection/definitions/ProjectSnapshot.ts</code>
-              </p>
-              <p>
-                <strong>Exports:</strong> <code>GitHubBootstrap</code>,
-                <code>GitHubPublishedSnapshot</code>, <code>GitHubRemoteRepository</code>,
-                <code>GitHubRepositoryGateway</code>, <code>GitHubRepositoryTarget</code>
-              </p>
-            </article>
-            <article
-              class="item"
               data-search="src/connection/ports/ProjectSnapshotReader.ts src/connection/definitions/ProjectSnapshot.ts ProjectSnapshotReader"
             >
               <h3>src/connection/ports/ProjectSnapshotReader.ts</h3>
@@ -603,36 +516,12 @@
             </article>
             <article
               class="item"
-              data-search="src/connection/ports/RepositoryManifestStore.ts src/connection/definitions/GitHubRepositoryConnectionResult.ts RepositoryManifestStore"
+              data-search="src/connection/ports/RepositoryManifestStore.ts RepositoryManifestStore"
             >
               <h3>src/connection/ports/RepositoryManifestStore.ts</h3>
               <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts</code>
-              </p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
               <p><strong>Exports:</strong> <code>RepositoryManifestStore</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/services/connectGitHubRepositoryAsync.ts src/connection/adapters/createGhCliGitHubRepositoryGateway.ts src/connection/adapters/createGitHubRepositoryManifestStore.ts src/connection/adapters/createLocalProjectSnapshotReader.ts src/connection/definitions/GitHubRepositoryConnectionOptions.ts src/connection/definitions/GitHubRepositoryConnectionResult.ts src/connection/definitions/ProjectSnapshot.ts src/connection/ports/GitHubRepositoryGateway.ts src/connection/ports/RepositoryManifestStore.ts src/connection/services/inspectGitHubRepositoryPreflightAsync.ts src/connection/services/publishGitHubProjectSnapshotAsync.ts connectGitHubRepositoryAsync"
-            >
-              <h3>src/connection/services/connectGitHubRepositoryAsync.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts</code>,
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts</code>,
-                <code>src/connection/adapters/createLocalProjectSnapshotReader.ts</code>,
-                <code>src/connection/definitions/GitHubRepositoryConnectionOptions.ts</code>,
-                <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts</code>,
-                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
-                <code>src/connection/ports/GitHubRepositoryGateway.ts</code>,
-                <code>src/connection/ports/RepositoryManifestStore.ts</code>,
-                <code>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts</code>,
-                <code>src/connection/services/publishGitHubProjectSnapshotAsync.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>connectGitHubRepositoryAsync</code></p>
             </article>
             <article
               class="item"
@@ -648,52 +537,18 @@
             </article>
             <article
               class="item"
-              data-search="src/connection/services/connectRepositoryAsync.ts src/connection/definitions/GitHubRepositoryConnectionResult.ts src/connection/definitions/RepositoryConnectionOptions.ts src/connection/definitions/RepositoryConnectionResult.ts src/connection/services/connectGitHubRepositoryAsync.ts connectRepositoryAsync"
+              data-search="src/connection/services/connectRepositoryAsync.ts src/connection/definitions/RepositoryConnectionOptions.ts src/connection/definitions/RepositoryConnectionResult.ts src/providers/github/definitions/GitHubRepositoryConnectionResult.ts src/providers/github/services/connectGitHubRepositoryAsync.ts connectRepositoryAsync"
             >
               <h3>src/connection/services/connectRepositoryAsync.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
-                <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts</code>,
                 <code>src/connection/definitions/RepositoryConnectionOptions.ts</code>,
                 <code>src/connection/definitions/RepositoryConnectionResult.ts</code>,
-                <code>src/connection/services/connectGitHubRepositoryAsync.ts</code>
+                <code>src/providers/github/definitions/GitHubRepositoryConnectionResult.ts</code>,
+                <code>src/providers/github/services/connectGitHubRepositoryAsync.ts</code>
               </p>
               <p><strong>Exports:</strong> <code>connectRepositoryAsync</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/services/inspectGitHubRepositoryPreflightAsync.ts src/connection/definitions/index.ts src/connection/definitions/ProjectSnapshot.ts src/connection/ports/GitHubRepositoryGateway.ts src/connection/ports/ProjectSnapshotReader.ts src/connection/ports/RepositoryManifestStore.ts GitHubRepositoryPreflight inspectGitHubRepositoryPreflightAsync PreflightError"
-            >
-              <h3>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/connection/definitions/index.ts</code>,
-                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
-                <code>src/connection/ports/GitHubRepositoryGateway.ts</code>,
-                <code>src/connection/ports/ProjectSnapshotReader.ts</code>,
-                <code>src/connection/ports/RepositoryManifestStore.ts</code>
-              </p>
-              <p>
-                <strong>Exports:</strong> <code>GitHubRepositoryPreflight</code>,
-                <code>inspectGitHubRepositoryPreflightAsync</code>, <code>PreflightError</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/connection/services/publishGitHubProjectSnapshotAsync.ts src/connection/definitions/ProjectSnapshot.ts src/connection/ports/GitHubRepositoryGateway.ts GitHubSnapshotPublication publishGitHubProjectSnapshotAsync"
-            >
-              <h3>src/connection/services/publishGitHubProjectSnapshotAsync.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
-                <code>src/connection/ports/GitHubRepositoryGateway.ts</code>
-              </p>
-              <p>
-                <strong>Exports:</strong> <code>GitHubSnapshotPublication</code>,
-                <code>publishGitHubProjectSnapshotAsync</code>
-              </p>
             </article>
             <article
               class="item"
@@ -761,185 +616,165 @@
               <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
               <p><strong>Exports:</strong> <code>repositoryPackageMetadata</code></p>
             </article>
+            <article
+              class="item"
+              data-search="src/providers/github/adapters/createGhCliRepositoryGateway.ts src/connection/definitions/ProjectSnapshot.ts src/connection/utils/getProjectSnapshotPaths.ts src/providers/github/adapters/ghCliJson.ts src/providers/github/ports/GitHubRepositoryGateway.ts createGhCliRepositoryGateway"
+            >
+              <h3>src/providers/github/adapters/createGhCliRepositoryGateway.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
+                <code>src/connection/utils/getProjectSnapshotPaths.ts</code>,
+                <code>src/providers/github/adapters/ghCliJson.ts</code>,
+                <code>src/providers/github/ports/GitHubRepositoryGateway.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <code>createGhCliRepositoryGateway</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/adapters/ghCliJson.ts getGhNestedSha GhJsonRunner isGhNotFound isRecord isString runGhJsonAsync sanitizeGhError tryGhJsonAsync"
+            >
+              <h3>src/providers/github/adapters/ghCliJson.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>getGhNestedSha</code>, <code>GhJsonRunner</code>,
+                <code>isGhNotFound</code>, <code>isRecord</code>, <code>isString</code>,
+                <code>runGhJsonAsync</code>, <code>sanitizeGhError</code>,
+                <code>tryGhJsonAsync</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts src/connection/ports/ProjectSnapshotReader.ts src/connection/ports/RepositoryManifestStore.ts src/providers/github/definitions/GitHubRepositoryVisibility.ts src/providers/github/ports/GitHubRepositoryGateway.ts GitHubRepositoryConnectionDependencies GitHubRepositoryConnectionOptions"
+            >
+              <h3>src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/connection/ports/ProjectSnapshotReader.ts</code>,
+                <code>src/connection/ports/RepositoryManifestStore.ts</code>,
+                <code>src/providers/github/definitions/GitHubRepositoryVisibility.ts</code>,
+                <code>src/providers/github/ports/GitHubRepositoryGateway.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>GitHubRepositoryConnectionDependencies</code>,
+                <code>GitHubRepositoryConnectionOptions</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/definitions/GitHubRepositoryConnectionResult.ts GitHubRepositoryConnectionFailure GitHubRepositoryConnectionIdentity GitHubRepositoryConnectionResult GitHubRepositoryConnectionStatus"
+            >
+              <h3>src/providers/github/definitions/GitHubRepositoryConnectionResult.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>GitHubRepositoryConnectionFailure</code>,
+                <code>GitHubRepositoryConnectionIdentity</code>,
+                <code>GitHubRepositoryConnectionResult</code>,
+                <code>GitHubRepositoryConnectionStatus</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/definitions/GitHubRepositoryVisibility.ts GitHubRepositoryVisibility"
+            >
+              <h3>src/providers/github/definitions/GitHubRepositoryVisibility.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Exports:</strong> <code>GitHubRepositoryVisibility</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/definitions/index.ts GitHubRepositoryConnectionIdentity GitHubRepositoryConnectionOptions"
+            >
+              <h3>src/providers/github/definitions/index.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>GitHubRepositoryConnectionIdentity</code>,
+                <code>GitHubRepositoryConnectionOptions</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/ports/GitHubRepositoryGateway.ts src/connection/definitions/ProjectSnapshot.ts src/providers/github/definitions/GitHubRepositoryVisibility.ts GitHubBootstrap GitHubPublishedSnapshot GitHubRemoteRepository GitHubRepositoryGateway GitHubRepositoryTarget"
+            >
+              <h3>src/providers/github/ports/GitHubRepositoryGateway.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
+                <code>src/providers/github/definitions/GitHubRepositoryVisibility.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>GitHubBootstrap</code>,
+                <code>GitHubPublishedSnapshot</code>, <code>GitHubRemoteRepository</code>,
+                <code>GitHubRepositoryGateway</code>, <code>GitHubRepositoryTarget</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/services/connectGitHubRepositoryAsync.ts src/connection/adapters/createLocalProjectSnapshotReader.ts src/connection/adapters/createLocalRepositoryManifestStore.ts src/connection/definitions/ProjectSnapshot.ts src/connection/ports/RepositoryManifestStore.ts src/providers/github/adapters/createGhCliRepositoryGateway.ts src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts src/providers/github/definitions/GitHubRepositoryConnectionResult.ts src/providers/github/ports/GitHubRepositoryGateway.ts src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts src/providers/github/services/publishGitHubProjectSnapshotAsync.ts connectGitHubRepositoryAsync"
+            >
+              <h3>src/providers/github/services/connectGitHubRepositoryAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/connection/adapters/createLocalProjectSnapshotReader.ts</code>,
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts</code>,
+                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
+                <code>src/connection/ports/RepositoryManifestStore.ts</code>,
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts</code>,
+                <code>src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts</code>,
+                <code>src/providers/github/definitions/GitHubRepositoryConnectionResult.ts</code>,
+                <code>src/providers/github/ports/GitHubRepositoryGateway.ts</code>,
+                <code>src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts</code>,
+                <code>src/providers/github/services/publishGitHubProjectSnapshotAsync.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <code>connectGitHubRepositoryAsync</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts src/connection/definitions/ProjectSnapshot.ts src/connection/ports/ProjectSnapshotReader.ts src/connection/ports/RepositoryManifestStore.ts src/providers/github/definitions/index.ts src/providers/github/ports/GitHubRepositoryGateway.ts GitHubRepositoryPreflight inspectGitHubRepositoryPreflightAsync PreflightError"
+            >
+              <h3>src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
+                <code>src/connection/ports/ProjectSnapshotReader.ts</code>,
+                <code>src/connection/ports/RepositoryManifestStore.ts</code>,
+                <code>src/providers/github/definitions/index.ts</code>,
+                <code>src/providers/github/ports/GitHubRepositoryGateway.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>GitHubRepositoryPreflight</code>,
+                <code>inspectGitHubRepositoryPreflightAsync</code>, <code>PreflightError</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/providers/github/services/publishGitHubProjectSnapshotAsync.ts src/connection/definitions/ProjectSnapshot.ts src/providers/github/ports/GitHubRepositoryGateway.ts GitHubSnapshotPublication publishGitHubProjectSnapshotAsync"
+            >
+              <h3>src/providers/github/services/publishGitHubProjectSnapshotAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/connection/definitions/ProjectSnapshot.ts</code>,
+                <code>src/providers/github/ports/GitHubRepositoryGateway.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>GitHubSnapshotPublication</code>,
+                <code>publishGitHubProjectSnapshotAsync</code>
+              </p>
+            </article>
           </section>
           <section class="panel">
             <h2>Public API</h2>
 
-            <section>
-              <h3>src/connection/definitions/GitHubRepositoryConnectionOptions.ts</h3>
-              <article
-                class="item"
-                id="symbol-githubrepositoryconnectionoptions"
-                data-search="GitHubRepositoryConnectionOptions type src/connection/definitions/GitHubRepositoryConnectionOptions.ts  GitHubRepositoryVisibility"
-              >
-                <h4>GitHubRepositoryConnectionOptions</h4>
-                <p class="muted">
-                  type •
-                  <code>src/connection/definitions/GitHubRepositoryConnectionOptions.ts:6:1</code>
-                </p>
-
-                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">GitHubRepositoryVisibility</li>
-                  </ul>
-                </div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>name</code></td>
-                      <td>property</td>
-                      <td><code>string | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>owner</code></td>
-                      <td>property</td>
-                      <td><code>string | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>projectPath</code></td>
-                      <td>property</td>
-                      <td><code>string | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>visibility</code></td>
-                      <td>property</td>
-                      <td><code>GitHubRepositoryVisibility | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
-            </section>
-            <section>
-              <h3>src/connection/definitions/GitHubRepositoryConnectionResult.ts</h3>
-              <article
-                class="item"
-                id="symbol-githubrepositoryconnectionfailure"
-                data-search="GitHubRepositoryConnectionFailure type src/connection/definitions/GitHubRepositoryConnectionResult.ts "
-              >
-                <h4>GitHubRepositoryConnectionFailure</h4>
-                <p class="muted">
-                  type •
-                  <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts:18:1</code>
-                </p>
-
-                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>code</code></td>
-                      <td>property</td>
-                      <td><code>string</code></td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>message</code></td>
-                      <td>property</td>
-                      <td><code>string</code></td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>repository</code></td>
-                      <td>property</td>
-                      <td><code>GitHubRepositoryConnectionIdentity | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>stage</code></td>
-                      <td>property</td>
-                      <td><code>string</code></td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>status</code></td>
-                      <td>property</td>
-                      <td><code>GitHubRepositoryConnectionFailureKind</code></td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
-              <article
-                class="item"
-                id="symbol-githubrepositoryconnectionresult"
-                data-search="GitHubRepositoryConnectionResult unknown src/connection/definitions/GitHubRepositoryConnectionResult.ts "
-              >
-                <h4>GitHubRepositoryConnectionResult</h4>
-                <p class="muted">
-                  unknown •
-                  <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts:26:1</code>
-                </p>
-
-                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-              <article
-                class="item"
-                id="symbol-githubrepositoryconnectionstatus"
-                data-search="GitHubRepositoryConnectionStatus unknown src/connection/definitions/GitHubRepositoryConnectionResult.ts "
-              >
-                <h4>GitHubRepositoryConnectionStatus</h4>
-                <p class="muted">
-                  unknown •
-                  <code>src/connection/definitions/GitHubRepositoryConnectionResult.ts:1:1</code>
-                </p>
-
-                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-            </section>
-            <section>
-              <h3>src/connection/definitions/GitHubRepositoryVisibility.ts</h3>
-              <article
-                class="item"
-                id="symbol-githubrepositoryvisibility"
-                data-search="GitHubRepositoryVisibility unknown src/connection/definitions/GitHubRepositoryVisibility.ts "
-              >
-                <h4>GitHubRepositoryVisibility</h4>
-                <p class="muted">
-                  unknown •
-                  <code>src/connection/definitions/GitHubRepositoryVisibility.ts:1:1</code>
-                </p>
-
-                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-            </section>
             <section>
               <h3>src/connection/definitions/RepositoryConnectionOptions.ts</h3>
               <article
@@ -1104,62 +939,6 @@
               </article>
             </section>
             <section>
-              <h3>src/connection/services/connectGitHubRepositoryAsync.ts</h3>
-              <article
-                class="item"
-                id="symbol-connectgithubrepositoryasync"
-                data-search="connectGitHubRepositoryAsync function src/connection/services/connectGitHubRepositoryAsync.ts  GitHubRepositoryConnectionOptions GitHubRepositoryConnectionResult (options?: GitHubRepositoryConnectionOptions, dependencies?: GitHubRepositoryConnectionDependencies) =&gt; Promise&lt;GitHubRepositoryConnectionResult&gt;"
-              >
-                <h4>connectGitHubRepositoryAsync</h4>
-                <p class="muted">
-                  function •
-                  <code>src/connection/services/connectGitHubRepositoryAsync.ts:27:1</code>
-                </p>
-
-                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">GitHubRepositoryConnectionOptions</li>
-                    <li class="chip">GitHubRepositoryConnectionResult</li>
-                  </ul>
-                </div>
-                <div>
-                  <h5>Signature</h5>
-                  <pre>
-(options?: GitHubRepositoryConnectionOptions, dependencies?: GitHubRepositoryConnectionDependencies) =&gt; Promise&lt;GitHubRepositoryConnectionResult&gt;</pre>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Required</th>
-                        <th>Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><code>dependencies</code></td>
-                        <td><code>GitHubRepositoryConnectionDependencies</code></td>
-                        <td>no</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td><code>options</code></td>
-                        <td><code>GitHubRepositoryConnectionOptions</code></td>
-                        <td>no</td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p>
-                    <strong>Returns:</strong>
-                    <code>Promise&lt;GitHubRepositoryConnectionResult&gt;</code>
-                  </p>
-                </div>
-              </article>
-            </section>
-            <section>
               <h3>src/connection/services/connectRepositoryAsync.ts</h3>
               <article
                 class="item"
@@ -1224,6 +1003,245 @@
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
               </article>
             </section>
+            <section>
+              <h3>src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts</h3>
+              <article
+                class="item"
+                id="symbol-githubrepositoryconnectionoptions"
+                data-search="GitHubRepositoryConnectionOptions type src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts  GitHubRepositoryVisibility"
+              >
+                <h4>GitHubRepositoryConnectionOptions</h4>
+                <p class="muted">
+                  type •
+                  <code
+                    >src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts:6:1</code
+                  >
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">GitHubRepositoryVisibility</li>
+                  </ul>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>name</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>owner</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>projectPath</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>visibility</code></td>
+                      <td>property</td>
+                      <td><code>GitHubRepositoryVisibility | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+            <section>
+              <h3>src/providers/github/definitions/GitHubRepositoryConnectionResult.ts</h3>
+              <article
+                class="item"
+                id="symbol-githubrepositoryconnectionfailure"
+                data-search="GitHubRepositoryConnectionFailure type src/providers/github/definitions/GitHubRepositoryConnectionResult.ts "
+              >
+                <h4>GitHubRepositoryConnectionFailure</h4>
+                <p class="muted">
+                  type •
+                  <code
+                    >src/providers/github/definitions/GitHubRepositoryConnectionResult.ts:18:1</code
+                  >
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>code</code></td>
+                      <td>property</td>
+                      <td><code>string</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>message</code></td>
+                      <td>property</td>
+                      <td><code>string</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>repository</code></td>
+                      <td>property</td>
+                      <td><code>GitHubRepositoryConnectionIdentity | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>stage</code></td>
+                      <td>property</td>
+                      <td><code>string</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>status</code></td>
+                      <td>property</td>
+                      <td><code>GitHubRepositoryConnectionFailureKind</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-githubrepositoryconnectionresult"
+                data-search="GitHubRepositoryConnectionResult unknown src/providers/github/definitions/GitHubRepositoryConnectionResult.ts "
+              >
+                <h4>GitHubRepositoryConnectionResult</h4>
+                <p class="muted">
+                  unknown •
+                  <code
+                    >src/providers/github/definitions/GitHubRepositoryConnectionResult.ts:26:1</code
+                  >
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+              <article
+                class="item"
+                id="symbol-githubrepositoryconnectionstatus"
+                data-search="GitHubRepositoryConnectionStatus unknown src/providers/github/definitions/GitHubRepositoryConnectionResult.ts "
+              >
+                <h4>GitHubRepositoryConnectionStatus</h4>
+                <p class="muted">
+                  unknown •
+                  <code
+                    >src/providers/github/definitions/GitHubRepositoryConnectionResult.ts:1:1</code
+                  >
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+            </section>
+            <section>
+              <h3>src/providers/github/definitions/GitHubRepositoryVisibility.ts</h3>
+              <article
+                class="item"
+                id="symbol-githubrepositoryvisibility"
+                data-search="GitHubRepositoryVisibility unknown src/providers/github/definitions/GitHubRepositoryVisibility.ts "
+              >
+                <h4>GitHubRepositoryVisibility</h4>
+                <p class="muted">
+                  unknown •
+                  <code>src/providers/github/definitions/GitHubRepositoryVisibility.ts:1:1</code>
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+            </section>
+            <section>
+              <h3>src/providers/github/services/connectGitHubRepositoryAsync.ts</h3>
+              <article
+                class="item"
+                id="symbol-connectgithubrepositoryasync"
+                data-search="connectGitHubRepositoryAsync function src/providers/github/services/connectGitHubRepositoryAsync.ts  GitHubRepositoryConnectionOptions GitHubRepositoryConnectionResult (options?: GitHubRepositoryConnectionOptions, dependencies?: GitHubRepositoryConnectionDependencies) =&gt; Promise&lt;GitHubRepositoryConnectionResult&gt;"
+              >
+                <h4>connectGitHubRepositoryAsync</h4>
+                <p class="muted">
+                  function •
+                  <code>src/providers/github/services/connectGitHubRepositoryAsync.ts:27:1</code>
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/github/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">GitHubRepositoryConnectionOptions</li>
+                    <li class="chip">GitHubRepositoryConnectionResult</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5>Signature</h5>
+                  <pre>
+(options?: GitHubRepositoryConnectionOptions, dependencies?: GitHubRepositoryConnectionDependencies) =&gt; Promise&lt;GitHubRepositoryConnectionResult&gt;</pre>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>dependencies</code></td>
+                        <td><code>GitHubRepositoryConnectionDependencies</code></td>
+                        <td>no</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td><code>options</code></td>
+                        <td><code>GitHubRepositoryConnectionOptions</code></td>
+                        <td>no</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>
+                    <strong>Returns:</strong>
+                    <code>Promise&lt;GitHubRepositoryConnectionResult&gt;</code>
+                  </p>
+                </div>
+              </article>
+            </section>
           </section>
           <section class="panel">
             <h2>Component registry</h2>
@@ -1249,7 +1267,7 @@
                 package__ankhorage_repository -.-&gt;
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts
@@ -1261,9 +1279,9 @@
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
-                module_src_connection_services_connectGitHubRepositoryAsync_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts
                 module_src_cli_index_ts[&quot;src/cli/index.ts&quot;] package__ankhorage_repository
                 -.-&gt; module_src_cli_index_ts module_src_cli_index_ts --&gt;
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts
@@ -1274,24 +1292,6 @@
                 module_src_cli_commands_connect_runConnectCommandAsync_ts
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt;
                 module_src_metadata_repositoryPackageMetadata_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_adapters_ghCliJson_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_utils_getProjectSnapshotPaths_ts
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts[&quot;src/connection/adapters/createGitHubRepositoryManifestStore.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt;
-                module_src_connection_ports_RepositoryManifestStore_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts
@@ -1301,27 +1301,16 @@
                 module_src_connection_definitions_ProjectSnapshotEntry_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt;
                 module_src_connection_ports_ProjectSnapshotReader_ts
-                module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-                package__ankhorage_repository -.-&gt; module_src_connection_adapters_ghCliJson_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+                module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
                 package__ankhorage_repository -.-&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
-                module_src_connection_ports_ProjectSnapshotReader_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts
+                module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts --&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts --&gt;
                 module_src_connection_ports_RepositoryManifestStore_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
-                module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
-                package__ankhorage_repository -.-&gt; module_src_connection_definitions_index_ts
                 module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
@@ -1336,13 +1325,6 @@
                 module_src_connection_definitions_RepositoryConnectionResult_ts[&quot;src/connection/definitions/RepositoryConnectionResult.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_definitions_RepositoryConnectionResult_ts
-                module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_ports_GitHubRepositoryGateway_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
-                module_src_connection_ports_GitHubRepositoryGateway_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_ports_ProjectSnapshotReader_ts
@@ -1351,31 +1333,6 @@
                 module_src_connection_ports_RepositoryManifestStore_ts[&quot;src/connection/ports/RepositoryManifestStore.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_ports_RepositoryManifestStore_ts
-                module_src_connection_ports_RepositoryManifestStore_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_services_connectGitHubRepositoryAsync_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_adapters_createLocalProjectSnapshotReader_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_ports_RepositoryManifestStore_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
                 module_src_connection_services_connectRepositoryAsync_test_ts[&quot;src/connection/services/connectRepositoryAsync.test.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_services_connectRepositoryAsync_test_ts
@@ -1385,33 +1342,13 @@
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_services_connectRepositoryAsync_ts
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_services_connectRepositoryAsync_ts --&gt;
                 module_src_connection_definitions_RepositoryConnectionOptions_ts
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
                 module_src_connection_definitions_RepositoryConnectionResult_ts
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
-                module_src_connection_services_connectGitHubRepositoryAsync_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_definitions_index_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_ports_ProjectSnapshotReader_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_ports_RepositoryManifestStore_ts
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
-                package__ankhorage_repository -.-&gt;
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_connection_services_connectRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts
                 module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_connection_utils_getProjectSnapshotPaths_ts
@@ -1424,6 +1361,90 @@
                 module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_metadata_repositoryPackageMetadata_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_connection_utils_getProjectSnapshotPaths_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_providers_github_adapters_ghCliJson_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_adapters_ghCliJson_ts[&quot;src/providers/github/adapters/ghCliJson.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_adapters_ghCliJson_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_connection_ports_ProjectSnapshotReader_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_connection_ports_RepositoryManifestStore_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionResult.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts[&quot;src/providers/github/definitions/GitHubRepositoryVisibility.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_definitions_index_ts[&quot;src/providers/github/definitions/index.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_definitions_index_ts
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts[&quot;src/providers/github/ports/GitHubRepositoryGateway.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts[&quot;src/providers/github/services/connectGitHubRepositoryAsync.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_adapters_createLocalProjectSnapshotReader_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_ports_RepositoryManifestStore_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_connection_ports_ProjectSnapshotReader_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_connection_ports_RepositoryManifestStore_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_providers_github_definitions_index_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/providers/github/services/publishGitHubProjectSnapshotAsync.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
@@ -1438,15 +1459,15 @@ graph TD
   package__ankhorage_repository --&gt; entrypoint_src_metadata_index_ts
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
-  module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
+  module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
   module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_parseConnectCommandOptions_ts
   module_src_cli_commands_connect_parseConnectCommandOptions_ts --&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_cli_commands_connect_parseConnectCommandOptions_ts
-  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
+  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_index_ts
   module_src_cli_index_ts --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
@@ -1454,35 +1475,17 @@ graph TD
   package__ankhorage_repository -.-&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_metadata_repositoryPackageMetadata_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_adapters_ghCliJson_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts[&quot;src/connection/adapters/createGitHubRepositoryManifestStore.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createGitHubRepositoryManifestStore_ts
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
-  module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_adapters_ghCliJson_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
-  module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_definitions_index_ts
+  module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts
+  module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts --&gt; module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+  module_src_connection_adapters_createLocalRepositoryManifestStore_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+  module_src_connection_adapters_createLocalRepositoryManifestStore_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
   module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_definitions_ProjectSnapshot_ts --&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
@@ -1492,48 +1495,20 @@ graph TD
   package__ankhorage_repository -.-&gt; module_src_connection_definitions_RepositoryConnectionOptions_ts
   module_src_connection_definitions_RepositoryConnectionResult_ts[&quot;src/connection/definitions/RepositoryConnectionResult.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_definitions_RepositoryConnectionResult_ts
-  module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
-  module_src_connection_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_ports_ProjectSnapshotReader_ts
   module_src_connection_ports_ProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_ports_RepositoryManifestStore_ts[&quot;src/connection/ports/RepositoryManifestStore.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_ports_RepositoryManifestStore_ts
-  module_src_connection_ports_RepositoryManifestStore_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createGitHubRepositoryManifestStore_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
   module_src_connection_services_connectRepositoryAsync_test_ts[&quot;src/connection/services/connectRepositoryAsync.test.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_services_connectRepositoryAsync_test_ts
   module_src_connection_services_connectRepositoryAsync_test_ts --&gt; module_src_connection_services_connectRepositoryAsync_ts
   module_src_connection_services_connectRepositoryAsync_ts[&quot;src/connection/services/connectRepositoryAsync.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_services_connectRepositoryAsync_ts
-  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
   module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_definitions_RepositoryConnectionOptions_ts
   module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_definitions_RepositoryConnectionResult_ts
-  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_index_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
-  package__ankhorage_repository -.-&gt; module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
+  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
   module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
   module_src_github_index_ts[&quot;src/github/index.ts&quot;]
@@ -1545,6 +1520,53 @@ graph TD
   module_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
   module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_metadata_repositoryPackageMetadata_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_providers_github_adapters_ghCliJson_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_adapters_ghCliJson_ts[&quot;src/providers/github/adapters/ghCliJson.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_adapters_ghCliJson_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionResult.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_providers_github_definitions_GitHubRepositoryVisibility_ts[&quot;src/providers/github/definitions/GitHubRepositoryVisibility.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+  module_src_providers_github_definitions_index_ts[&quot;src/providers/github/definitions/index.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_definitions_index_ts
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts[&quot;src/providers/github/ports/GitHubRepositoryGateway.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts[&quot;src/providers/github/services/connectGitHubRepositoryAsync.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_providers_github_definitions_index_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/providers/github/services/publishGitHubProjectSnapshotAsync.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
 </pre>
               </details>
             </article>
@@ -1561,130 +1583,129 @@ graph TD
                 module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
                 module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts[&quot;src/connection/adapters/createGitHubRepositoryManifestStore.ts&quot;]
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
-                module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-                module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
+                module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.ts&quot;]
                 module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
                 module_src_connection_definitions_ProjectSnapshotEntry_ts[&quot;src/connection/definitions/ProjectSnapshotEntry.ts&quot;]
                 module_src_connection_definitions_RepositoryConnectionOptions_ts[&quot;src/connection/definitions/RepositoryConnectionOptions.ts&quot;]
                 module_src_connection_definitions_RepositoryConnectionResult_ts[&quot;src/connection/definitions/RepositoryConnectionResult.ts&quot;]
-                module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
                 module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
                 module_src_connection_ports_RepositoryManifestStore_ts[&quot;src/connection/ports/RepositoryManifestStore.ts&quot;]
-                module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
                 module_src_connection_services_connectRepositoryAsync_test_ts[&quot;src/connection/services/connectRepositoryAsync.test.ts&quot;]
                 module_src_connection_services_connectRepositoryAsync_ts[&quot;src/connection/services/connectRepositoryAsync.ts&quot;]
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
                 module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
                 module_src_github_index_ts[&quot;src/github/index.ts&quot;]
                 module_src_index_test_ts[&quot;src/index.test.ts&quot;]
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
                 module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
+                module_src_providers_github_adapters_ghCliJson_ts[&quot;src/providers/github/adapters/ghCliJson.ts&quot;]
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionResult.ts&quot;]
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts[&quot;src/providers/github/definitions/GitHubRepositoryVisibility.ts&quot;]
+                module_src_providers_github_definitions_index_ts[&quot;src/providers/github/definitions/index.ts&quot;]
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts[&quot;src/providers/github/ports/GitHubRepositoryGateway.ts&quot;]
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts[&quot;src/providers/github/services/connectGitHubRepositoryAsync.ts&quot;]
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/providers/github/services/publishGitHubProjectSnapshotAsync.ts&quot;]
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts --&gt;
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
-                module_src_connection_services_connectGitHubRepositoryAsync_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts
                 module_src_cli_index_ts --&gt;
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt;
                 module_src_cli_commands_connect_runConnectCommandAsync_ts
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt;
                 module_src_metadata_repositoryPackageMetadata_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_adapters_ghCliJson_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
-                module_src_connection_utils_getProjectSnapshotPaths_ts
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt;
-                module_src_connection_ports_RepositoryManifestStore_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshotEntry_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt;
                 module_src_connection_ports_ProjectSnapshotReader_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
-                module_src_connection_ports_ProjectSnapshotReader_ts
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts --&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts --&gt;
                 module_src_connection_ports_RepositoryManifestStore_ts
                 module_src_connection_definitions_ProjectSnapshot_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshotEntry_ts
-                module_src_connection_ports_GitHubRepositoryGateway_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts
-                module_src_connection_ports_GitHubRepositoryGateway_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_ports_ProjectSnapshotReader_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_ports_RepositoryManifestStore_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_adapters_createLocalProjectSnapshotReader_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_ports_RepositoryManifestStore_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
                 module_src_connection_services_connectRepositoryAsync_test_ts --&gt;
                 module_src_connection_services_connectRepositoryAsync_ts
-                module_src_connection_services_connectRepositoryAsync_ts --&gt;
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
                 module_src_connection_definitions_RepositoryConnectionOptions_ts
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
                 module_src_connection_definitions_RepositoryConnectionResult_ts
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
-                module_src_connection_services_connectGitHubRepositoryAsync_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_definitions_index_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_ports_ProjectSnapshotReader_ts
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
-                module_src_connection_ports_RepositoryManifestStore_ts
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt;
-                module_src_connection_definitions_ProjectSnapshot_ts
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt;
-                module_src_connection_ports_GitHubRepositoryGateway_ts module_src_index_test_ts
-                --&gt; module_src_index_ts module_src_index_test_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_connection_services_connectRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts
+                module_src_index_test_ts --&gt; module_src_index_ts module_src_index_test_ts --&gt;
                 module_src_metadata_index_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_connection_utils_getProjectSnapshotPaths_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_providers_github_adapters_ghCliJson_ts
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_connection_ports_ProjectSnapshotReader_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_connection_ports_RepositoryManifestStore_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_adapters_createLocalProjectSnapshotReader_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_connection_ports_RepositoryManifestStore_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_connection_ports_ProjectSnapshotReader_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_connection_ports_RepositoryManifestStore_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_providers_github_definitions_index_ts
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt;
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
@@ -1695,82 +1716,82 @@ graph LR
   module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts[&quot;src/connection/adapters/createGitHubRepositoryManifestStore.ts&quot;]
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
-  module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-  module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-  module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
+  module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
+  module_src_connection_adapters_createLocalRepositoryManifestStore_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.ts&quot;]
   module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
   module_src_connection_definitions_ProjectSnapshotEntry_ts[&quot;src/connection/definitions/ProjectSnapshotEntry.ts&quot;]
   module_src_connection_definitions_RepositoryConnectionOptions_ts[&quot;src/connection/definitions/RepositoryConnectionOptions.ts&quot;]
   module_src_connection_definitions_RepositoryConnectionResult_ts[&quot;src/connection/definitions/RepositoryConnectionResult.ts&quot;]
-  module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
   module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
   module_src_connection_ports_RepositoryManifestStore_ts[&quot;src/connection/ports/RepositoryManifestStore.ts&quot;]
-  module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
   module_src_connection_services_connectRepositoryAsync_test_ts[&quot;src/connection/services/connectRepositoryAsync.test.ts&quot;]
   module_src_connection_services_connectRepositoryAsync_ts[&quot;src/connection/services/connectRepositoryAsync.ts&quot;]
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
   module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
   module_src_github_index_ts[&quot;src/github/index.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
   module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
-  module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
+  module_src_providers_github_adapters_ghCliJson_ts[&quot;src/providers/github/adapters/ghCliJson.ts&quot;]
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionResult.ts&quot;]
+  module_src_providers_github_definitions_GitHubRepositoryVisibility_ts[&quot;src/providers/github/definitions/GitHubRepositoryVisibility.ts&quot;]
+  module_src_providers_github_definitions_index_ts[&quot;src/providers/github/definitions/index.ts&quot;]
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts[&quot;src/providers/github/ports/GitHubRepositoryGateway.ts&quot;]
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts[&quot;src/providers/github/services/connectGitHubRepositoryAsync.ts&quot;]
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/providers/github/services/publishGitHubProjectSnapshotAsync.ts&quot;]
+  module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
   module_src_cli_commands_connect_parseConnectCommandOptions_ts --&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_cli_commands_connect_parseConnectCommandOptions_ts
-  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
+  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
   module_src_cli_index_ts --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_metadata_repositoryPackageMetadata_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_adapters_ghCliJson_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts --&gt; module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+  module_src_connection_adapters_createLocalRepositoryManifestStore_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
   module_src_connection_definitions_ProjectSnapshot_ts --&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
-  module_src_connection_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
-  module_src_connection_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_ports_ProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_ports_RepositoryManifestStore_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createGitHubRepositoryManifestStore_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
   module_src_connection_services_connectRepositoryAsync_test_ts --&gt; module_src_connection_services_connectRepositoryAsync_ts
-  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
   module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_definitions_RepositoryConnectionOptions_ts
   module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_definitions_RepositoryConnectionResult_ts
-  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_index_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
+  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
   module_src_index_test_ts --&gt; module_src_index_ts
   module_src_index_test_ts --&gt; module_src_metadata_index_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_providers_github_adapters_ghCliJson_ts
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalRepositoryManifestStore_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_RepositoryManifestStore_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_providers_github_definitions_index_ts
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_providers_github_ports_GitHubRepositoryGateway_ts
 </pre>
               </details>
             </article>
@@ -1784,34 +1805,35 @@ graph LR
                 module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
                 module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
-                module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-                module_src_connection_adapters_createGitHubRepositoryManifestStore_ts[&quot;src/connection/adapters/createGitHubRepositoryManifestStore.ts&quot;]
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
-                module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-                module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
+                module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
+                module_src_connection_adapters_createLocalRepositoryManifestStore_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.ts&quot;]
                 module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
                 module_src_connection_definitions_ProjectSnapshotEntry_ts[&quot;src/connection/definitions/ProjectSnapshotEntry.ts&quot;]
                 module_src_connection_definitions_RepositoryConnectionOptions_ts[&quot;src/connection/definitions/RepositoryConnectionOptions.ts&quot;]
                 module_src_connection_definitions_RepositoryConnectionResult_ts[&quot;src/connection/definitions/RepositoryConnectionResult.ts&quot;]
-                module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
                 module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
                 module_src_connection_ports_RepositoryManifestStore_ts[&quot;src/connection/ports/RepositoryManifestStore.ts&quot;]
-                module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
                 module_src_connection_services_connectRepositoryAsync_test_ts[&quot;src/connection/services/connectRepositoryAsync.test.ts&quot;]
                 module_src_connection_services_connectRepositoryAsync_ts[&quot;src/connection/services/connectRepositoryAsync.ts&quot;]
-                module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-                module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
                 module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
                 module_src_github_index_ts[&quot;src/github/index.ts&quot;]
                 module_src_index_test_ts[&quot;src/index.test.ts&quot;]
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
                 module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
+                module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
+                module_src_providers_github_adapters_ghCliJson_ts[&quot;src/providers/github/adapters/ghCliJson.ts&quot;]
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionResult.ts&quot;]
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts[&quot;src/providers/github/definitions/GitHubRepositoryVisibility.ts&quot;]
+                module_src_providers_github_definitions_index_ts[&quot;src/providers/github/definitions/index.ts&quot;]
+                module_src_providers_github_ports_GitHubRepositoryGateway_ts[&quot;src/providers/github/ports/GitHubRepositoryGateway.ts&quot;]
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts[&quot;src/providers/github/services/connectGitHubRepositoryAsync.ts&quot;]
+                module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
+                module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/providers/github/services/publishGitHubProjectSnapshotAsync.ts&quot;]
                 export_connectGitHubRepositoryAsync[&quot;connectGitHubRepositoryAsync&quot;]
-                module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
+                module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt;
                 export_connectGitHubRepositoryAsync export_connectGitHubRepositoryAsync -.-&gt;
                 export_GitHubRepositoryConnectionOptions export_connectGitHubRepositoryAsync -.-&gt;
                 export_GitHubRepositoryConnectionResult
@@ -1821,20 +1843,20 @@ graph LR
                 export_RepositoryConnectionOptions export_connectRepositoryAsync -.-&gt;
                 export_RepositoryConnectionResult
                 export_GitHubRepositoryConnectionFailure[&quot;GitHubRepositoryConnectionFailure&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --&gt;
                 export_GitHubRepositoryConnectionFailure
                 export_GitHubRepositoryConnectionOptions[&quot;GitHubRepositoryConnectionOptions&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
                 export_GitHubRepositoryConnectionOptions export_GitHubRepositoryConnectionOptions
                 -.-&gt; export_GitHubRepositoryVisibility
                 export_GitHubRepositoryConnectionResult[&quot;GitHubRepositoryConnectionResult&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --&gt;
                 export_GitHubRepositoryConnectionResult
                 export_GitHubRepositoryConnectionStatus[&quot;GitHubRepositoryConnectionStatus&quot;]
-                module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --&gt;
                 export_GitHubRepositoryConnectionStatus
                 export_GitHubRepositoryVisibility[&quot;GitHubRepositoryVisibility&quot;]
-                module_src_connection_definitions_GitHubRepositoryVisibility_ts --&gt;
+                module_src_providers_github_definitions_GitHubRepositoryVisibility_ts --&gt;
                 export_GitHubRepositoryVisibility
                 export_REPOSITORY_PACKAGE_METADATA[&quot;REPOSITORY_PACKAGE_METADATA&quot;]
                 module_src_metadata_index_ts --&gt; export_REPOSITORY_PACKAGE_METADATA
@@ -1864,34 +1886,35 @@ graph LR
   module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
-  module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-  module_src_connection_adapters_createGitHubRepositoryManifestStore_ts[&quot;src/connection/adapters/createGitHubRepositoryManifestStore.ts&quot;]
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
-  module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-  module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-  module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
+  module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
+  module_src_connection_adapters_createLocalRepositoryManifestStore_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.ts&quot;]
   module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
   module_src_connection_definitions_ProjectSnapshotEntry_ts[&quot;src/connection/definitions/ProjectSnapshotEntry.ts&quot;]
   module_src_connection_definitions_RepositoryConnectionOptions_ts[&quot;src/connection/definitions/RepositoryConnectionOptions.ts&quot;]
   module_src_connection_definitions_RepositoryConnectionResult_ts[&quot;src/connection/definitions/RepositoryConnectionResult.ts&quot;]
-  module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
   module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
   module_src_connection_ports_RepositoryManifestStore_ts[&quot;src/connection/ports/RepositoryManifestStore.ts&quot;]
-  module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
   module_src_connection_services_connectRepositoryAsync_test_ts[&quot;src/connection/services/connectRepositoryAsync.test.ts&quot;]
   module_src_connection_services_connectRepositoryAsync_ts[&quot;src/connection/services/connectRepositoryAsync.ts&quot;]
-  module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-  module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
   module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
   module_src_github_index_ts[&quot;src/github/index.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
   module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
+  module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
+  module_src_providers_github_adapters_ghCliJson_ts[&quot;src/providers/github/adapters/ghCliJson.ts&quot;]
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/providers/github/definitions/GitHubRepositoryConnectionResult.ts&quot;]
+  module_src_providers_github_definitions_GitHubRepositoryVisibility_ts[&quot;src/providers/github/definitions/GitHubRepositoryVisibility.ts&quot;]
+  module_src_providers_github_definitions_index_ts[&quot;src/providers/github/definitions/index.ts&quot;]
+  module_src_providers_github_ports_GitHubRepositoryGateway_ts[&quot;src/providers/github/ports/GitHubRepositoryGateway.ts&quot;]
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts[&quot;src/providers/github/services/connectGitHubRepositoryAsync.ts&quot;]
+  module_src_providers_github_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
+  module_src_providers_github_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/providers/github/services/publishGitHubProjectSnapshotAsync.ts&quot;]
   export_connectGitHubRepositoryAsync[&quot;connectGitHubRepositoryAsync&quot;]
-  module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; export_connectGitHubRepositoryAsync
+  module_src_providers_github_services_connectGitHubRepositoryAsync_ts --&gt; export_connectGitHubRepositoryAsync
   export_connectGitHubRepositoryAsync -.-&gt; export_GitHubRepositoryConnectionOptions
   export_connectGitHubRepositoryAsync -.-&gt; export_GitHubRepositoryConnectionResult
   export_connectRepositoryAsync[&quot;connectRepositoryAsync&quot;]
@@ -1899,16 +1922,16 @@ graph LR
   export_connectRepositoryAsync -.-&gt; export_RepositoryConnectionOptions
   export_connectRepositoryAsync -.-&gt; export_RepositoryConnectionResult
   export_GitHubRepositoryConnectionFailure[&quot;GitHubRepositoryConnectionFailure&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --&gt; export_GitHubRepositoryConnectionFailure
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --&gt; export_GitHubRepositoryConnectionFailure
   export_GitHubRepositoryConnectionOptions[&quot;GitHubRepositoryConnectionOptions&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; export_GitHubRepositoryConnectionOptions
+  module_src_providers_github_definitions_GitHubRepositoryConnectionOptions_ts --&gt; export_GitHubRepositoryConnectionOptions
   export_GitHubRepositoryConnectionOptions -.-&gt; export_GitHubRepositoryVisibility
   export_GitHubRepositoryConnectionResult[&quot;GitHubRepositoryConnectionResult&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --&gt; export_GitHubRepositoryConnectionResult
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --&gt; export_GitHubRepositoryConnectionResult
   export_GitHubRepositoryConnectionStatus[&quot;GitHubRepositoryConnectionStatus&quot;]
-  module_src_connection_definitions_GitHubRepositoryConnectionResult_ts --&gt; export_GitHubRepositoryConnectionStatus
+  module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts --&gt; export_GitHubRepositoryConnectionStatus
   export_GitHubRepositoryVisibility[&quot;GitHubRepositoryVisibility&quot;]
-  module_src_connection_definitions_GitHubRepositoryVisibility_ts --&gt; export_GitHubRepositoryVisibility
+  module_src_providers_github_definitions_GitHubRepositoryVisibility_ts --&gt; export_GitHubRepositoryVisibility
   export_REPOSITORY_PACKAGE_METADATA[&quot;REPOSITORY_PACKAGE_METADATA&quot;]
   module_src_metadata_index_ts --&gt; export_REPOSITORY_PACKAGE_METADATA
   export_RepositoryConnectionFailure[&quot;RepositoryConnectionFailure&quot;]
@@ -1992,196 +2015,6 @@ graph LR
               <h3>createRepositoryRuntimeProvider</h3>
               <p class="muted">
                 <code>src/cli/provider/createRepositoryRuntimeProvider.ts:28:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-connection-adapters-createghcligithubrepositorygateway-ts"
-          class="view"
-          data-view="src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts</h2>
-            <article
-              class="item"
-              data-search="createGhCliGitHubRepositoryGateway src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>createGhCliGitHubRepositoryGateway</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:38:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="createGhRunner src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>createGhRunner</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:87:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="assertSafeArguments src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>assertSafeArguments</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:126:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="inspectRepositoryAsync src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>inspectRepositoryAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:134:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="initializeBootstrapAsync src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>initializeBootstrapAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:183:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="publishSnapshotAsync src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>publishSnapshotAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:203:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="verifyPublishedSnapshotAsync src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>verifyPublishedSnapshotAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:255:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="readRemoteConfigAsync src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>readRemoteConfigAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:287:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="readRemoteTextFileAsync src/connection/adapters/createGhCliGitHubRepositoryGateway.ts "
-            >
-              <h3>readRemoteTextFileAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGhCliGitHubRepositoryGateway.ts:307:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-connection-adapters-creategithubrepositorymanifeststore-ts"
-          class="view"
-          data-view="src/connection/adapters/createGitHubRepositoryManifestStore.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/connection/adapters/createGitHubRepositoryManifestStore.ts</h2>
-            <article
-              class="item"
-              data-search="createGitHubRepositoryManifestStore src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>createGitHubRepositoryManifestStore</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:13:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="readConfigAsync src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>readConfigAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:18:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="updateRepositoryAsync src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>updateRepositoryAsync</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:36:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="getConfigPath src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>getConfigPath</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:58:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="getRelativeConfigPath src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>getRelativeConfigPath</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:63:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="isConfig src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>isConfig</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:68:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="isMissingFile src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>isMissingFile</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:81:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="getErrorMessage src/connection/adapters/createGitHubRepositoryManifestStore.ts "
-            >
-              <h3>getErrorMessage</h3>
-              <p class="muted">
-                <code>src/connection/adapters/createGitHubRepositoryManifestStore.ts:86:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2288,107 +2121,92 @@ graph LR
           </section>
         </section>
         <section
-          id="view-src-connection-adapters-ghclijson-ts"
+          id="view-src-connection-adapters-createlocalrepositorymanifeststore-ts"
           class="view"
-          data-view="src/connection/adapters/ghCliJson.ts"
+          data-view="src/connection/adapters/createLocalRepositoryManifestStore.ts"
           hidden
         >
           <section class="panel">
-            <h2>src/connection/adapters/ghCliJson.ts</h2>
+            <h2>src/connection/adapters/createLocalRepositoryManifestStore.ts</h2>
             <article
               class="item"
-              data-search="runGhJsonAsync src/connection/adapters/ghCliJson.ts "
+              data-search="createLocalRepositoryManifestStore src/connection/adapters/createLocalRepositoryManifestStore.ts Create the atomic local store for the project repository manifest slice."
             >
-              <h3>runGhJsonAsync</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:10:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="tryGhJsonAsync src/connection/adapters/ghCliJson.ts "
-            >
-              <h3>tryGhJsonAsync</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:24:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="getGhNestedSha src/connection/adapters/ghCliJson.ts "
-            >
-              <h3>getGhNestedSha</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:37:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="isGhNotFound src/connection/adapters/ghCliJson.ts ">
-              <h3>isGhNotFound</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:44:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="sanitizeGhError src/connection/adapters/ghCliJson.ts "
-            >
-              <h3>sanitizeGhError</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:49:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="isRecord src/connection/adapters/ghCliJson.ts ">
-              <h3>isRecord</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:54:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="isString src/connection/adapters/ghCliJson.ts ">
-              <h3>isString</h3>
-              <p class="muted"><code>src/connection/adapters/ghCliJson.ts:59:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-connection-services-connectgithubrepositoryasync-ts"
-          class="view"
-          data-view="src/connection/services/connectGitHubRepositoryAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/connection/services/connectGitHubRepositoryAsync.ts</h2>
-            <article
-              class="item"
-              data-search="connectGitHubRepositoryAsync src/connection/services/connectGitHubRepositoryAsync.ts "
-            >
-              <h3>connectGitHubRepositoryAsync</h3>
+              <h3>createLocalRepositoryManifestStore</h3>
               <p class="muted">
-                <code>src/connection/services/connectGitHubRepositoryAsync.ts:27:1</code>
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:12:1</code>
+              </p>
+              <p>Create the atomic local store for the project repository manifest slice.</p>
+            </article>
+            <article
+              class="item"
+              data-search="readConfigAsync src/connection/adapters/createLocalRepositoryManifestStore.ts Read the repository manifest, treating an absent file as an unconfigured project."
+            >
+              <h3>readConfigAsync</h3>
+              <p class="muted">
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:17:1</code>
+              </p>
+              <p>
+                Read the repository manifest, treating an absent file as an unconfigured project.
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="updateRepositoryAsync src/connection/adapters/createLocalRepositoryManifestStore.ts Atomically persist only the repository manifest slice."
+            >
+              <h3>updateRepositoryAsync</h3>
+              <p class="muted">
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:35:1</code>
+              </p>
+              <p>Atomically persist only the repository manifest slice.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getManifestPath src/connection/adapters/createLocalRepositoryManifestStore.ts Build the canonical project-local repository manifest path."
+            >
+              <h3>getManifestPath</h3>
+              <p class="muted">
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:57:1</code>
+              </p>
+              <p>Build the canonical project-local repository manifest path.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getRelativeManifestPath src/connection/adapters/createLocalRepositoryManifestStore.ts Return the manifest path used in user-facing errors."
+            >
+              <h3>getRelativeManifestPath</h3>
+              <p class="muted">
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:62:1</code>
+              </p>
+              <p>Return the manifest path used in user-facing errors.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isRepositoryManifest src/connection/adapters/createLocalRepositoryManifestStore.ts Validate the intentionally small repository manifest shape."
+            >
+              <h3>isRepositoryManifest</h3>
+              <p class="muted">
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:67:1</code>
+              </p>
+              <p>Validate the intentionally small repository manifest shape.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isMissingFile src/connection/adapters/createLocalRepositoryManifestStore.ts "
+            >
+              <h3>isMissingFile</h3>
+              <p class="muted">
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:80:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
             <article
               class="item"
-              data-search="finishAlreadyConnectedAsync src/connection/services/connectGitHubRepositoryAsync.ts "
+              data-search="getErrorMessage src/connection/adapters/createLocalRepositoryManifestStore.ts "
             >
-              <h3>finishAlreadyConnectedAsync</h3>
+              <h3>getErrorMessage</h3>
               <p class="muted">
-                <code>src/connection/services/connectGitHubRepositoryAsync.ts:64:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="publishConnectionAsync src/connection/services/connectGitHubRepositoryAsync.ts "
-            >
-              <h3>publishConnectionAsync</h3>
-              <p class="muted">
-                <code>src/connection/services/connectGitHubRepositoryAsync.ts:92:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="toFailure src/connection/services/connectGitHubRepositoryAsync.ts "
-            >
-              <h3>toFailure</h3>
-              <p class="muted">
-                <code>src/connection/services/connectGitHubRepositoryAsync.ts:113:1</code>
+                <code>src/connection/adapters/createLocalRepositoryManifestStore.ts:85:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2466,86 +2284,6 @@ graph LR
           </section>
         </section>
         <section
-          id="view-src-connection-services-inspectgithubrepositorypreflightasync-ts"
-          class="view"
-          data-view="src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts</h2>
-            <article
-              class="item"
-              data-search="inspectGitHubRepositoryPreflightAsync src/connection/services/inspectGitHubRepositoryPreflightAsync.ts "
-            >
-              <h3>inspectGitHubRepositoryPreflightAsync</h3>
-              <p class="muted">
-                <code>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts:27:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="validateName src/connection/services/inspectGitHubRepositoryPreflightAsync.ts "
-            >
-              <h3>validateName</h3>
-              <p class="muted">
-                <code>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts:75:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="matchesIdentity src/connection/services/inspectGitHubRepositoryPreflightAsync.ts "
-            >
-              <h3>matchesIdentity</h3>
-              <p class="muted">
-                <code>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts:85:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="validateRemoteState src/connection/services/inspectGitHubRepositoryPreflightAsync.ts "
-            >
-              <h3>validateRemoteState</h3>
-              <p class="muted">
-                <code>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts:98:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="getDefaultRepositoryName src/connection/services/inspectGitHubRepositoryPreflightAsync.ts "
-            >
-              <h3>getDefaultRepositoryName</h3>
-              <p class="muted">
-                <code>src/connection/services/inspectGitHubRepositoryPreflightAsync.ts:130:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-connection-services-publishgithubprojectsnapshotasync-ts"
-          class="view"
-          data-view="src/connection/services/publishGitHubProjectSnapshotAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/connection/services/publishGitHubProjectSnapshotAsync.ts</h2>
-            <article
-              class="item"
-              data-search="publishGitHubProjectSnapshotAsync src/connection/services/publishGitHubProjectSnapshotAsync.ts "
-            >
-              <h3>publishGitHubProjectSnapshotAsync</h3>
-              <p class="muted">
-                <code>src/connection/services/publishGitHubProjectSnapshotAsync.ts:13:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
           id="view-src-connection-utils-getprojectsnapshotpaths-ts"
           class="view"
           data-view="src/connection/utils/getProjectSnapshotPaths.ts"
@@ -2569,6 +2307,312 @@ graph LR
             <article class="item" data-search="collectProductionTypeScriptFiles src/index.test.ts ">
               <h3>collectProductionTypeScriptFiles</h3>
               <p class="muted"><code>src/index.test.ts:22:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-providers-github-adapters-createghclirepositorygateway-ts"
+          class="view"
+          data-view="src/providers/github/adapters/createGhCliRepositoryGateway.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/providers/github/adapters/createGhCliRepositoryGateway.ts</h2>
+            <article
+              class="item"
+              data-search="createGhCliRepositoryGateway src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>createGhCliRepositoryGateway</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:38:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createGhRunner src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>createGhRunner</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:87:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="assertSafeArguments src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>assertSafeArguments</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:126:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="inspectRepositoryAsync src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>inspectRepositoryAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:134:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="initializeBootstrapAsync src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>initializeBootstrapAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:183:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="publishSnapshotAsync src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>publishSnapshotAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:203:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="verifyPublishedSnapshotAsync src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>verifyPublishedSnapshotAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:255:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="readRemoteRepositoryManifestAsync src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>readRemoteRepositoryManifestAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:287:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="readRemoteTextFileAsync src/providers/github/adapters/createGhCliRepositoryGateway.ts "
+            >
+              <h3>readRemoteTextFileAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/adapters/createGhCliRepositoryGateway.ts:307:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-providers-github-adapters-ghclijson-ts"
+          class="view"
+          data-view="src/providers/github/adapters/ghCliJson.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/providers/github/adapters/ghCliJson.ts</h2>
+            <article
+              class="item"
+              data-search="runGhJsonAsync src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>runGhJsonAsync</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:10:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="tryGhJsonAsync src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>tryGhJsonAsync</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:24:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getGhNestedSha src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>getGhNestedSha</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:37:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isGhNotFound src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>isGhNotFound</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:44:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="sanitizeGhError src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>sanitizeGhError</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:49:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isRecord src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>isRecord</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:54:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isString src/providers/github/adapters/ghCliJson.ts "
+            >
+              <h3>isString</h3>
+              <p class="muted"><code>src/providers/github/adapters/ghCliJson.ts:59:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-providers-github-services-connectgithubrepositoryasync-ts"
+          class="view"
+          data-view="src/providers/github/services/connectGitHubRepositoryAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/providers/github/services/connectGitHubRepositoryAsync.ts</h2>
+            <article
+              class="item"
+              data-search="connectGitHubRepositoryAsync src/providers/github/services/connectGitHubRepositoryAsync.ts "
+            >
+              <h3>connectGitHubRepositoryAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/services/connectGitHubRepositoryAsync.ts:27:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="finishAlreadyConnectedAsync src/providers/github/services/connectGitHubRepositoryAsync.ts "
+            >
+              <h3>finishAlreadyConnectedAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/services/connectGitHubRepositoryAsync.ts:64:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="publishConnectionAsync src/providers/github/services/connectGitHubRepositoryAsync.ts "
+            >
+              <h3>publishConnectionAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/services/connectGitHubRepositoryAsync.ts:92:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="toFailure src/providers/github/services/connectGitHubRepositoryAsync.ts "
+            >
+              <h3>toFailure</h3>
+              <p class="muted">
+                <code>src/providers/github/services/connectGitHubRepositoryAsync.ts:113:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-providers-github-services-inspectgithubrepositorypreflightasync-ts"
+          class="view"
+          data-view="src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts</h2>
+            <article
+              class="item"
+              data-search="inspectGitHubRepositoryPreflightAsync src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts "
+            >
+              <h3>inspectGitHubRepositoryPreflightAsync</h3>
+              <p class="muted">
+                <code
+                  >src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts:27:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="validateName src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts "
+            >
+              <h3>validateName</h3>
+              <p class="muted">
+                <code
+                  >src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts:75:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="matchesIdentity src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts "
+            >
+              <h3>matchesIdentity</h3>
+              <p class="muted">
+                <code
+                  >src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts:85:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="validateRemoteState src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts "
+            >
+              <h3>validateRemoteState</h3>
+              <p class="muted">
+                <code
+                  >src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts:98:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getDefaultRepositoryName src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts "
+            >
+              <h3>getDefaultRepositoryName</h3>
+              <p class="muted">
+                <code
+                  >src/providers/github/services/inspectGitHubRepositoryPreflightAsync.ts:130:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-providers-github-services-publishgithubprojectsnapshotasync-ts"
+          class="view"
+          data-view="src/providers/github/services/publishGitHubProjectSnapshotAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/providers/github/services/publishGitHubProjectSnapshotAsync.ts</h2>
+            <article
+              class="item"
+              data-search="publishGitHubProjectSnapshotAsync src/providers/github/services/publishGitHubProjectSnapshotAsync.ts "
+            >
+              <h3>publishGitHubProjectSnapshotAsync</h3>
+              <p class="muted">
+                <code>src/providers/github/services/publishGitHubProjectSnapshotAsync.ts:13:1</code>
+              </p>
               <p class="empty">No description available.</p>
             </article>
           </section>

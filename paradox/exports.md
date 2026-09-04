@@ -3,8 +3,8 @@
 ## connectGitHubRepositoryAsync
 
 Kind: `function`
-Module: `src/connection/services/connectGitHubRepositoryAsync.ts`
-Source: `src/connection/services/connectGitHubRepositoryAsync.ts:27:1`
+Module: `src/providers/github/services/connectGitHubRepositoryAsync.ts`
+Source: `src/providers/github/services/connectGitHubRepositoryAsync.ts:27:1`
 
 ### Signatures
 
@@ -30,8 +30,8 @@ Connect the app project repository using only the standalone `RepositoryManifest
 ## GitHubRepositoryConnectionFailure
 
 Kind: `type`
-Module: `src/connection/definitions/GitHubRepositoryConnectionResult.ts`
-Source: `src/connection/definitions/GitHubRepositoryConnectionResult.ts:18:1`
+Module: `src/providers/github/definitions/GitHubRepositoryConnectionResult.ts`
+Source: `src/providers/github/definitions/GitHubRepositoryConnectionResult.ts:18:1`
 
 ### Members
 
@@ -46,8 +46,8 @@ Source: `src/connection/definitions/GitHubRepositoryConnectionResult.ts:18:1`
 ## GitHubRepositoryConnectionOptions
 
 Kind: `type`
-Module: `src/connection/definitions/GitHubRepositoryConnectionOptions.ts`
-Source: `src/connection/definitions/GitHubRepositoryConnectionOptions.ts:6:1`
+Module: `src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts`
+Source: `src/providers/github/definitions/GitHubRepositoryConnectionOptions.ts:6:1`
 
 ### Members
 
@@ -61,20 +61,20 @@ Source: `src/connection/definitions/GitHubRepositoryConnectionOptions.ts:6:1`
 ## GitHubRepositoryConnectionResult
 
 Kind: `unknown`
-Module: `src/connection/definitions/GitHubRepositoryConnectionResult.ts`
-Source: `src/connection/definitions/GitHubRepositoryConnectionResult.ts:26:1`
+Module: `src/providers/github/definitions/GitHubRepositoryConnectionResult.ts`
+Source: `src/providers/github/definitions/GitHubRepositoryConnectionResult.ts:26:1`
 
 ## GitHubRepositoryConnectionStatus
 
 Kind: `unknown`
-Module: `src/connection/definitions/GitHubRepositoryConnectionResult.ts`
-Source: `src/connection/definitions/GitHubRepositoryConnectionResult.ts:1:1`
+Module: `src/providers/github/definitions/GitHubRepositoryConnectionResult.ts`
+Source: `src/providers/github/definitions/GitHubRepositoryConnectionResult.ts:1:1`
 
 ## GitHubRepositoryVisibility
 
 Kind: `unknown`
-Module: `src/connection/definitions/GitHubRepositoryVisibility.ts`
-Source: `src/connection/definitions/GitHubRepositoryVisibility.ts:1:1`
+Module: `src/providers/github/definitions/GitHubRepositoryVisibility.ts`
+Source: `src/providers/github/definitions/GitHubRepositoryVisibility.ts:1:1`
 
 ## REPOSITORY_PACKAGE_METADATA
 

@@ -8,7 +8,7 @@ import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type { ProjectSnapshotEntry } from '../definitions/ProjectSnapshotEntry.js';
 import type { ProjectSnapshotReader } from '../ports/ProjectSnapshotReader.js';
 
-const CONFIG_FILE_PATH = '.ankhorage/repository.json';
+const REPOSITORY_MANIFEST_PATH = '.ankhorage/repository.json';
 const HARD_EXCLUDED_DIRECTORIES = new Set([
   '.git',
   'node_modules',
@@ -33,7 +33,7 @@ export function createLocalProjectSnapshotReader(): ProjectSnapshotReader {
 /** Read a complete safe project snapshot rooted only at the supplied project directory. */
 async function readAsync(
   projectPath: string,
-  configOverride: RepositoryManifest,
+  repository: RepositoryManifest,
 ): Promise<ProjectSnapshot> {
   const root = resolve(projectPath);
   const rootStat = await lstat(root);
@@ -43,21 +43,21 @@ async function readAsync(
   const matcher = await readIgnoreMatcher(root);
   const entries: ProjectSnapshotEntry[] = [];
   await visitDirectory(root, root, matcher, entries);
-  const configPath = entries.find((entry) => entry.path === CONFIG_FILE_PATH);
-  const serializedConfig = `${JSON.stringify(configOverride, null, 2)}\n`;
-  const configEntry: ProjectSnapshotEntry = {
-    path: CONFIG_FILE_PATH,
-    mode: configPath?.mode ?? '100644',
-    content: serializedConfig,
+  const existingManifest = entries.find((entry) => entry.path === REPOSITORY_MANIFEST_PATH);
+  const serializedManifest = `${JSON.stringify(repository, null, 2)}\n`;
+  const manifestEntry: ProjectSnapshotEntry = {
+    path: REPOSITORY_MANIFEST_PATH,
+    mode: existingManifest?.mode ?? '100644',
+    content: serializedManifest,
     encoding: 'utf-8',
   };
-  const withoutConfig = entries.filter((entry) => entry.path !== CONFIG_FILE_PATH);
-  const allEntries = [...withoutConfig, configEntry].sort((left, right) =>
+  const withoutManifest = entries.filter((entry) => entry.path !== REPOSITORY_MANIFEST_PATH);
+  const allEntries = [...withoutManifest, manifestEntry].sort((left, right) =>
     left.path.localeCompare(right.path),
   );
   return Object.freeze({
     projectPath: root,
-    config: configOverride,
+    repository,
     entries: Object.freeze(allEntries),
   });
 }

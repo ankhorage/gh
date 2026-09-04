@@ -2,4 +2,4 @@
 '@ankhorage/repository': minor
 ---
 
-Rename the standalone capability from `@ankhorage/gh` to `@ankhorage/repository`, consume the focused `RepositoryManifest` slice, expose a provider-neutral connection API, move GitHub-specific APIs to the `./github` provider subpath, and rename the Ankh capability to `repository.connect`.
+Rename the standalone capability from `@ankhorage/gh` to `@ankhorage/repository`, consume the focused `RepositoryManifest` slice, persist it at `.ankhorage/repository.json`, expose a provider-neutral connection API and `repository.connect` capability, and isolate GitHub-specific implementation under `providers/github` and the `./github` provider subpath.

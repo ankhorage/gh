@@ -1,5 +1,5 @@
-import type { GitHubRepositoryConnectionResult } from '../../../connection/definitions/GitHubRepositoryConnectionResult.js';
-import { connectGitHubRepositoryAsync } from '../../../connection/services/connectGitHubRepositoryAsync.js';
+import type { GitHubRepositoryConnectionResult } from '../../../providers/github/definitions/GitHubRepositoryConnectionResult.js';
+import { connectGitHubRepositoryAsync } from '../../../providers/github/services/connectGitHubRepositoryAsync.js';
 import { parseConnectCommandOptions } from './parseConnectCommandOptions.js';
 
 export interface ConnectCommandRequest {

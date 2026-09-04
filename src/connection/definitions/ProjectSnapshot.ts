@@ -4,6 +4,6 @@ import type { ProjectSnapshotEntry } from './ProjectSnapshotEntry.js';
 
 export interface ProjectSnapshot {
   readonly projectPath: string;
-  readonly config: RepositoryManifest;
+  readonly repository: RepositoryManifest;
   readonly entries: readonly ProjectSnapshotEntry[];
 }
