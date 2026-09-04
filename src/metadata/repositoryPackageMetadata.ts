@@ -1,8 +1,10 @@
+import packageJson from '../../package.json';
+
 export const repositoryPackageMetadata = {
-  packageName: '@ankhorage/repository',
+  packageName: packageJson.name,
   provider: 'repository' as const,
   category: 'repository' as const,
-  version: '0.3.1',
+  version: packageJson.version,
   capabilities: ['repository.connect'] as const,
   command: {
     path: ['connect'] as const,

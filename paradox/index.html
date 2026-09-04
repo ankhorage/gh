@@ -334,7 +334,7 @@
             <div class="summary">
               <div><strong>13</strong><span class="muted">public exports</span></div>
               <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>32</strong><span class="muted">modules</span></div>
+              <div><strong>34</strong><span class="muted">modules</span></div>
               <div><strong>3</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -347,6 +347,12 @@
 
           <section class="panel">
             <h2>Modules</h2>
+            <article class="item" data-search="package.json">
+              <h3>package.json</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+            </article>
             <article
               class="item"
               data-search="src/cli/commands/connect/definitions/ConnectCommandOptions.ts src/providers/github/definitions/GitHubRepositoryVisibility.ts ConnectCommandOptions"
@@ -402,6 +408,18 @@
                 <strong>Exports:</strong> <code>createRepositoryRuntimeProvider</code>,
                 <code>default</code>
               </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/cli/provider/createRepositoryRuntimeProvider.test.ts package.json src/cli/provider/createRepositoryRuntimeProvider.ts"
+            >
+              <h3>src/cli/provider/createRepositoryRuntimeProvider.test.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong> <code>package.json</code>,
+                <code>src/cli/provider/createRepositoryRuntimeProvider.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
             </article>
             <article
               class="item"
@@ -609,11 +627,11 @@
             </article>
             <article
               class="item"
-              data-search="src/metadata/repositoryPackageMetadata.ts repositoryPackageMetadata"
+              data-search="src/metadata/repositoryPackageMetadata.ts package.json repositoryPackageMetadata"
             >
               <h3>src/metadata/repositoryPackageMetadata.ts</h3>
               <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Dependencies:</strong> <code>package.json</code></p>
               <p><strong>Exports:</strong> <code>repositoryPackageMetadata</code></p>
             </article>
             <article
@@ -1263,6 +1281,8 @@
                 --&gt; entrypoint_src_index_ts
                 entrypoint_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
                 package__ankhorage_repository --&gt; entrypoint_src_metadata_index_ts
+                module_package_json[&quot;package.json&quot;] package__ankhorage_repository -.-&gt;
+                module_package_json
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
@@ -1285,6 +1305,12 @@
                 module_src_cli_index_ts[&quot;src/cli/index.ts&quot;] package__ankhorage_repository
                 -.-&gt; module_src_cli_index_ts module_src_cli_index_ts --&gt;
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts
+                module_src_cli_provider_createRepositoryRuntimeProvider_test_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.test.ts&quot;]
+                package__ankhorage_repository -.-&gt;
+                module_src_cli_provider_createRepositoryRuntimeProvider_test_ts
+                module_src_cli_provider_createRepositoryRuntimeProvider_test_ts --&gt;
+                module_package_json module_src_cli_provider_createRepositoryRuntimeProvider_test_ts
+                --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts
@@ -1361,6 +1387,7 @@
                 module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_metadata_repositoryPackageMetadata_ts
+                module_src_metadata_repositoryPackageMetadata_ts --&gt; module_package_json
                 module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
                 package__ankhorage_repository -.-&gt;
                 module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
@@ -1457,6 +1484,8 @@ graph TD
   package__ankhorage_repository --&gt; entrypoint_src_index_ts
   entrypoint_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
   package__ankhorage_repository --&gt; entrypoint_src_metadata_index_ts
+  module_package_json[&quot;package.json&quot;]
+  package__ankhorage_repository -.-&gt; module_package_json
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryVisibility_ts
@@ -1471,6 +1500,10 @@ graph TD
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_index_ts
   module_src_cli_index_ts --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.test.ts&quot;]
+  package__ankhorage_repository -.-&gt; module_src_cli_provider_createRepositoryRuntimeProvider_test_ts
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts --&gt; module_package_json
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
@@ -1520,6 +1553,7 @@ graph TD
   module_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
   module_src_metadata_repositoryPackageMetadata_ts[&quot;src/metadata/repositoryPackageMetadata.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_metadata_repositoryPackageMetadata_ts
+  module_src_metadata_repositoryPackageMetadata_ts --&gt; module_package_json
   module_src_providers_github_adapters_createGhCliRepositoryGateway_ts[&quot;src/providers/github/adapters/createGhCliRepositoryGateway.ts&quot;]
   package__ankhorage_repository -.-&gt; module_src_providers_github_adapters_createGhCliRepositoryGateway_ts
   module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
@@ -1577,11 +1611,12 @@ graph TD
               <h3>Module relationships</h3>
               <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
               <div class="mermaid">
-                graph LR
+                graph LR module_package_json[&quot;package.json&quot;]
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
                 module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
                 module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+                module_src_cli_provider_createRepositoryRuntimeProvider_test_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.test.ts&quot;]
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
                 module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
@@ -1622,6 +1657,9 @@ graph TD
                 module_src_providers_github_services_connectGitHubRepositoryAsync_ts
                 module_src_cli_index_ts --&gt;
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts
+                module_src_cli_provider_createRepositoryRuntimeProvider_test_ts --&gt;
+                module_package_json module_src_cli_provider_createRepositoryRuntimeProvider_test_ts
+                --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt;
                 module_src_cli_commands_connect_runConnectCommandAsync_ts
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt;
@@ -1651,7 +1689,8 @@ graph TD
                 module_src_connection_services_connectRepositoryAsync_ts --&gt;
                 module_src_providers_github_services_connectGitHubRepositoryAsync_ts
                 module_src_index_test_ts --&gt; module_src_index_ts module_src_index_test_ts --&gt;
-                module_src_metadata_index_ts
+                module_src_metadata_index_ts module_src_metadata_repositoryPackageMetadata_ts --&gt;
+                module_package_json
                 module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt;
@@ -1711,10 +1750,12 @@ graph TD
                 <summary>View Mermaid source</summary>
                 <pre>
 graph LR
+  module_package_json[&quot;package.json&quot;]
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
   module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
   module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.test.ts&quot;]
   module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
   module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
@@ -1749,6 +1790,8 @@ graph LR
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_providers_github_definitions_GitHubRepositoryConnectionResult_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
   module_src_cli_index_ts --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts --&gt; module_package_json
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts --&gt; module_src_cli_provider_createRepositoryRuntimeProvider_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
   module_src_cli_provider_createRepositoryRuntimeProvider_ts --&gt; module_src_metadata_repositoryPackageMetadata_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
@@ -1765,6 +1808,7 @@ graph LR
   module_src_connection_services_connectRepositoryAsync_ts --&gt; module_src_providers_github_services_connectGitHubRepositoryAsync_ts
   module_src_index_test_ts --&gt; module_src_index_ts
   module_src_index_test_ts --&gt; module_src_metadata_index_ts
+  module_src_metadata_repositoryPackageMetadata_ts --&gt; module_package_json
   module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
   module_src_providers_github_adapters_createGhCliRepositoryGateway_ts --&gt; module_src_providers_github_adapters_ghCliJson_ts
@@ -1799,11 +1843,12 @@ graph LR
               <h3>Export graph</h3>
               <p class="muted"><code>diagrams/export-graph.mmd</code></p>
               <div class="mermaid">
-                graph LR
+                graph LR module_package_json[&quot;package.json&quot;]
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
                 module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
                 module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+                module_src_cli_provider_createRepositoryRuntimeProvider_test_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.test.ts&quot;]
                 module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
                 module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]
@@ -1881,10 +1926,12 @@ graph LR
                 <summary>View Mermaid source</summary>
                 <pre>
 graph LR
+  module_package_json[&quot;package.json&quot;]
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
   module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
   module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  module_src_cli_provider_createRepositoryRuntimeProvider_test_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.test.ts&quot;]
   module_src_cli_provider_createRepositoryRuntimeProvider_ts[&quot;src/cli/provider/createRepositoryRuntimeProvider.ts&quot;]
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
   module_src_connection_adapters_createLocalRepositoryManifestStore_test_ts[&quot;src/connection/adapters/createLocalRepositoryManifestStore.test.ts&quot;]

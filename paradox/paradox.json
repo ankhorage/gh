@@ -77,6 +77,12 @@
   "entrypoints": ["src/github/index.ts", "src/index.ts", "src/metadata/index.ts"],
   "modules": [
     {
+      "path": "package.json",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": []
+    },
+    {
       "path": "src/cli/commands/connect/definitions/ConnectCommandOptions.ts",
       "isEntrypoint": false,
       "dependencies": ["src/providers/github/definitions/GitHubRepositoryVisibility.ts"],
@@ -103,6 +109,12 @@
       "isEntrypoint": false,
       "dependencies": ["src/cli/provider/createRepositoryRuntimeProvider.ts"],
       "exports": ["createRepositoryRuntimeProvider", "default"]
+    },
+    {
+      "path": "src/cli/provider/createRepositoryRuntimeProvider.test.ts",
+      "isEntrypoint": false,
+      "dependencies": ["package.json", "src/cli/provider/createRepositoryRuntimeProvider.ts"],
+      "exports": []
     },
     {
       "path": "src/cli/provider/createRepositoryRuntimeProvider.ts",
@@ -239,7 +251,7 @@
     {
       "path": "src/metadata/repositoryPackageMetadata.ts",
       "isEntrypoint": false,
-      "dependencies": [],
+      "dependencies": ["package.json"],
       "exports": ["repositoryPackageMetadata"]
     },
     {
@@ -1318,6 +1330,21 @@
         "sourcePath": "src/github/index.ts"
       },
       {
+        "fromPath": "src/metadata/repositoryPackageMetadata.ts",
+        "toPath": "package.json",
+        "sourcePath": "src/metadata/repositoryPackageMetadata.ts"
+      },
+      {
+        "fromPath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts",
+        "toPath": "package.json",
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts"
+      },
+      {
+        "fromPath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts",
+        "toPath": "src/cli/provider/createRepositoryRuntimeProvider.ts",
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts"
+      },
+      {
         "fromPath": "src/cli/provider/createRepositoryRuntimeProvider.ts",
         "toPath": "src/metadata/repositoryPackageMetadata.ts",
         "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.ts"
@@ -1612,6 +1639,24 @@
         "toSymbol": "createRepositoryRuntimeProvider",
         "callExpression": "createRepositoryRuntimeProvider",
         "sourcePath": "src/cli/index.ts"
+      },
+      {
+        "fromSymbol": "src/cli/provider/createRepositoryRuntimeProvider.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts"
+      },
+      {
+        "fromSymbol": "src/cli/provider/createRepositoryRuntimeProvider.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts"
+      },
+      {
+        "fromSymbol": "src/cli/provider/createRepositoryRuntimeProvider.test.ts",
+        "toSymbol": "createRepositoryRuntimeProvider",
+        "callExpression": "createRepositoryRuntimeProvider",
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.test.ts"
       },
       {
         "fromSymbol": "readAsync",
