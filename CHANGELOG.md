@@ -1,5 +1,15 @@
 # @ankhorage/gh
 
+## 0.4.0
+
+### Minor Changes
+
+- b156251: Rename the standalone capability from `@ankhorage/gh` to `@ankhorage/repository`, consume the focused `RepositoryManifest` slice, persist it at `.ankhorage/repository.json`, expose a provider-neutral connection API and `repository.connect` capability with package-derived version metadata, and isolate GitHub-specific implementation under `providers/github` and the `./github` provider subpath.
+
+### Patch Changes
+
+- a9bf4e7: Update documentation
+
 ## 0.3.1
 
 ### Patch Changes
