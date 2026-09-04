@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "@ankhorage/gh",
+      "name": "@ankhorage/repository",
       "dependencies": {
         "@ankhorage/contracts": "^10.0.0",
         "ignore": "^7.0.8",
