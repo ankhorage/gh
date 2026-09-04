@@ -5,7 +5,10 @@ import type {
   RepositoryConnectionFailure,
   RepositoryConnectionResult,
 } from '../definitions/RepositoryConnectionResult.js';
-import type { GitHubRepositoryConnectionResult } from '../definitions/GitHubRepositoryConnectionResult.js';
+import type {
+  GitHubRepositoryConnectionFailure,
+  GitHubRepositoryConnectionResult,
+} from '../definitions/GitHubRepositoryConnectionResult.js';
 import { connectGitHubRepositoryAsync } from './connectGitHubRepositoryAsync.js';
 
 /*** Add the provider discriminant to the canonical repository identity returned by GitHub. */
@@ -18,31 +21,40 @@ function toRepositoryManifest(repository: {
   return { provider: 'github', ...repository };
 }
 
+/*** Identify the failure branch of the GitHub adapter result union. */
+function isGitHubRepositoryConnectionFailure(
+  result: GitHubRepositoryConnectionResult,
+): result is GitHubRepositoryConnectionFailure {
+  return result.status === 'recoverable-failure' || result.status === 'conflict';
+}
+
 /*** Convert the current GitHub adapter result into the provider-neutral repository result. */
 function toRepositoryConnectionResult(
   result: GitHubRepositoryConnectionResult,
 ): RepositoryConnectionResult {
-  if (result.status === 'connected' || result.status === 'already-connected') {
+  if (isGitHubRepositoryConnectionFailure(result)) {
     return {
       status: result.status,
-      repository: toRepositoryManifest(result.repository),
-      ...(result.appCommitSha === undefined ? {} : { appCommitSha: result.appCommitSha }),
+      stage: result.stage,
+      code: result.code,
+      message: result.message,
+      ...(result.repository === undefined
+        ? {}
+        : { repository: toRepositoryManifest(result.repository) }),
     };
   }
 
   return {
     status: result.status,
-    stage: result.stage,
-    code: result.code,
-    message: result.message,
-    ...(result.repository === undefined
-      ? {}
-      : { repository: toRepositoryManifest(result.repository) }),
+    repository: toRepositoryManifest(result.repository),
+    ...(result.appCommitSha === undefined ? {} : { appCommitSha: result.appCommitSha }),
   };
 }
 
 /*** Validate provider-specific identity fields before any repository side effect occurs. */
-function validateRepositoryManifest(repository: RepositoryManifest): RepositoryConnectionFailure | null {
+function validateRepositoryManifest(
+  repository: RepositoryManifest,
+): RepositoryConnectionFailure | null {
   const expectedUrl = `https://github.com/${repository.owner}/${repository.name}`;
   if (repository.url === expectedUrl) return null;
 
