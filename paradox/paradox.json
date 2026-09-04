@@ -1,7 +1,7 @@
 {
-  "packageName": "@ankhorage/gh",
-  "packageId": "@ankhorage/gh",
-  "description": "Focused, typed GitHub integration for Ankhorage, powered by the local GitHub CLI.",
+  "packageName": "@ankhorage/repository",
+  "packageId": "@ankhorage/repository",
+  "description": "Standalone repository capability for connecting and managing an app project's source repository.",
   "collaborators": null,
   "donation": null,
   "badges": [
@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.0",
+      "value": "v0.3.1",
       "color": "cb3837"
     },
     {
@@ -64,17 +64,17 @@
   "readmeUsageDescription": null,
   "readmeUsage": [
     {
-      "title": "Connect a project folder to GitHub",
-      "description": "Connect a project folder to GitHub\n\n`@ankhorage/gh` connects a project directory to GitHub using the local,\nauthenticated `gh` CLI. It creates a missing repository, publishes the\nproject snapshot to `main`, stores only its repository slice in\n`.ankhorage/gh.json`, and refuses unrelated existing repositories.\n\nSee [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete\nprogrammatic example.",
+      "title": "Connect a project folder to its source repository",
+      "description": "Connect a project folder to its source repository\n\n`@ankhorage/repository` consumes only the project's `RepositoryManifest` slice and delegates\nGitHub operations to the local authenticated `gh` adapter. It creates a missing repository,\npublishes the project snapshot to `main`, stores only the repository slice in\n`.ankhorage/repository.json`, and refuses unrelated existing repositories.\n\nSee [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete programmatic example.",
       "language": "ts",
-      "code": "import { connectGitHubRepositoryAsync } from '@ankhorage/gh';\n\nconst result = await connectGitHubRepositoryAsync({\n  projectPath: './my-project',\n  owner: 'ankhorage',\n  name: 'my-project',\n  visibility: 'private',\n});\n\nif (result.status === 'conflict' || result.status === 'recoverable-failure') {\n  console.error(`${result.status}: ${result.message}`);\n  process.exitCode = 1;\n} else {\n  console.log(JSON.stringify(result));\n}",
+      "code": "import { connectRepositoryAsync } from '@ankhorage/repository';\n\nconst result = await connectRepositoryAsync({\n  projectPath: './my-project',\n  repository: {\n    provider: 'github',\n    owner: 'ankhorage',\n    name: 'my-project',\n    url: 'https://github.com/ankhorage/my-project',\n    defaultBranch: 'main',\n  },\n  visibility: 'private',\n});\n\nif (result.status === 'conflict' || result.status === 'recoverable-failure') {\n  console.error(`${result.status}: ${result.message}`);\n  process.exitCode = 1;\n} else {\n  console.log(JSON.stringify(result));\n}",
       "sourcePath": "src/readme-usage.ts"
     }
   ],
   "readmeCli": null,
   "readmeConfig": null,
   "config": null,
-  "entrypoints": ["src/index.ts"],
+  "entrypoints": ["src/github/index.ts", "src/index.ts", "src/metadata/index.ts"],
   "modules": [
     {
       "path": "src/cli/commands/connect/definitions/ConnectCommandOptions.ts",
@@ -101,24 +101,23 @@
     {
       "path": "src/cli/index.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/cli/provider/createGhRuntimeProvider.ts"],
-      "exports": ["createGhRuntimeProvider", "default"]
+      "dependencies": ["src/cli/provider/createRepositoryRuntimeProvider.ts"],
+      "exports": ["createRepositoryRuntimeProvider", "default"]
     },
     {
-      "path": "src/cli/provider/createGhRuntimeProvider.ts",
+      "path": "src/cli/provider/createRepositoryRuntimeProvider.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/cli/commands/connect/runConnectCommandAsync.ts",
-        "src/metadata/ghPackageMetadata.ts"
+        "src/metadata/repositoryPackageMetadata.ts"
       ],
-      "exports": ["createGhRuntimeProvider", "GhRuntimeProvider"]
+      "exports": ["createRepositoryRuntimeProvider", "RepositoryRuntimeProvider"]
     },
     {
       "path": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/connection/adapters/ghCliJson.ts",
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
         "src/connection/definitions/ProjectSnapshot.ts",
         "src/connection/ports/GitHubRepositoryGateway.ts",
         "src/connection/utils/getProjectSnapshotPaths.ts"
@@ -126,20 +125,18 @@
       "exports": ["createGhCliGitHubRepositoryGateway"]
     },
     {
-      "path": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
+      "path": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
         "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
-        "src/connection/ports/RepositoryConfigStore.ts"
+        "src/connection/ports/RepositoryManifestStore.ts"
       ],
-      "exports": ["createGitHubRepositoryConfigStore"]
+      "exports": ["createGitHubRepositoryManifestStore"]
     },
     {
       "path": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
         "src/connection/definitions/ProjectSnapshot.ts",
         "src/connection/definitions/ProjectSnapshotEntry.ts",
         "src/connection/ports/ProjectSnapshotReader.ts"
@@ -162,19 +159,13 @@
       ]
     },
     {
-      "path": "src/connection/definitions/GitHubRepositoryConfig.ts",
-      "isEntrypoint": false,
-      "dependencies": [],
-      "exports": ["GitHubRepositoryConfig"]
-    },
-    {
       "path": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/connection/definitions/GitHubRepositoryVisibility.ts",
         "src/connection/ports/GitHubRepositoryGateway.ts",
         "src/connection/ports/ProjectSnapshotReader.ts",
-        "src/connection/ports/RepositoryConfigStore.ts"
+        "src/connection/ports/RepositoryManifestStore.ts"
       ],
       "exports": ["GitHubRepositoryConnectionDependencies", "GitHubRepositoryConnectionOptions"]
     },
@@ -199,19 +190,12 @@
       "path": "src/connection/definitions/index.ts",
       "isEntrypoint": false,
       "dependencies": [],
-      "exports": [
-        "GitHubRepositoryConfig",
-        "GitHubRepositoryConnectionIdentity",
-        "GitHubRepositoryConnectionOptions"
-      ]
+      "exports": ["GitHubRepositoryConnectionIdentity", "GitHubRepositoryConnectionOptions"]
     },
     {
       "path": "src/connection/definitions/ProjectSnapshot.ts",
       "isEntrypoint": false,
-      "dependencies": [
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "src/connection/definitions/ProjectSnapshotEntry.ts"
-      ],
+      "dependencies": ["src/connection/definitions/ProjectSnapshotEntry.ts"],
       "exports": ["ProjectSnapshot"]
     },
     {
@@ -221,10 +205,25 @@
       "exports": ["ProjectSnapshotEntry"]
     },
     {
+      "path": "src/connection/definitions/RepositoryConnectionOptions.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["RepositoryConnectionOptions", "RepositoryVisibility"]
+    },
+    {
+      "path": "src/connection/definitions/RepositoryConnectionResult.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "RepositoryConnectionFailure",
+        "RepositoryConnectionResult",
+        "RepositoryConnectionStatus"
+      ]
+    },
+    {
       "path": "src/connection/ports/GitHubRepositoryGateway.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
         "src/connection/definitions/GitHubRepositoryVisibility.ts",
         "src/connection/definitions/ProjectSnapshot.ts"
       ],
@@ -239,37 +238,48 @@
     {
       "path": "src/connection/ports/ProjectSnapshotReader.ts",
       "isEntrypoint": false,
-      "dependencies": [
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "src/connection/definitions/ProjectSnapshot.ts"
-      ],
+      "dependencies": ["src/connection/definitions/ProjectSnapshot.ts"],
       "exports": ["ProjectSnapshotReader"]
     },
     {
-      "path": "src/connection/ports/RepositoryConfigStore.ts",
+      "path": "src/connection/ports/RepositoryManifestStore.ts",
       "isEntrypoint": false,
-      "dependencies": [
-        "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "src/connection/definitions/GitHubRepositoryConnectionResult.ts"
-      ],
-      "exports": ["RepositoryConfigStore"]
+      "dependencies": ["src/connection/definitions/GitHubRepositoryConnectionResult.ts"],
+      "exports": ["RepositoryManifestStore"]
     },
     {
       "path": "src/connection/services/connectGitHubRepositoryAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
+        "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
         "src/connection/adapters/createLocalProjectSnapshotReader.ts",
         "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
         "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
         "src/connection/definitions/ProjectSnapshot.ts",
         "src/connection/ports/GitHubRepositoryGateway.ts",
-        "src/connection/ports/RepositoryConfigStore.ts",
+        "src/connection/ports/RepositoryManifestStore.ts",
         "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
         "src/connection/services/publishGitHubProjectSnapshotAsync.ts"
       ],
       "exports": ["connectGitHubRepositoryAsync"]
+    },
+    {
+      "path": "src/connection/services/connectRepositoryAsync.test.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/connection/services/connectRepositoryAsync.ts"],
+      "exports": []
+    },
+    {
+      "path": "src/connection/services/connectRepositoryAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "src/connection/definitions/RepositoryConnectionOptions.ts",
+        "src/connection/definitions/RepositoryConnectionResult.ts",
+        "src/connection/services/connectGitHubRepositoryAsync.ts"
+      ],
+      "exports": ["connectRepositoryAsync"]
     },
     {
       "path": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
@@ -279,7 +289,7 @@
         "src/connection/definitions/ProjectSnapshot.ts",
         "src/connection/ports/GitHubRepositoryGateway.ts",
         "src/connection/ports/ProjectSnapshotReader.ts",
-        "src/connection/ports/RepositoryConfigStore.ts"
+        "src/connection/ports/RepositoryManifestStore.ts"
       ],
       "exports": [
         "GitHubRepositoryPreflight",
@@ -303,13 +313,7 @@
       "exports": ["getProjectSnapshotPaths"]
     },
     {
-      "path": "src/index.test.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/index.ts"],
-      "exports": []
-    },
-    {
-      "path": "src/index.ts",
+      "path": "src/github/index.ts",
       "isEntrypoint": true,
       "dependencies": [],
       "exports": [
@@ -322,10 +326,35 @@
       ]
     },
     {
-      "path": "src/metadata/ghPackageMetadata.ts",
+      "path": "src/index.test.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/index.ts", "src/metadata/index.ts"],
+      "exports": []
+    },
+    {
+      "path": "src/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "connectRepositoryAsync",
+        "RepositoryConnectionFailure",
+        "RepositoryConnectionOptions",
+        "RepositoryConnectionResult",
+        "RepositoryConnectionStatus",
+        "RepositoryVisibility"
+      ]
+    },
+    {
+      "path": "src/metadata/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": ["REPOSITORY_PACKAGE_METADATA"]
+    },
+    {
+      "path": "src/metadata/repositoryPackageMetadata.ts",
       "isEntrypoint": false,
       "dependencies": [],
-      "exports": ["ghPackageMetadata"]
+      "exports": ["repositoryPackageMetadata"]
     }
   ],
   "exports": [
@@ -341,7 +370,7 @@
         "line": 27,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": ["src/github/index.ts"],
       "relatedSymbols": ["GitHubRepositoryConnectionOptions", "GitHubRepositoryConnectionResult"],
       "signatures": [
         {
@@ -368,6 +397,38 @@
       "structuredRows": []
     },
     {
+      "name": "connectRepositoryAsync",
+      "description": "Connect the app project repository using only the standalone `RepositoryManifest` slice.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/connection/services/connectRepositoryAsync.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectRepositoryAsync.ts",
+        "line": 71,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["RepositoryConnectionOptions", "RepositoryConnectionResult"],
+      "signatures": [
+        {
+          "label": "(options: RepositoryConnectionOptions) => Promise<RepositoryConnectionResult>",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "RepositoryConnectionOptions",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "Promise<RepositoryConnectionResult>",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "GitHubRepositoryConnectionFailure",
       "description": null,
       "isReadme": false,
@@ -379,7 +440,7 @@
         "line": 18,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": ["src/github/index.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [
@@ -433,7 +494,7 @@
         "line": 6,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": ["src/github/index.ts"],
       "relatedSymbols": ["GitHubRepositoryVisibility"],
       "signatures": [],
       "members": [
@@ -480,7 +541,7 @@
         "line": 26,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": ["src/github/index.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -498,7 +559,7 @@
         "line": 1,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": ["src/github/index.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -514,6 +575,172 @@
       "sourceLocation": {
         "filePath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
         "line": 1,
+        "column": 1
+      },
+      "exportPaths": ["src/github/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "REPOSITORY_PACKAGE_METADATA",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/metadata/index.ts",
+      "sourceLocation": {
+        "filePath": "src/metadata/index.ts",
+        "line": 1,
+        "column": 14
+      },
+      "exportPaths": ["src/metadata/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "RepositoryConnectionFailure",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/connection/definitions/RepositoryConnectionResult.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/RepositoryConnectionResult.ts",
+        "line": 11,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "code",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "message",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "repository",
+          "kind": "property",
+          "type": "RepositoryManifest | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "stage",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "status",
+          "kind": "property",
+          "type": "\"recoverable-failure\" | \"conflict\"",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "RepositoryConnectionOptions",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/connection/definitions/RepositoryConnectionOptions.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/RepositoryConnectionOptions.ts",
+        "line": 5,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["RepositoryVisibility"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "projectPath",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "repository",
+          "kind": "property",
+          "type": "RepositoryManifest",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "visibility",
+          "kind": "property",
+          "type": "RepositoryVisibility | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "RepositoryConnectionResult",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/connection/definitions/RepositoryConnectionResult.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/RepositoryConnectionResult.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "RepositoryConnectionStatus",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/connection/definitions/RepositoryConnectionResult.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/RepositoryConnectionResult.ts",
+        "line": 3,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "RepositoryVisibility",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/connection/definitions/RepositoryConnectionOptions.ts",
+      "sourceLocation": {
+        "filePath": "src/connection/definitions/RepositoryConnectionOptions.ts",
+        "line": 3,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -553,10 +780,10 @@
       }
     },
     {
-      "name": "createGhRuntimeProvider",
+      "name": "createRepositoryRuntimeProvider",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "filePath": "src/cli/provider/createRepositoryRuntimeProvider.ts",
         "line": 28,
         "column": 1
       }
@@ -566,7 +793,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 37,
+        "line": 38,
         "column": 1
       }
     },
@@ -575,7 +802,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 86,
+        "line": 87,
         "column": 1
       }
     },
@@ -584,7 +811,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 125,
+        "line": 126,
         "column": 1
       }
     },
@@ -593,7 +820,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 133,
+        "line": 134,
         "column": 1
       }
     },
@@ -602,7 +829,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 182,
+        "line": 183,
         "column": 1
       }
     },
@@ -611,7 +838,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 202,
+        "line": 203,
         "column": 1
       }
     },
@@ -620,7 +847,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 254,
+        "line": 255,
         "column": 1
       }
     },
@@ -629,7 +856,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 286,
+        "line": 287,
         "column": 1
       }
     },
@@ -638,16 +865,16 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "line": 306,
+        "line": 307,
         "column": 1
       }
     },
     {
-      "name": "createGitHubRepositoryConfigStore",
+      "name": "createGitHubRepositoryManifestStore",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 14,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 13,
         "column": 1
       }
     },
@@ -655,8 +882,8 @@
       "name": "readConfigAsync",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 19,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 18,
         "column": 1
       }
     },
@@ -664,8 +891,8 @@
       "name": "updateRepositoryAsync",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 37,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 36,
         "column": 1
       }
     },
@@ -673,8 +900,8 @@
       "name": "getConfigPath",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 59,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 58,
         "column": 1
       }
     },
@@ -682,8 +909,8 @@
       "name": "getRelativeConfigPath",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 64,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 63,
         "column": 1
       }
     },
@@ -691,8 +918,8 @@
       "name": "isConfig",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 69,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 68,
         "column": 1
       }
     },
@@ -700,8 +927,8 @@
       "name": "isMissingFile",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 85,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 81,
         "column": 1
       }
     },
@@ -709,8 +936,8 @@
       "name": "getErrorMessage",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "line": 90,
+        "filePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "line": 86,
         "column": 1
       }
     },
@@ -895,11 +1122,56 @@
       }
     },
     {
+      "name": "toRepositoryManifest",
+      "description": "Add the provider discriminant to the canonical repository identity returned by GitHub.",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectRepositoryAsync.ts",
+        "line": 15,
+        "column": 1
+      }
+    },
+    {
+      "name": "isGitHubRepositoryConnectionFailure",
+      "description": "Identify the failure branch of the GitHub adapter result union.",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectRepositoryAsync.ts",
+        "line": 25,
+        "column": 1
+      }
+    },
+    {
+      "name": "toRepositoryConnectionResult",
+      "description": "Convert the current GitHub adapter result into the provider-neutral repository result.",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectRepositoryAsync.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "validateRepositoryManifest",
+      "description": "Validate provider-specific identity fields before any repository side effect occurs.",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectRepositoryAsync.ts",
+        "line": 55,
+        "column": 1
+      }
+    },
+    {
+      "name": "connectRepositoryAsync",
+      "description": "Connect the app project repository using only the standalone `RepositoryManifest` slice.",
+      "sourceLocation": {
+        "filePath": "src/connection/services/connectRepositoryAsync.ts",
+        "line": 71,
+        "column": 1
+      }
+    },
+    {
       "name": "inspectGitHubRepositoryPreflightAsync",
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
-        "line": 24,
+        "line": 27,
         "column": 1
       }
     },
@@ -908,7 +1180,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
-        "line": 74,
+        "line": 75,
         "column": 1
       }
     },
@@ -917,7 +1189,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
-        "line": 84,
+        "line": 85,
         "column": 1
       }
     },
@@ -926,7 +1198,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
-        "line": 97,
+        "line": 98,
         "column": 1
       }
     },
@@ -956,6 +1228,15 @@
         "line": 2,
         "column": 1
       }
+    },
+    {
+      "name": "collectProductionTypeScriptFiles",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.test.ts",
+        "line": 22,
+        "column": 1
+      }
     }
   ],
   "sequenceScenarios": [
@@ -965,6 +1246,14 @@
       "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts",
       "symbolName": "connectGitHubRepositoryAsync",
       "description": null,
+      "isReadme": false
+    },
+    {
+      "kind": "export",
+      "name": "connectRepositoryAsync",
+      "sourcePath": "src/connection/services/connectRepositoryAsync.ts",
+      "symbolName": "connectRepositoryAsync",
+      "description": "Connect the app project repository using only the standalone `RepositoryManifest` slice.",
       "isReadme": false
     }
   ],
@@ -976,23 +1265,23 @@
         "sourcePath": "src/index.test.ts"
       },
       {
+        "fromPath": "src/index.test.ts",
+        "toPath": "src/metadata/index.ts",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
         "fromPath": "src/index.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "toPath": "src/connection/definitions/RepositoryConnectionOptions.ts",
         "sourcePath": "src/index.ts"
       },
       {
         "fromPath": "src/index.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "toPath": "src/connection/definitions/RepositoryConnectionResult.ts",
         "sourcePath": "src/index.ts"
       },
       {
         "fromPath": "src/index.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/index.ts",
-        "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/services/connectRepositoryAsync.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -1002,23 +1291,38 @@
       },
       {
         "fromPath": "src/cli/index.ts",
-        "toPath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "toPath": "src/cli/provider/createRepositoryRuntimeProvider.ts",
         "sourcePath": "src/cli/index.ts"
       },
       {
-        "fromPath": "src/cli/provider/createGhRuntimeProvider.ts",
-        "toPath": "src/metadata/ghPackageMetadata.ts",
-        "sourcePath": "src/cli/provider/createGhRuntimeProvider.ts"
+        "fromPath": "src/github/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
+        "sourcePath": "src/github/index.ts"
       },
       {
-        "fromPath": "src/cli/provider/createGhRuntimeProvider.ts",
+        "fromPath": "src/github/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/github/index.ts"
+      },
+      {
+        "fromPath": "src/github/index.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryVisibility.ts",
+        "sourcePath": "src/github/index.ts"
+      },
+      {
+        "fromPath": "src/github/index.ts",
+        "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "sourcePath": "src/github/index.ts"
+      },
+      {
+        "fromPath": "src/cli/provider/createRepositoryRuntimeProvider.ts",
+        "toPath": "src/metadata/repositoryPackageMetadata.ts",
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.ts"
+      },
+      {
+        "fromPath": "src/cli/provider/createRepositoryRuntimeProvider.ts",
         "toPath": "src/cli/commands/connect/runConnectCommandAsync.ts",
-        "sourcePath": "src/cli/provider/createGhRuntimeProvider.ts"
-      },
-      {
-        "fromPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
+        "sourcePath": "src/cli/provider/createRepositoryRuntimeProvider.ts"
       },
       {
         "fromPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
@@ -1041,24 +1345,14 @@
         "sourcePath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts"
       },
       {
-        "fromPath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
-      },
-      {
-        "fromPath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
+        "fromPath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
         "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
-        "fromPath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
-      },
-      {
-        "fromPath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/adapters/createLocalProjectSnapshotReader.ts"
+        "fromPath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
+        "toPath": "src/connection/ports/RepositoryManifestStore.ts",
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromPath": "src/connection/adapters/createLocalProjectSnapshotReader.ts",
@@ -1087,7 +1381,7 @@
       },
       {
         "fromPath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts",
-        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "toPath": "src/connection/ports/RepositoryManifestStore.ts",
         "sourcePath": "src/connection/definitions/GitHubRepositoryConnectionOptions.ts"
       },
       {
@@ -1106,24 +1400,9 @@
         "sourcePath": "src/connection/definitions/index.ts"
       },
       {
-        "fromPath": "src/connection/definitions/index.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/definitions/index.ts"
-      },
-      {
-        "fromPath": "src/connection/definitions/ProjectSnapshot.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/definitions/ProjectSnapshot.ts"
-      },
-      {
         "fromPath": "src/connection/definitions/ProjectSnapshot.ts",
         "toPath": "src/connection/definitions/ProjectSnapshotEntry.ts",
         "sourcePath": "src/connection/definitions/ProjectSnapshot.ts"
-      },
-      {
-        "fromPath": "src/connection/ports/GitHubRepositoryGateway.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/ports/GitHubRepositoryGateway.ts"
       },
       {
         "fromPath": "src/connection/ports/GitHubRepositoryGateway.ts",
@@ -1137,32 +1416,22 @@
       },
       {
         "fromPath": "src/connection/ports/ProjectSnapshotReader.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/ports/ProjectSnapshotReader.ts"
-      },
-      {
-        "fromPath": "src/connection/ports/ProjectSnapshotReader.ts",
         "toPath": "src/connection/definitions/ProjectSnapshot.ts",
         "sourcePath": "src/connection/ports/ProjectSnapshotReader.ts"
       },
       {
-        "fromPath": "src/connection/ports/RepositoryConfigStore.ts",
-        "toPath": "src/connection/definitions/GitHubRepositoryConfig.ts",
-        "sourcePath": "src/connection/ports/RepositoryConfigStore.ts"
-      },
-      {
-        "fromPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "fromPath": "src/connection/ports/RepositoryManifestStore.ts",
         "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
-        "sourcePath": "src/connection/ports/RepositoryConfigStore.ts"
-      },
-      {
-        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
-        "toPath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts",
-        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+        "sourcePath": "src/connection/ports/RepositoryManifestStore.ts"
       },
       {
         "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
         "toPath": "src/connection/adapters/createGhCliGitHubRepositoryGateway.ts",
+        "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "toPath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts",
         "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
       },
       {
@@ -1192,7 +1461,7 @@
       },
       {
         "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
-        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "toPath": "src/connection/ports/RepositoryManifestStore.ts",
         "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
       },
       {
@@ -1204,6 +1473,31 @@
         "fromPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
         "toPath": "src/connection/services/publishGitHubProjectSnapshotAsync.ts",
         "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectRepositoryAsync.test.ts",
+        "toPath": "src/connection/services/connectRepositoryAsync.ts",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.test.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectRepositoryAsync.ts",
+        "toPath": "src/connection/definitions/GitHubRepositoryConnectionResult.ts",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectRepositoryAsync.ts",
+        "toPath": "src/connection/definitions/RepositoryConnectionOptions.ts",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectRepositoryAsync.ts",
+        "toPath": "src/connection/definitions/RepositoryConnectionResult.ts",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromPath": "src/connection/services/connectRepositoryAsync.ts",
+        "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
       },
       {
         "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
@@ -1227,7 +1521,7 @@
       },
       {
         "fromPath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts",
-        "toPath": "src/connection/ports/RepositoryConfigStore.ts",
+        "toPath": "src/connection/ports/RepositoryManifestStore.ts",
         "sourcePath": "src/connection/services/inspectGitHubRepositoryPreflightAsync.ts"
       },
       {
@@ -1280,15 +1574,45 @@
         "sourcePath": "src/index.test.ts"
       },
       {
+        "fromSymbol": "collectProductionTypeScriptFiles",
+        "toSymbol": "readdir",
+        "callExpression": "readdir",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "collectProductionTypeScriptFiles",
+        "callExpression": "collectProductionTypeScriptFiles",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "extname",
+        "callExpression": "extname",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
         "fromSymbol": "src/readme-usage.ts",
-        "toSymbol": "connectGitHubRepositoryAsync",
-        "callExpression": "connectGitHubRepositoryAsync",
+        "toSymbol": "connectRepositoryAsync",
+        "callExpression": "connectRepositoryAsync",
         "sourcePath": "src/readme-usage.ts"
       },
       {
         "fromSymbol": "src/cli/index.ts",
-        "toSymbol": "createGhRuntimeProvider",
-        "callExpression": "createGhRuntimeProvider",
+        "toSymbol": "createRepositoryRuntimeProvider",
+        "callExpression": "createRepositoryRuntimeProvider",
         "sourcePath": "src/cli/index.ts"
       },
       {
@@ -1553,85 +1877,85 @@
         "fromSymbol": "readConfigAsync",
         "toSymbol": "getConfigPath",
         "callExpression": "getConfigPath",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "readConfigAsync",
         "toSymbol": "readFile",
         "callExpression": "readFile",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "readConfigAsync",
         "toSymbol": "isConfig",
         "callExpression": "isConfig",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "readConfigAsync",
         "toSymbol": "getRelativeConfigPath",
         "callExpression": "getRelativeConfigPath",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "readConfigAsync",
         "toSymbol": "isMissingFile",
         "callExpression": "isMissingFile",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "readConfigAsync",
         "toSymbol": "getErrorMessage",
         "callExpression": "getErrorMessage",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "join",
         "callExpression": "join",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "getConfigPath",
         "callExpression": "getConfigPath",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "mkdir",
         "callExpression": "mkdir",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "writeFile",
         "callExpression": "writeFile",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "rename",
         "callExpression": "rename",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "getRelativeConfigPath",
         "callExpression": "getRelativeConfigPath",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "updateRepositoryAsync",
         "toSymbol": "getErrorMessage",
         "callExpression": "getErrorMessage",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "getConfigPath",
         "toSymbol": "join",
         "callExpression": "join",
-        "sourcePath": "src/connection/adapters/createGitHubRepositoryConfigStore.ts"
+        "sourcePath": "src/connection/adapters/createGitHubRepositoryManifestStore.ts"
       },
       {
         "fromSymbol": "readAsync",
@@ -1779,8 +2103,8 @@
       },
       {
         "fromSymbol": "connectGitHubRepositoryAsync",
-        "toSymbol": "createGitHubRepositoryConfigStore",
-        "callExpression": "createGitHubRepositoryConfigStore",
+        "toSymbol": "createGitHubRepositoryManifestStore",
+        "callExpression": "createGitHubRepositoryManifestStore",
         "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
       },
       {
@@ -1830,6 +2154,54 @@
         "toSymbol": "publishGitHubProjectSnapshotAsync",
         "callExpression": "publishGitHubProjectSnapshotAsync",
         "sourcePath": "src/connection/services/connectGitHubRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "src/connection/services/connectRepositoryAsync.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/connection/services/connectRepositoryAsync.test.ts",
+        "toSymbol": "connectRepositoryAsync",
+        "callExpression": "connectRepositoryAsync",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/connection/services/connectRepositoryAsync.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.test.ts"
+      },
+      {
+        "fromSymbol": "toRepositoryConnectionResult",
+        "toSymbol": "isGitHubRepositoryConnectionFailure",
+        "callExpression": "isGitHubRepositoryConnectionFailure",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "toRepositoryConnectionResult",
+        "toSymbol": "toRepositoryManifest",
+        "callExpression": "toRepositoryManifest",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectRepositoryAsync",
+        "toSymbol": "validateRepositoryManifest",
+        "callExpression": "validateRepositoryManifest",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectRepositoryAsync",
+        "toSymbol": "connectGitHubRepositoryAsync",
+        "callExpression": "connectGitHubRepositoryAsync",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectRepositoryAsync",
+        "toSymbol": "toRepositoryConnectionResult",
+        "callExpression": "toRepositoryConnectionResult",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
       },
       {
         "fromSymbol": "inspectGitHubRepositoryPreflightAsync",
@@ -1977,6 +2349,31 @@
       }
     ],
     "typeReferences": [
+      {
+        "fromSymbol": "RepositoryConnectionOptions",
+        "toType": "RepositoryManifest",
+        "sourcePath": "src/connection/definitions/RepositoryConnectionOptions.ts"
+      },
+      {
+        "fromSymbol": "RepositoryConnectionOptions",
+        "toType": "RepositoryVisibility",
+        "sourcePath": "src/connection/definitions/RepositoryConnectionOptions.ts"
+      },
+      {
+        "fromSymbol": "RepositoryConnectionFailure",
+        "toType": "RepositoryManifest",
+        "sourcePath": "src/connection/definitions/RepositoryConnectionResult.ts"
+      },
+      {
+        "fromSymbol": "connectRepositoryAsync",
+        "toType": "RepositoryConnectionOptions",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
+      {
+        "fromSymbol": "connectRepositoryAsync",
+        "toType": "RepositoryConnectionResult",
+        "sourcePath": "src/connection/services/connectRepositoryAsync.ts"
+      },
       {
         "fromSymbol": "GitHubRepositoryConnectionOptions",
         "toType": "GitHubRepositoryVisibility",

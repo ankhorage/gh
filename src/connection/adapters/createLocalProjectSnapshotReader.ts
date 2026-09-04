@@ -1,7 +1,7 @@
 import { lstat, readdir, readFile } from 'node:fs/promises';
 import { join, relative, resolve, sep } from 'node:path';
 
-import type { RepositoryConfig } from '@ankhorage/contracts/repository';
+import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 import ignore, { type Ignore } from 'ignore';
 
 import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
@@ -33,7 +33,7 @@ export function createLocalProjectSnapshotReader(): ProjectSnapshotReader {
 /** Read a complete safe project snapshot rooted only at the supplied project directory. */
 async function readAsync(
   projectPath: string,
-  configOverride: RepositoryConfig,
+  configOverride: RepositoryManifest,
 ): Promise<ProjectSnapshot> {
   const root = resolve(projectPath);
   const rootStat = await lstat(root);

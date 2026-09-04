@@ -1,5 +1,5 @@
 import { createGhCliGitHubRepositoryGateway } from '../adapters/createGhCliGitHubRepositoryGateway.js';
-import { createGitHubRepositoryConfigStore } from '../adapters/createGitHubRepositoryConfigStore.js';
+import { createGitHubRepositoryManifestStore } from '../adapters/createGitHubRepositoryManifestStore.js';
 import { createLocalProjectSnapshotReader } from '../adapters/createLocalProjectSnapshotReader.js';
 import type {
   GitHubRepositoryConnectionDependencies,
@@ -16,7 +16,7 @@ import type {
   GitHubRepositoryGateway,
   GitHubRepositoryTarget,
 } from '../ports/GitHubRepositoryGateway.js';
-import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
+import type { RepositoryManifestStore } from '../ports/RepositoryManifestStore.js';
 import {
   inspectGitHubRepositoryPreflightAsync,
   PreflightError,
@@ -30,7 +30,7 @@ export async function connectGitHubRepositoryAsync(
 ): Promise<GitHubRepositoryConnectionResult> {
   const gateway = dependencies.gateway ?? createGhCliGitHubRepositoryGateway();
   const snapshotReader = dependencies.snapshotReader ?? createLocalProjectSnapshotReader();
-  const configStore = dependencies.configStore ?? createGitHubRepositoryConfigStore();
+  const configStore = dependencies.configStore ?? createGitHubRepositoryManifestStore();
   let preflight;
   try {
     preflight = await inspectGitHubRepositoryPreflightAsync(
@@ -91,7 +91,7 @@ async function finishAlreadyConnectedAsync(
 /** Persist the connection and publish the complete snapshot. */
 async function publishConnectionAsync(
   gateway: GitHubRepositoryGateway,
-  configStore: RepositoryConfigStore,
+  configStore: RepositoryManifestStore,
   projectPath: string,
   target: GitHubRepositoryTarget,
   identity: GitHubRepositoryConnectionIdentity,

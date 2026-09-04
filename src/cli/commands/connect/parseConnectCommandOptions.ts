@@ -1,6 +1,6 @@
 import type { ConnectCommandOptions } from './definitions/ConnectCommandOptions.js';
 
-/** Parse the deterministic `ankh gh connect` positional argument and flags. */
+/** Parse the deterministic `ankh repository connect` positional argument and flags. */
 export function parseConnectCommandOptions(argv: readonly string[]): ConnectCommandOptions {
   let projectPath: string | undefined;
   let owner: string | undefined;

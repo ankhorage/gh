@@ -1,21 +1,21 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import type { RepositoryConfig } from '@ankhorage/contracts/repository';
+import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 
 import type { GitHubRepositoryConnectionIdentity } from '../definitions/GitHubRepositoryConnectionResult.js';
-import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
+import type { RepositoryManifestStore } from '../ports/RepositoryManifestStore.js';
 
 const CONFIG_DIRECTORY = '.ankhorage';
 const CONFIG_FILE_NAME = 'gh.json';
 
 /** Create the atomic store for gh's project-local configuration. */
-export function createGitHubRepositoryConfigStore(): RepositoryConfigStore {
+export function createGitHubRepositoryManifestStore(): RepositoryManifestStore {
   return { readConfigAsync, updateRepositoryAsync };
 }
 
 /** Read gh configuration, treating an absent file as an unconfigured project. */
-async function readConfigAsync(projectPath: string): Promise<RepositoryConfig | undefined> {
+async function readConfigAsync(projectPath: string): Promise<RepositoryManifest | undefined> {
   const configPath = getConfigPath(projectPath);
   try {
     const parsed: unknown = JSON.parse(await readFile(configPath, 'utf8'));
@@ -65,9 +65,9 @@ function getRelativeConfigPath(): string {
 }
 
 /** Validate the intentionally small gh-owned configuration shape. */
-function isConfig(value: unknown): value is RepositoryConfig {
+function isConfig(value: unknown): value is RepositoryManifest {
   if (typeof value !== 'object' || value === null) return false;
-  const candidate = value as Partial<RepositoryConfig>;
+  const candidate = value as Partial<RepositoryManifest>;
   return (
     candidate.provider === 'github' &&
     typeof candidate.owner === 'string' &&

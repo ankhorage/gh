@@ -1,4 +1,4 @@
-import { connectGitHubRepositoryAsync } from '@ankhorage/gh';
+import { connectGitHubRepositoryAsync } from '@ankhorage/repository';
 
 const result = await connectGitHubRepositoryAsync({
   projectPath: './my-project',

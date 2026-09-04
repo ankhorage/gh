@@ -1,6 +1,6 @@
 import { basename, resolve } from 'node:path';
 
-import type { RepositoryConfig } from '@ankhorage/contracts/repository';
+import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 
 import type {
   GitHubRepositoryConnectionIdentity,
@@ -13,12 +13,12 @@ import type {
   GitHubRepositoryTarget,
 } from '../ports/GitHubRepositoryGateway.js';
 import type { ProjectSnapshotReader } from '../ports/ProjectSnapshotReader.js';
-import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
+import type { RepositoryManifestStore } from '../ports/RepositoryManifestStore.js';
 
 export interface GitHubRepositoryPreflight {
   readonly target: GitHubRepositoryTarget;
   readonly identity: GitHubRepositoryConnectionIdentity;
-  readonly config?: RepositoryConfig;
+  readonly config?: RepositoryManifest;
   readonly snapshot: ProjectSnapshot;
   readonly remote: GitHubRemoteRepository;
 }
@@ -28,7 +28,7 @@ export async function inspectGitHubRepositoryPreflightAsync(
   options: GitHubRepositoryConnectionOptions,
   gateway: GitHubRepositoryGateway,
   snapshotReader: ProjectSnapshotReader,
-  configStore: RepositoryConfigStore,
+  configStore: RepositoryManifestStore,
 ): Promise<GitHubRepositoryPreflight> {
   const projectPath = options.projectPath ?? process.cwd();
   await gateway.assertAvailableAsync();
@@ -51,7 +51,7 @@ export async function inspectGitHubRepositoryPreflightAsync(
       'Local repository config does not match the requested target.',
     );
   }
-  const prospectiveConfig: RepositoryConfig = { provider: 'github', ...identity };
+  const prospectiveConfig: RepositoryManifest = { provider: 'github', ...identity };
   const snapshot = await snapshotReader.readAsync(projectPath, prospectiveConfig);
   const target: GitHubRepositoryTarget = { ...identity, visibility };
   const remote = await gateway.inspectRepositoryAsync(target);
@@ -83,7 +83,7 @@ function validateName(owner: string, name: string): void {
 
 /** Compare only the canonical identity fields persisted in gh config. */
 function matchesIdentity(
-  repository: RepositoryConfig | undefined,
+  repository: RepositoryManifest | undefined,
   identity: GitHubRepositoryConnectionIdentity,
 ): boolean {
   return (
@@ -97,7 +97,7 @@ function matchesIdentity(
 /** Reject remote state that cannot be safely resumed or connected. */
 function validateRemoteState(
   remote: GitHubRemoteRepository,
-  config: RepositoryConfig | undefined,
+  config: RepositoryManifest | undefined,
   identity: GitHubRepositoryConnectionIdentity,
   visibility: GitHubRepositoryTarget['visibility'],
 ): void {

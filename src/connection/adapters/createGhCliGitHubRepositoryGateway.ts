@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 
-import type { RepositoryConfig } from '@ankhorage/contracts/repository';
+import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 
 import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type {
@@ -288,7 +288,7 @@ async function readRemoteConfigAsync(
   runner: GhRunner,
   prefix: string,
   ref: string,
-): Promise<RepositoryConfig | undefined> {
+): Promise<RepositoryManifest | undefined> {
   const value = await tryGhJsonAsync(runner, [
     'api',
     `${prefix}/contents/.ankhorage/gh.json?ref=${ref}`,
@@ -297,7 +297,7 @@ async function readRemoteConfigAsync(
   try {
     return JSON.parse(
       Buffer.from(value.content.replaceAll('\n', ''), 'base64').toString('utf8'),
-    ) as RepositoryConfig;
+    ) as RepositoryManifest;
   } catch {
     return undefined;
   }
