@@ -1,6 +1,6 @@
 {
-  "packageName": "@ankhorage/gh",
-  "packageId": "@ankhorage/gh",
+  "packageName": "@ankhorage/repository",
+  "packageId": "@ankhorage/repository",
   "description": "Standalone typed GitHub integration for connecting any project, powered by the local gh CLI.",
   "collaborators": null,
   "donation": null,
@@ -971,11 +971,6 @@
         "fromPath": "src/index.ts",
         "toPath": "src/connection/services/connectGitHubRepositoryAsync.ts",
         "sourcePath": "src/index.ts"
-      },
-      {
-        "fromPath": "src/readme-usage.ts",
-        "toPath": "src/index.ts",
-        "sourcePath": "src/readme-usage.ts"
       },
       {
         "fromPath": "src/cli/index.ts",

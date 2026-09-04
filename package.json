@@ -1,17 +1,17 @@
 {
-  "name": "@ankhorage/gh",
+  "name": "@ankhorage/repository",
   "version": "0.3.1",
   "description": "Standalone typed GitHub integration for connecting any project, powered by the local gh CLI.",
   "type": "module",
   "license": "MIT",
   "sideEffects": false,
-  "homepage": "https://github.com/ankhorage/gh#readme",
+  "homepage": "https://github.com/ankhorage/repository#readme",
   "bugs": {
-    "url": "https://github.com/ankhorage/gh/issues"
+    "url": "https://github.com/ankhorage/repository/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ankhorage/gh.git"
+    "url": "git+https://github.com/ankhorage/repository.git"
   },
   "keywords": [
     "ankhorage",
@@ -43,10 +43,10 @@
     "./package.json": "./package.json"
   },
   "ankh": {
-    "category": "gh",
+    "category": "repository",
     "provider": "./dist/cli/index.js",
     "capabilities": [
-      "gh.connect"
+      "repository.connect"
     ]
   },
   "publishConfig": {

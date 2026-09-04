@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ankhorage/gh • Paradox</title>
+    <title>@ankhorage/repository • Paradox</title>
     <style>
       :root {
         color-scheme: light;
@@ -184,7 +184,7 @@
     <div class="layout">
       <aside class="sidebar">
         <p class="muted">Generated with Paradox</p>
-        <h1>@ankhorage/gh</h1>
+        <h1>@ankhorage/repository</h1>
         <p>
           Standalone typed GitHub integration for connecting any project, powered by the local gh
           CLI.
@@ -911,21 +911,21 @@
               <h3>Architecture overview</h3>
               <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
               <div class="mermaid">
-                graph TD package__ankhorage_gh[&quot;@ankhorage/gh&quot;]
-                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_gh --&gt;
-                entrypoint_src_index_ts
+                graph TD package__ankhorage_repository[&quot;@ankhorage/repository&quot;]
+                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_repository
+                --&gt; entrypoint_src_index_ts
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt;
                 module_src_connection_definitions_GitHubRepositoryVisibility_ts
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts --&gt;
                 module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_cli_commands_connect_runConnectCommandAsync_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
                 module_src_cli_commands_connect_parseConnectCommandOptions_ts
@@ -933,17 +933,18 @@
                 module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt;
                 module_src_connection_services_connectGitHubRepositoryAsync_ts
-                module_src_cli_index_ts[&quot;src/cli/index.ts&quot;] package__ankhorage_gh -.-&gt;
-                module_src_cli_index_ts module_src_cli_index_ts --&gt;
+                module_src_cli_index_ts[&quot;src/cli/index.ts&quot;] package__ankhorage_repository
+                -.-&gt; module_src_cli_index_ts module_src_cli_index_ts --&gt;
                 module_src_cli_provider_createGhRuntimeProvider_ts
                 module_src_cli_provider_createGhRuntimeProvider_ts[&quot;src/cli/provider/createGhRuntimeProvider.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_cli_provider_createGhRuntimeProvider_ts
+                package__ankhorage_repository -.-&gt;
+                module_src_cli_provider_createGhRuntimeProvider_ts
                 module_src_cli_provider_createGhRuntimeProvider_ts --&gt;
                 module_src_cli_commands_connect_runConnectCommandAsync_ts
                 module_src_cli_provider_createGhRuntimeProvider_ts --&gt;
                 module_src_metadata_ghPackageMetadata_ts
                 module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
                 module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
                 module_src_connection_adapters_ghCliJson_ts
@@ -954,14 +955,14 @@
                 module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt;
                 module_src_connection_utils_getProjectSnapshotPaths_ts
                 module_src_connection_adapters_createGitHubRepositoryConfigStore_ts[&quot;src/connection/adapters/createGitHubRepositoryConfigStore.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_adapters_createGitHubRepositoryConfigStore_ts
                 module_src_connection_adapters_createGitHubRepositoryConfigStore_ts --&gt;
                 module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_connection_adapters_createGitHubRepositoryConfigStore_ts --&gt;
                 module_src_connection_ports_RepositoryConfigStore_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
@@ -970,9 +971,9 @@
                 module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt;
                 module_src_connection_ports_ProjectSnapshotReader_ts
                 module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_adapters_ghCliJson_ts
+                package__ankhorage_repository -.-&gt; module_src_connection_adapters_ghCliJson_ts
                 module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
                 module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
                 module_src_connection_definitions_GitHubRepositoryVisibility_ts
@@ -983,36 +984,40 @@
                 module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt;
                 module_src_connection_ports_RepositoryConfigStore_ts
                 module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_definitions_GitHubRepositoryVisibility_ts
                 module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_definitions_index_ts
+                package__ankhorage_repository -.-&gt; module_src_connection_definitions_index_ts
                 module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_definitions_ProjectSnapshot_ts
+                package__ankhorage_repository -.-&gt;
+                module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_definitions_ProjectSnapshot_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshotEntry_ts
                 module_src_connection_definitions_ProjectSnapshotEntry_ts[&quot;src/connection/definitions/ProjectSnapshotEntry.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_definitions_ProjectSnapshotEntry_ts
                 module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
+                package__ankhorage_repository -.-&gt;
+                module_src_connection_ports_GitHubRepositoryGateway_ts
                 module_src_connection_ports_GitHubRepositoryGateway_ts --&gt;
                 module_src_connection_definitions_GitHubRepositoryVisibility_ts
                 module_src_connection_ports_GitHubRepositoryGateway_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_ports_ProjectSnapshotReader_ts
+                package__ankhorage_repository -.-&gt;
+                module_src_connection_ports_ProjectSnapshotReader_ts
                 module_src_connection_ports_ProjectSnapshotReader_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_ports_RepositoryConfigStore_ts[&quot;src/connection/ports/RepositoryConfigStore.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_ports_RepositoryConfigStore_ts
+                package__ankhorage_repository -.-&gt;
+                module_src_connection_ports_RepositoryConfigStore_ts
                 module_src_connection_ports_RepositoryConfigStore_ts --&gt;
                 module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
                 module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_services_connectGitHubRepositoryAsync_ts
                 module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
                 module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
@@ -1035,7 +1040,7 @@
                 module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt;
                 module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
                 module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
                 module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
                 module_src_connection_definitions_index_ts
@@ -1048,91 +1053,93 @@
                 module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt;
                 module_src_connection_ports_RepositoryConfigStore_ts
                 module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
-                package__ankhorage_gh -.-&gt;
+                package__ankhorage_repository -.-&gt;
                 module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
                 module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt;
                 module_src_connection_definitions_ProjectSnapshot_ts
                 module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt;
                 module_src_connection_ports_GitHubRepositoryGateway_ts
                 module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
-                module_src_index_test_ts[&quot;src/index.test.ts&quot;] package__ankhorage_gh
-                -.-&gt; module_src_index_test_ts module_src_index_test_ts --&gt; module_src_index_ts
+                package__ankhorage_repository -.-&gt;
+                module_src_connection_utils_getProjectSnapshotPaths_ts
+                module_src_index_test_ts[&quot;src/index.test.ts&quot;]
+                package__ankhorage_repository -.-&gt; module_src_index_test_ts
+                module_src_index_test_ts --&gt; module_src_index_ts
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_metadata_ghPackageMetadata_ts[&quot;src/metadata/ghPackageMetadata.ts&quot;]
-                package__ankhorage_gh -.-&gt; module_src_metadata_ghPackageMetadata_ts
+                package__ankhorage_repository -.-&gt; module_src_metadata_ghPackageMetadata_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
                 <pre>
 graph TD
-  package__ankhorage_gh[&quot;@ankhorage/gh&quot;]
+  package__ankhorage_repository[&quot;@ankhorage/repository&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
-  package__ankhorage_gh --&gt; entrypoint_src_index_ts
+  package__ankhorage_repository --&gt; entrypoint_src_index_ts
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts[&quot;src/cli/commands/connect/definitions/ConnectCommandOptions.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
+  package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
   module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
   module_src_cli_commands_connect_parseConnectCommandOptions_ts[&quot;src/cli/commands/connect/parseConnectCommandOptions.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_cli_commands_connect_parseConnectCommandOptions_ts
+  package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_parseConnectCommandOptions_ts
   module_src_cli_commands_connect_parseConnectCommandOptions_ts --&gt; module_src_cli_commands_connect_definitions_ConnectCommandOptions_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts[&quot;src/cli/commands/connect/runConnectCommandAsync.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
+  package__ankhorage_repository -.-&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_cli_commands_connect_parseConnectCommandOptions_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
   module_src_cli_commands_connect_runConnectCommandAsync_ts --&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_cli_index_ts
+  package__ankhorage_repository -.-&gt; module_src_cli_index_ts
   module_src_cli_index_ts --&gt; module_src_cli_provider_createGhRuntimeProvider_ts
   module_src_cli_provider_createGhRuntimeProvider_ts[&quot;src/cli/provider/createGhRuntimeProvider.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_cli_provider_createGhRuntimeProvider_ts
+  package__ankhorage_repository -.-&gt; module_src_cli_provider_createGhRuntimeProvider_ts
   module_src_cli_provider_createGhRuntimeProvider_ts --&gt; module_src_cli_commands_connect_runConnectCommandAsync_ts
   module_src_cli_provider_createGhRuntimeProvider_ts --&gt; module_src_metadata_ghPackageMetadata_ts
   module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts[&quot;src/connection/adapters/createGhCliGitHubRepositoryGateway.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
   module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_adapters_ghCliJson_ts
   module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
   module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts --&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
   module_src_connection_adapters_createGitHubRepositoryConfigStore_ts[&quot;src/connection/adapters/createGitHubRepositoryConfigStore.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_adapters_createGitHubRepositoryConfigStore_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createGitHubRepositoryConfigStore_ts
   module_src_connection_adapters_createGitHubRepositoryConfigStore_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
   module_src_connection_adapters_createGitHubRepositoryConfigStore_ts --&gt; module_src_connection_ports_RepositoryConfigStore_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts[&quot;src/connection/adapters/createLocalProjectSnapshotReader.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
   module_src_connection_adapters_createLocalProjectSnapshotReader_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
   module_src_connection_adapters_ghCliJson_ts[&quot;src/connection/adapters/ghCliJson.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_adapters_ghCliJson_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_adapters_ghCliJson_ts
   module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionOptions.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts
   module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
   module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
   module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
   module_src_connection_definitions_GitHubRepositoryConnectionOptions_ts --&gt; module_src_connection_ports_RepositoryConfigStore_ts
   module_src_connection_definitions_GitHubRepositoryConnectionResult_ts[&quot;src/connection/definitions/GitHubRepositoryConnectionResult.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
   module_src_connection_definitions_GitHubRepositoryVisibility_ts[&quot;src/connection/definitions/GitHubRepositoryVisibility.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
   module_src_connection_definitions_index_ts[&quot;src/connection/definitions/index.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_definitions_index_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_definitions_index_ts
   module_src_connection_definitions_ProjectSnapshot_ts[&quot;src/connection/definitions/ProjectSnapshot.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_definitions_ProjectSnapshot_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_definitions_ProjectSnapshot_ts --&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
   module_src_connection_definitions_ProjectSnapshotEntry_ts[&quot;src/connection/definitions/ProjectSnapshotEntry.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_definitions_ProjectSnapshotEntry_ts
   module_src_connection_ports_GitHubRepositoryGateway_ts[&quot;src/connection/ports/GitHubRepositoryGateway.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
   module_src_connection_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_GitHubRepositoryVisibility_ts
   module_src_connection_ports_GitHubRepositoryGateway_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_ports_ProjectSnapshotReader_ts[&quot;src/connection/ports/ProjectSnapshotReader.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_ports_ProjectSnapshotReader_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_ports_ProjectSnapshotReader_ts
   module_src_connection_ports_ProjectSnapshotReader_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_ports_RepositoryConfigStore_ts[&quot;src/connection/ports/RepositoryConfigStore.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_ports_RepositoryConfigStore_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_ports_RepositoryConfigStore_ts
   module_src_connection_ports_RepositoryConfigStore_ts --&gt; module_src_connection_definitions_GitHubRepositoryConnectionResult_ts
   module_src_connection_services_connectGitHubRepositoryAsync_ts[&quot;src/connection/services/connectGitHubRepositoryAsync.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_services_connectGitHubRepositoryAsync_ts
   module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createGhCliGitHubRepositoryGateway_ts
   module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createGitHubRepositoryConfigStore_ts
   module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_adapters_createLocalProjectSnapshotReader_ts
@@ -1144,24 +1151,24 @@ graph TD
   module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
   module_src_connection_services_connectGitHubRepositoryAsync_ts --&gt; module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
   module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts[&quot;src/connection/services/inspectGitHubRepositoryPreflightAsync.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts
   module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_index_ts
   module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
   module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_ProjectSnapshotReader_ts
   module_src_connection_services_inspectGitHubRepositoryPreflightAsync_ts --&gt; module_src_connection_ports_RepositoryConfigStore_ts
   module_src_connection_services_publishGitHubProjectSnapshotAsync_ts[&quot;src/connection/services/publishGitHubProjectSnapshotAsync.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_services_publishGitHubProjectSnapshotAsync_ts
   module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_definitions_ProjectSnapshot_ts
   module_src_connection_services_publishGitHubProjectSnapshotAsync_ts --&gt; module_src_connection_ports_GitHubRepositoryGateway_ts
   module_src_connection_utils_getProjectSnapshotPaths_ts[&quot;src/connection/utils/getProjectSnapshotPaths.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
+  package__ankhorage_repository -.-&gt; module_src_connection_utils_getProjectSnapshotPaths_ts
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_index_test_ts
+  package__ankhorage_repository -.-&gt; module_src_index_test_ts
   module_src_index_test_ts --&gt; module_src_index_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_metadata_ghPackageMetadata_ts[&quot;src/metadata/ghPackageMetadata.ts&quot;]
-  package__ankhorage_gh -.-&gt; module_src_metadata_ghPackageMetadata_ts
+  package__ankhorage_repository -.-&gt; module_src_metadata_ghPackageMetadata_ts
 </pre>
               </details>
             </article>
