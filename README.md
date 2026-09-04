@@ -5,29 +5,33 @@
 
 ![license: MIT](./paradox/badges/license.svg) ![npm: v0.3.1](./paradox/badges/npm.svg) ![runtime: bun](./paradox/badges/runtime.svg) ![typescript: strict](./paradox/badges/typescript.svg) ![eslint: checked](./paradox/badges/eslint.svg) ![prettier: checked](./paradox/badges/prettier.svg) ![build: checked](./paradox/badges/build.svg) ![tests: checked](./paradox/badges/tests.svg) ![docs: paradox](./paradox/badges/docs.svg)
 
-Standalone typed GitHub integration for connecting any project, powered by the local gh CLI.
+Standalone repository capability for connecting and managing an app project's source repository.
 
 ## Usage
 
-### Connect a project folder to GitHub
+### Connect a project folder to its source repository
 
-`@ankhorage/repository` connects a project directory to GitHub using the local,
-authenticated `gh` CLI. It creates a missing repository, publishes the
-project snapshot to `main`, stores only its repository slice in
+`@ankhorage/repository` consumes only the project's `RepositoryManifest` slice and delegates
+GitHub operations to the local authenticated `gh` adapter. It creates a missing repository,
+publishes the project snapshot to `main`, stores only the repository slice in
 `.ankhorage/repository.json`, and refuses unrelated existing repositories.
 
-See [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete
-programmatic example.
+See [`examples/basic-usage.ts`](../examples/basic-usage.ts) for a complete programmatic example.
 
 Source: `src/readme-usage.ts`
 
 ```ts
-import { connectGitHubRepositoryAsync } from '@ankhorage/repository';
+import { connectRepositoryAsync } from '@ankhorage/repository';
 
-const result = await connectGitHubRepositoryAsync({
+const result = await connectRepositoryAsync({
   projectPath: './my-project',
-  owner: 'ankhorage',
-  name: 'my-project',
+  repository: {
+    provider: 'github',
+    owner: 'ankhorage',
+    name: 'my-project',
+    url: 'https://github.com/ankhorage/my-project',
+    defaultBranch: 'main',
+  },
   visibility: 'private',
 });
 

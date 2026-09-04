@@ -1,6 +1,8 @@
-import { createGhCliGitHubRepositoryGateway } from '../adapters/createGhCliGitHubRepositoryGateway.js';
-import { createGitHubRepositoryConfigStore } from '../adapters/createGitHubRepositoryConfigStore.js';
-import { createLocalProjectSnapshotReader } from '../adapters/createLocalProjectSnapshotReader.js';
+import { createLocalProjectSnapshotReader } from '../../../connection/adapters/createLocalProjectSnapshotReader.js';
+import { createLocalRepositoryManifestStore } from '../../../connection/adapters/createLocalRepositoryManifestStore.js';
+import type { ProjectSnapshot } from '../../../connection/definitions/ProjectSnapshot.js';
+import type { RepositoryManifestStore } from '../../../connection/ports/RepositoryManifestStore.js';
+import { createGhCliRepositoryGateway } from '../adapters/createGhCliRepositoryGateway.js';
 import type {
   GitHubRepositoryConnectionDependencies,
   GitHubRepositoryConnectionOptions,
@@ -10,13 +12,11 @@ import type {
   GitHubRepositoryConnectionIdentity,
   GitHubRepositoryConnectionResult,
 } from '../definitions/GitHubRepositoryConnectionResult.js';
-import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type {
   GitHubRemoteRepository,
   GitHubRepositoryGateway,
   GitHubRepositoryTarget,
 } from '../ports/GitHubRepositoryGateway.js';
-import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
 import {
   inspectGitHubRepositoryPreflightAsync,
   PreflightError,
@@ -28,16 +28,16 @@ export async function connectGitHubRepositoryAsync(
   options: GitHubRepositoryConnectionOptions = {},
   dependencies: GitHubRepositoryConnectionDependencies = {},
 ): Promise<GitHubRepositoryConnectionResult> {
-  const gateway = dependencies.gateway ?? createGhCliGitHubRepositoryGateway();
+  const gateway = dependencies.gateway ?? createGhCliRepositoryGateway();
   const snapshotReader = dependencies.snapshotReader ?? createLocalProjectSnapshotReader();
-  const configStore = dependencies.configStore ?? createGitHubRepositoryConfigStore();
+  const manifestStore = dependencies.manifestStore ?? createLocalRepositoryManifestStore();
   let preflight;
   try {
     preflight = await inspectGitHubRepositoryPreflightAsync(
       options,
       gateway,
       snapshotReader,
-      configStore,
+      manifestStore,
     );
   } catch (error) {
     return toFailure(error, 'preflight');
@@ -48,7 +48,7 @@ export async function connectGitHubRepositoryAsync(
   try {
     return await publishConnectionAsync(
       gateway,
-      configStore,
+      manifestStore,
       options.projectPath ?? process.cwd(),
       target,
       identity,
@@ -68,10 +68,10 @@ async function finishAlreadyConnectedAsync(
   remote: GitHubRemoteRepository,
 ): Promise<GitHubRepositoryConnectionResult | undefined> {
   if (
-    !remote.mainConfig ||
+    !remote.mainManifest ||
     !remote.mainCommitSha ||
-    remote.mainConfig.owner !== identity.owner ||
-    remote.mainConfig.name !== identity.name
+    remote.mainManifest.owner !== identity.owner ||
+    remote.mainManifest.name !== identity.name
   ) {
     return undefined;
   }
@@ -91,14 +91,14 @@ async function finishAlreadyConnectedAsync(
 /** Persist the connection and publish the complete snapshot. */
 async function publishConnectionAsync(
   gateway: GitHubRepositoryGateway,
-  configStore: RepositoryConfigStore,
+  manifestStore: RepositoryManifestStore,
   projectPath: string,
   target: GitHubRepositoryTarget,
   identity: GitHubRepositoryConnectionIdentity,
   remote: GitHubRemoteRepository,
   snapshot: ProjectSnapshot,
 ): Promise<GitHubRepositoryConnectionResult> {
-  await configStore.updateRepositoryAsync(projectPath, identity);
+  await manifestStore.updateRepositoryAsync(projectPath, { provider: 'github', ...identity });
   if (!remote.exists) await gateway.createRepositoryAsync(target);
   const publication = await publishGitHubProjectSnapshotAsync(
     gateway,

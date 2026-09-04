@@ -16,7 +16,7 @@
     "types": ["bun", "node"],
     "baseUrl": ".",
     "paths": {
-      "@ankhorage/gh": ["src/index.ts"]
+      "@ankhorage/repository": ["src/index.ts"]
     }
   },
   "include": ["examples/**/*.ts", "eslint.examples.config.mjs"],

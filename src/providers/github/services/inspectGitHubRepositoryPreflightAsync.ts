@@ -1,24 +1,24 @@
 import { basename, resolve } from 'node:path';
 
-import type { RepositoryConfig } from '@ankhorage/contracts/repository';
+import type { RepositoryManifest } from '@ankhorage/contracts/repository';
 
+import type { ProjectSnapshot } from '../../../connection/definitions/ProjectSnapshot.js';
+import type { ProjectSnapshotReader } from '../../../connection/ports/ProjectSnapshotReader.js';
+import type { RepositoryManifestStore } from '../../../connection/ports/RepositoryManifestStore.js';
 import type {
   GitHubRepositoryConnectionIdentity,
   GitHubRepositoryConnectionOptions,
 } from '../definitions/index.js';
-import type { ProjectSnapshot } from '../definitions/ProjectSnapshot.js';
 import type {
   GitHubRemoteRepository,
   GitHubRepositoryGateway,
   GitHubRepositoryTarget,
 } from '../ports/GitHubRepositoryGateway.js';
-import type { ProjectSnapshotReader } from '../ports/ProjectSnapshotReader.js';
-import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
 
 export interface GitHubRepositoryPreflight {
   readonly target: GitHubRepositoryTarget;
   readonly identity: GitHubRepositoryConnectionIdentity;
-  readonly config?: RepositoryConfig;
+  readonly manifest?: RepositoryManifest;
   readonly snapshot: ProjectSnapshot;
   readonly remote: GitHubRemoteRepository;
 }
@@ -28,14 +28,14 @@ export async function inspectGitHubRepositoryPreflightAsync(
   options: GitHubRepositoryConnectionOptions,
   gateway: GitHubRepositoryGateway,
   snapshotReader: ProjectSnapshotReader,
-  configStore: RepositoryConfigStore,
+  manifestStore: RepositoryManifestStore,
 ): Promise<GitHubRepositoryPreflight> {
   const projectPath = options.projectPath ?? process.cwd();
   await gateway.assertAvailableAsync();
   await gateway.assertAuthenticatedAsync();
-  const config = await configStore.readConfigAsync(projectPath);
+  const manifest = await manifestStore.readConfigAsync(projectPath);
   const owner = options.owner ?? (await gateway.getAuthenticatedOwnerAsync());
-  const name = options.name ?? config?.name ?? getDefaultRepositoryName(projectPath);
+  const name = options.name ?? manifest?.name ?? getDefaultRepositoryName(projectPath);
   validateName(owner, name);
   const visibility = options.visibility ?? 'private';
   const identity = {
@@ -44,19 +44,19 @@ export async function inspectGitHubRepositoryPreflightAsync(
     url: `https://github.com/${owner}/${name}`,
     defaultBranch: 'main' as const,
   };
-  if (config && !matchesIdentity(config, identity)) {
+  if (manifest && !matchesIdentity(manifest, identity)) {
     throw new PreflightError(
       'conflict',
       'repository-mismatch',
-      'Local repository config does not match the requested target.',
+      'Local repository manifest does not match the requested target.',
     );
   }
-  const prospectiveConfig: RepositoryConfig = { provider: 'github', ...identity };
-  const snapshot = await snapshotReader.readAsync(projectPath, prospectiveConfig);
+  const prospectiveManifest: RepositoryManifest = { provider: 'github', ...identity };
+  const snapshot = await snapshotReader.readAsync(projectPath, prospectiveManifest);
   const target: GitHubRepositoryTarget = { ...identity, visibility };
   const remote = await gateway.inspectRepositoryAsync(target);
-  validateRemoteState(remote, config, identity, visibility);
-  return { target, identity, config, snapshot, remote };
+  validateRemoteState(remote, manifest, identity, visibility);
+  return { target, identity, manifest, snapshot, remote };
 }
 
 export class PreflightError extends Error {
@@ -81,9 +81,9 @@ function validateName(owner: string, name: string): void {
   }
 }
 
-/** Compare only the canonical identity fields persisted in gh config. */
+/** Compare only the canonical identity fields persisted in the repository manifest. */
 function matchesIdentity(
-  repository: RepositoryConfig | undefined,
+  repository: RepositoryManifest | undefined,
   identity: GitHubRepositoryConnectionIdentity,
 ): boolean {
   return (
@@ -97,15 +97,15 @@ function matchesIdentity(
 /** Reject remote state that cannot be safely resumed or connected. */
 function validateRemoteState(
   remote: GitHubRemoteRepository,
-  config: RepositoryConfig | undefined,
+  manifest: RepositoryManifest | undefined,
   identity: GitHubRepositoryConnectionIdentity,
   visibility: GitHubRepositoryTarget['visibility'],
 ): void {
-  if (remote.exists && !config) {
+  if (remote.exists && !manifest) {
     throw new PreflightError(
       'conflict',
-      'local-config-missing',
-      'An existing repository cannot be adopted without a matching local config.',
+      'local-manifest-missing',
+      'An existing repository cannot be adopted without a matching local manifest.',
     );
   }
   if (remote.exists && remote.visibility !== undefined && remote.visibility !== visibility) {
@@ -115,18 +115,18 @@ function validateRemoteState(
       'The existing repository has different visibility.',
     );
   }
-  if (remote.exists && remote.mainConfig !== undefined) {
-    if (!matchesIdentity(remote.mainConfig, identity)) {
+  if (remote.exists && remote.mainManifest !== undefined) {
+    if (!matchesIdentity(remote.mainManifest, identity)) {
       throw new PreflightError(
         'conflict',
-        'remote-config-mismatch',
-        'The remote gh config points to another repository.',
+        'remote-manifest-mismatch',
+        'The remote repository manifest points to another repository.',
       );
     }
   }
 }
 
-/** Derive a stable repository name for projects without gh configuration. */
+/** Derive a stable repository name for projects without a repository manifest. */
 function getDefaultRepositoryName(projectPath: string): string {
   return basename(resolve(projectPath));
 }

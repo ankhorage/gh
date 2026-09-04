@@ -1,5 +1,5 @@
 ---
-'@ankhorage/gh': patch
+'@ankhorage/repository': patch
 ---
 
 Update documentation

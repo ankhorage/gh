@@ -4,9 +4,9 @@
 
 ## Repository
 
-Package: `@ankhorage/gh`
+Package: `@ankhorage/repository`
 
-Standalone typed GitHub integration for connecting any project, powered by the local gh CLI.
+Standalone repository capability for connecting and managing an app project's source repository.
 
 ## Current architecture only
 

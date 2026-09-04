@@ -1,8 +1,10 @@
-export type { GitHubRepositoryConnectionOptions } from './connection/definitions/GitHubRepositoryConnectionOptions.js';
 export type {
-  GitHubRepositoryConnectionFailure,
-  GitHubRepositoryConnectionResult,
-  GitHubRepositoryConnectionStatus,
-} from './connection/definitions/GitHubRepositoryConnectionResult.js';
-export type { GitHubRepositoryVisibility } from './connection/definitions/GitHubRepositoryVisibility.js';
-export { connectGitHubRepositoryAsync } from './connection/services/connectGitHubRepositoryAsync.js';
+  RepositoryConnectionOptions,
+  RepositoryVisibility,
+} from './connection/definitions/RepositoryConnectionOptions.js';
+export type {
+  RepositoryConnectionFailure,
+  RepositoryConnectionResult,
+  RepositoryConnectionStatus,
+} from './connection/definitions/RepositoryConnectionResult.js';
+export { connectRepositoryAsync } from './connection/services/connectRepositoryAsync.js';

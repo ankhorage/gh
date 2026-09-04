@@ -1,6 +1,6 @@
+import type { ProjectSnapshotReader } from '../../../connection/ports/ProjectSnapshotReader.js';
+import type { RepositoryManifestStore } from '../../../connection/ports/RepositoryManifestStore.js';
 import type { GitHubRepositoryGateway } from '../ports/GitHubRepositoryGateway.js';
-import type { ProjectSnapshotReader } from '../ports/ProjectSnapshotReader.js';
-import type { RepositoryConfigStore } from '../ports/RepositoryConfigStore.js';
 import type { GitHubRepositoryVisibility } from './GitHubRepositoryVisibility.js';
 
 export interface GitHubRepositoryConnectionOptions {
@@ -13,5 +13,5 @@ export interface GitHubRepositoryConnectionOptions {
 export interface GitHubRepositoryConnectionDependencies {
   readonly gateway?: GitHubRepositoryGateway;
   readonly snapshotReader?: ProjectSnapshotReader;
-  readonly configStore?: RepositoryConfigStore;
+  readonly manifestStore?: RepositoryManifestStore;
 }

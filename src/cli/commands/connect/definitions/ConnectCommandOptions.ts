@@ -1,4 +1,4 @@
-import type { GitHubRepositoryVisibility } from '../../../../connection/definitions/GitHubRepositoryVisibility.js';
+import type { GitHubRepositoryVisibility } from '../../../../providers/github/definitions/GitHubRepositoryVisibility.js';
 
 export interface ConnectCommandOptions {
   readonly projectPath?: string;
